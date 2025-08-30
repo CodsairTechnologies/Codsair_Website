@@ -1,0 +1,199 @@
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    padding: 16px 20px;
+    color: #fff;
+    font-family: "Inter";
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 2000;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+}
+
+/* Logo + Text */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.company-name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Nav Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00bfff;
+}
+
+.active-link {
+    font-weight: bold;
+    color: #00bfff !important;
+}
+
+/* 🔹 Contact Us Highlight */
+.contact-link {
+    background: #00bfff;
+    color: #fff !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-link:hover {
+    background: #009acd;
+    /* darker shade on hover */
+    transform: scale(1.05);
+}
+
+/* Dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.95);
+    list-style: none;
+    padding: 12px;
+    border-radius: 8px;
+    min-width: 140px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    margin: 6px 0;
+}
+
+.dropdown-menu a {
+    color: #fff;
+    padding: 8px 12px;
+    display: block;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background: #00bfff;
+    color: #fff;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #fff;
+    background: none;
+    border: none;
+    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.98);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+        display: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        opacity: 1;
+        transform: none;
+    }
+
+    .dropdown-menu a {
+        padding: 10px;
+    }
+
+    /* Contact Us on mobile - keep button look */
+    .contact-link {
+        display: inline-block;
+        width: auto;
+        margin-top: 10px;
+    }
+}
+
+/* Accessibility */
+.nav-links a:focus,
+.hamburger:focus {
+    outline: 2px solid #00bfff;
+    outline-offset: 2px;
+}

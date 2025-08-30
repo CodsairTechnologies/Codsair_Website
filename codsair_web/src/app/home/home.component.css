@@ -1,0 +1,184 @@
+/* ===============================
+   HOME SECTION LAYOUT
+=================================*/
+.home-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.home-section-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* ===============================
+   CONTENT (CENTER)
+=================================*/
+.home-section-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    max-width: 1000px;
+    width: 90%;
+    padding: 20px;
+}
+
+
+.home-section-content h1 {
+    font-size: 3.2rem;
+    /* increased */
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-family: "Roboto Slab";
+}
+
+.home-section-content p {
+    font-size: 1.8rem;
+    /* increased */
+    margin-bottom: 25px;
+    font-family: "Roboto";
+}
+
+.home-section-content p #typing {
+    font-size: 1.8rem;
+    color: #00bfff !important;
+    font-weight: 700;
+}
+
+/* Button */
+.home-section-btn {
+    background: #2196f3;
+    border: none;
+    padding: 14px 36px;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: "Roboto";
+}
+
+.home-section-btn:hover {
+    background: #0b7dda;
+}
+
+/* ===============================
+   TYPING CURSOR
+=================================*/
+.home-section-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    color: #fff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    50.01%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ===============================
+   SOCIAL MEDIA BAR (LEFT SIDE)
+=================================*/
+.social-bar {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+/* Lines above & below */
+.social-line {
+    width: 1px;
+    height: 40px;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+
+/* Social icon buttons */
+.social-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    /* slightly bigger */
+    height: 50px;
+    border: 1px solid #2196f3;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-bar a:hover {
+    background: #2196f3;
+    color: #fff;
+}
+
+/* Vertical "Follow us" text */
+.social-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin: 10px 0;
+    font-size: 14px;
+    color: #ccc;
+    letter-spacing: 2px;
+}
+
+/* ===============================
+   RESPONSIVE
+=================================*/
+@media (max-width: 768px) {
+    .home-section-content h1 {
+        font-size: 2.4rem;
+        font-family: "Roboto Slab";
+    }
+
+    .home-section-content p {
+        font-size: 1.4rem;
+    }
+
+    .home-section-content p #typing {
+        font-size: 1.4rem;
+    }
+
+    .home-section-btn {
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+
+    .social-bar {
+        left: 10px;
+    }
+
+    .social-bar a {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+}

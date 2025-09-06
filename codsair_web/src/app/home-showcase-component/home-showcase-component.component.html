@@ -1,0 +1,93 @@
+<!-- World Map section-->
+
+<div class="locations-section">
+  <h2 class="section-title">Locations</h2>
+
+  <!-- World Map with Hover Markers -->
+  <div class="map-container">
+    <img src="assets/images/world.jpg" alt="World Map" class="world-map">
+
+    <!-- Loop markers -->
+    <div *ngFor="let loc of locations"
+         class="marker"
+         [ngStyle]="{'top': loc.top, 'left': loc.left}">
+      <span class="tooltip">{{ loc.country }}</span>
+    </div>
+  </div>
+
+  <!-- Location Cards -->
+  <div class="locations-card">
+    <div class="location" *ngFor="let loc of locations">
+      <div class="flag">
+        <img [src]="loc.flag" [alt]="loc.country">
+      </div>
+      <div class="details">
+        <h4>{{ loc.country }}</h4>
+        <p><i class="bi bi-telephone"></i>
+          <a [href]="'tel:' + loc.phone">{{ loc.phone }}</a>
+        </p>
+        <p *ngIf="loc.email"><i class="bi bi-envelope"></i>
+          <a [href]="'mailto:' + loc.email">{{ loc.email }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--End of World Map section-->
+
+<!-- Experience section-->
+
+<div class="experience-section">
+  <h2 class="section-title">Our Experience</h2>
+
+  <div class="stats-container">
+    <div class="stat-box" *ngFor="let stat of stats">
+      <div class="stat-value">
+        <span *ngIf="!stat.icon">{{ stat.value }}</span>
+        <span *ngIf="stat.icon">
+          {{ stat.value }} <i [class]="stat.icon"></i>
+        </span>
+      </div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- End of Experience section-->
+
+<!-- Blog section-->
+
+<div class="blogs-section">
+  <h2 class="main-title">Blogs and News</h2>
+
+  <div class="blogs-container">
+    <!-- Left Featured Image -->
+   <div class="featured-wrapper">
+      <img src="assets/images/blog-bg.png" alt="Background" class="gradient-bg">
+      <img src="assets/images/blog.png" alt="Featured Blog" class="featured-img">
+    </div>
+
+    <!-- Right Content -->
+    <div class="blogs-content">
+      <h3 class="sub-title">Latest Updates</h3>
+      <p class="blogs-description">
+        Discover the latest updates, insights, and stories from the world of technology and innovation.
+        In this section, we share expert articles, industry news, and company highlights that matter
+        to you. Whether it’s the launch of new projects, emerging trends in IT, or valuable tips from
+        our team, our blogs and news updates are designed to keep you informed, inspired, and ahead
+        in today’s fast-changing digital era.
+      </p>
+
+      <!-- Blog Cards -->
+      <div class="blog-cards">
+        <div class="blog-card" *ngFor="let blog of blogs">
+          <img [src]="blog.image" alt="{{ blog.title }}">
+          <p class="blog-title">{{ blog.title }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End of Blog section-->

@@ -1,0 +1,590 @@
+/* ===============Product Section==================== */
+
+
+
+.products-section {
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.products-section .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0096ff;
+    margin-bottom: 10px;
+}
+
+.products-section .section-subtitle {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 40px;
+}
+
+/* Grid */
+.products-section .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* Card */
+.products-section .product-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.products-section .product-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Overlay */
+.products-section .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.4s ease;
+    z-index: 1;
+}
+
+.products-section .product-card:hover .overlay {
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.4) 40%,
+            rgba(0, 0, 0, 0.9) 100%);
+}
+
+/* Info */
+.products-section .product-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: #fff;
+    z-index: 2;
+    transform: translateY(40%);
+    transition: transform 0.4s ease;
+    text-align: left;
+}
+
+.products-section .product-info h3 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.products-section .product-info .desc {
+    font-size: 0.9rem;
+    margin: 5px 0 10px;
+    opacity: 0.85;
+}
+
+.products-section .product-info a {
+    font-size: 1.6rem;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effects */
+.products-section .product-card:hover img {
+    transform: scale(1.1);
+}
+
+.products-section .product-card:hover .product-info {
+    transform: translateY(0);
+}
+
+.products-section .product-card:hover .product-info a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tabs */
+.products-section .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.products-section .tab {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+}
+
+.products-section .tab:hover {
+    color: #0096ff;
+}
+
+.products-section .tab.active {
+    color: #0096ff;
+    font-weight: 600;
+}
+
+.products-section .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 2px;
+    background: #0096ff;
+    border-radius: 2px;
+}
+
+/* ✅ RESPONSIVENESS */
+
+/* Tablets */
+@media (max-width: 991px) {
+    .products-section .section-title {
+        font-size: 2rem;
+    }
+
+    .products-section .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .products-section .product-card img {
+        height: 300px;
+    }
+
+    .products-section .tabs {
+        gap: 20px;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 576px) {
+    .products-section {
+        padding: 40px 15px;
+    }
+
+    .products-section .section-title {
+        font-size: 1.8rem;
+    }
+
+    .products-section .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+
+    /* ✅ Force 2 cards per row on mobile */
+    .products-section .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        /* smaller gap for mobile */
+    }
+
+    .products-section .product-card img {
+        height: 220px;
+    }
+
+    .products-section .product-info {
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+    }
+
+    .products-section .product-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .products-section .product-info .desc {
+        font-size: 0.85rem;
+    }
+
+    .products-section .tabs {
+        gap: 15px;
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+
+
+/* ================= Technologies Section ================= */
+.technologies-section {
+  padding: 40px 15px;
+  background: #fff;
+}
+
+.technologies-section .section-title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: bold;
+  color: #0096ff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.technologies-section .tech-wrapper {
+  display: flex;
+  gap: 40px; /* increased for breathing space */
+  max-width: 1200px;
+  margin: auto;
+  align-items: center; /* ✅ center tabs vertically with timeline */
+}
+
+/* Tabs */
+.technologies-section .tabs-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ✅ center inside its own column */
+  gap: 15px;
+  min-width: 180px;
+}
+
+.technologies-section .tabs-vertical .tab {
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  color: #444;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 10px;
+  text-align: left;
+}
+
+.technologies-section .tabs-vertical .tab.active {
+  color: #0096ff;
+  font-weight: 600;
+}
+
+/* .technologies-section .tabs-vertical .tab.active::after {
+  content: "›";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #0096ff;
+} */
+.technologies-section .tabs-vertical .tab.active::after {
+  content: "›";
+  margin-left: 8px;  /* space between text and arrow */
+  font-size: 1.2rem;
+  color: #0096ff;
+  position: static;  /* no absolute positioning */
+}
+
+
+/* -------------------- DESKTOP TIMELINE -------------------- */
+.technologies-section .tech-right {
+  flex: 1;
+  position: relative;
+}
+
+.technologies-section .tech-timeline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.technologies-section .tech-timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #3498db;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.technologies-section .tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 280px;
+  width: 20%;
+}
+
+.technologies-section .tech-item.top .tech-circle {
+  margin-bottom: 40px;
+}
+
+.technologies-section .tech-item.bottom .tech-circle {
+  margin-top: 40px;
+}
+
+/* Circle */
+.technologies-section .tech-circle {
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  border: 6px solid #3498db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.technologies-section .tech-circle:hover {
+  transform: scale(1.1);
+}
+
+/* Arrow connectors (desktop only) */
+.technologies-section .tech-item.top .tech-circle::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 60px solid #3498db;
+  transform: translateX(-50%);
+}
+
+.technologies-section .tech-item.bottom .tech-circle::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 60px solid #3498db;
+  transform: translateX(-50%);
+}
+
+/* Content */
+.technologies-section .tech-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.technologies-section .tech-content h3 {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+
+.technologies-section .tech-content p {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+/* -------------------- MOBILE VERTICAL -------------------- */
+.technologies-section .tech-timeline-vertical {
+  display: none;
+  position: relative;
+}
+.technologies-section .tech-timeline-vertical::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #ccc;
+  transform: translateX(-50%);
+}
+.technologies-section .timeline-item {
+  position: relative;
+  margin: 50px 0;
+}
+.technologies-section .circle {
+  width: 60px;
+  height: 60px;
+  border: 3px solid #0096ff;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  z-index: 2;
+}
+.technologies-section .circle img {
+  width: 70%;
+}
+.technologies-section .content {
+  max-width: 260px;
+}
+.technologies-section .timeline-item.left .content {
+  margin-right: auto;
+  text-align: right;
+  padding-right: 180px;
+}
+.technologies-section .timeline-item.right .content {
+  margin-left: auto;
+  text-align: left;
+  padding-left: 180px;
+}
+.technologies-section .content h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.technologies-section .content p {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 768px) {
+  .technologies-section .tech-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .technologies-section .tabs-vertical {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .technologies-section .tech-timeline {
+    display: none;
+  }
+  .technologies-section .tech-timeline-vertical {
+    display: block;
+  }
+}
+
+
+
+
+/* =============== Client Section =============== */
+.clients-section {
+  padding: 60px 40px;
+  background: #fff;
+}
+
+.clients-section .section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0096ff;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* default: 6 columns */
+  margin: 0 40px;
+  gap: 0; /* no space between squares */
+}
+
+.client-cell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* keeps perfect squares */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  animation: slideUp 6s linear infinite;
+}
+
+/* Add delay for each cell */
+.clients-grid .client-cell:nth-child(1) .logo-wrapper { animation-delay: 0s; }
+.clients-grid .client-cell:nth-child(2) .logo-wrapper { animation-delay: 0.5s; }
+.clients-grid .client-cell:nth-child(3) .logo-wrapper { animation-delay: 1s; }
+.clients-grid .client-cell:nth-child(4) .logo-wrapper { animation-delay: 1.5s; }
+.clients-grid .client-cell:nth-child(5) .logo-wrapper { animation-delay: 2s; }
+.clients-grid .client-cell:nth-child(6) .logo-wrapper { animation-delay: 2.5s; }
+.clients-grid .client-cell:nth-child(7) .logo-wrapper { animation-delay: 3s; }
+.clients-grid .client-cell:nth-child(8) .logo-wrapper { animation-delay: 3.5s; }
+.clients-grid .client-cell:nth-child(9) .logo-wrapper { animation-delay: 4s; }
+.clients-grid .client-cell:nth-child(10) .logo-wrapper { animation-delay: 4.5s; }
+/* ...continue if you have more logos */
+
+.logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+  box-sizing: border-box;
+  filter: grayscale(100%);
+  transition: filter 0.4s ease;
+}
+
+.logo-wrapper img:hover {
+  filter: grayscale(0%);
+}
+
+/* Slide animation */
+@keyframes slideUp {
+  0%, 40%   { transform: translateY(0); }
+  50%, 90%  { transform: translateY(-100%); }
+  100%      { transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Large tablets (max-width: 1200px) → 4 columns */
+@media (max-width: 1200px) {
+  .clients-grid {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 30px;
+  }
+}
+
+/* Tablets (max-width: 768px) → 3 columns */
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 40px 20px;
+  }
+
+  .clients-section .section-title {
+    font-size: 2rem;
+  }
+
+  .clients-grid {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 20px;
+  }
+}
+
+/* Mobiles (max-width: 576px) → still 3 columns */
+@media (max-width: 576px) {
+  .clients-section {
+    padding: 30px 15px;
+  }
+
+  .clients-section .section-title {
+    font-size: 1.6rem;
+  }
+
+  .clients-grid {
+    grid-template-columns: repeat(3, 1fr); /* ✅ 3 columns on mobile */
+    margin: 0 10px;
+  }
+
+  .logo-wrapper img {
+    padding: 6px; /* tighter padding */
+  }
+}

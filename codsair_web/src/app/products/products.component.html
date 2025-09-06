@@ -1,0 +1,271 @@
+<section class="products-section">
+    <div class="container text-center">
+        <h2 class="section-title">Products</h2>
+        <p class="section-subtitle">
+            Design is not just what it looks like and feels like. Design is how it works
+        </p>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <span class="tab" [class.active]="activeTab === 'mobile'" (click)="activeTab = 'mobile'">Mobile
+                Products</span>
+
+            <span class="tab" [class.active]="activeTab === 'web'" (click)="activeTab = 'web'">Web Products</span>
+        </div>
+
+        <!-- Mobile Projects -->
+        <div class="products-grid" *ngIf="activeTab === 'mobile'">
+            <div class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up">
+                <img [src]="project.img" [alt]="project.title">
+                <div class="overlay"></div>
+                <div class="product-info">
+                    <h3>{{ project.title }}</h3>
+                    <p class="desc">{{ project.desc }}</p>
+                    <a href="#"><span>&#8599;</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web Projects -->
+        <div class="products-grid" *ngIf="activeTab === 'web'">
+            <div class="product-card" *ngFor="let project of webProjects" data-aos="fade-up">
+                <img [src]="project.img" [alt]="project.title">
+                <div class="overlay"></div>
+                <div class="product-info">
+                    <h3>{{ project.title }}</h3>
+                    <p class="desc">{{ project.desc }}</p>
+                    <a href="#"><span>&#8599;</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="technologies-section">
+    <div class="container">
+        <h2 class="section-title">Technologies We Work With</h2>
+
+        <div class="tech-wrapper">
+            <!-- Tabs -->
+            <div class="tabs-vertical">
+                <span class="tab" [class.active]="activetechTab === 'web'" (click)="switchTab('web')">
+                    Web Development
+                </span>
+                <span class="tab" [class.active]="activetechTab === 'mobile'" (click)="switchTab('mobile')">
+                    Mobile Development
+                </span>
+            </div>
+
+            <!-- Right side -->
+            <div class="tech-right">
+                <!-- Desktop Horizontal Timeline -->
+                <div class="tech-timeline" *ngIf="activetechTab === 'web'">
+                    <div class="tech-item" *ngFor="let tech of webTechnologies; let i = index"
+                        [ngClass]="{ 'top': i % 2 === 0, 'bottom': i % 2 !== 0 }">
+
+                        <ng-container *ngIf="i % 2 === 0">
+                            <div class="tech-circle" data-aos="fade-right">
+                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                            </div>
+                            <div class="tech-content">
+                                <h3>{{ tech.name }}</h3>
+                                <p>{{ tech.desc }}</p>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="i % 2 !== 0">
+                            <div class="tech-content">
+                                <h3>{{ tech.name }}</h3>
+                                <p>{{ tech.desc }}</p>
+                            </div>
+                            <div class="tech-circle" data-aos="fade-left">
+                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+
+                <div class="tech-timeline" *ngIf="activetechTab === 'mobile'">
+                    <div class="tech-item" *ngFor="let tech of mobileTechnologies; let i = index"
+                        [ngClass]="{ 'top': i % 2 === 0, 'bottom': i % 2 !== 0 }">
+
+                        <ng-container *ngIf="i % 2 === 0">
+                            <div class="tech-circle" data-aos="fade-right">
+                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                            </div>
+                            <div class="tech-content">
+                                <h3>{{ tech.name }}</h3>
+                                <p>{{ tech.desc }}</p>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="i % 2 !== 0">
+                            <div class="tech-content">
+                                <h3>{{ tech.name }}</h3>
+                                <p>{{ tech.desc }}</p>
+                            </div>
+                            <div class="tech-circle" data-aos="fade-left">
+                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+
+                <!-- Mobile Vertical Timeline -->
+                <div class="tech-timeline-vertical" *ngIf="activetechTab === 'web'">
+                    <div class="timeline-item" *ngFor="let tech of webTechnologies; let i = index"
+                        [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
+                        <div class="circle">
+                            <img [src]="tech.img" [alt]="tech.name" />
+                        </div>
+                        <div class="content">
+                            <h3>{{ tech.name }}</h3>
+                            <p>{{ tech.desc }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-timeline-vertical" *ngIf="activetechTab === 'mobile'">
+                    <div class="timeline-item" *ngFor="let tech of mobileTechnologies; let i = index"
+                        [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
+                        <div class="circle">
+                            <img [src]="tech.img" [alt]="tech.name" />
+                        </div>
+                        <div class="content">
+                            <h3>{{ tech.name }}</h3>
+                            <p>{{ tech.desc }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="clients-section">
+    <div class="container text-center">
+        <h2 class="section-title">Our Clients</h2>
+
+        <div class="clients-grid">
+            <!-- Row 1 -->
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client1.png" alt="Client 1">
+                    <img src="assets/images/client12.png" alt="Client 2">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client3.png" alt="Client 3">
+                    <img src="assets/images/client11.png" alt="Client 4">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client10.png" alt="Client 5">
+                    <img src="assets/images/client3.png" alt="Client 6">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client4.png" alt="Client 7">
+                    <img src="assets/images/client8.jpeg" alt="Client 8">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client8.jpeg" alt="Client 10">
+                    <img src="assets/images/client5.png" alt="Client 9">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client3.png" alt="Client 11">
+                    <img src="assets/images/stecon.webp" alt="Client 12">
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client3.png" alt="Client 13">
+                    <img src="assets/images/client8.jpeg" alt="Client 14">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client12.png" alt="Client 15">
+                    <img src="assets/images/client11.png" alt="Client 16">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client8.jpeg" alt="Client 17">
+                    <img src="assets/images/client3.png" alt="Client 18">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client1.png" alt="Client 19">
+                    <img src="assets/images/client3.png" alt="Client 20">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client8.jpeg" alt="Client 21">
+                    <img src="assets/images/client3.png" alt="Client 22">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/stecon.webp" alt="Client 24">
+                    <img src="assets/images/client8.jpeg" alt="Client 23">
+
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper" >
+                    <img src="assets/images/client11.png" alt="Client 25">
+                    <img src="assets/images/client12.png" alt="Client 26">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client10.png" alt="Client 27">
+                    <img src="assets/images/client8.jpeg" alt="Client 28">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client1.png" alt="Client 29">
+                    <img src="assets/images/client8.jpeg" alt="Client 30">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client3.png" alt="Client 31">
+                    <img src="assets/images/client4.png" alt="Client 32">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client5.png" alt="Client 33">
+                    <img src="assets/images/client13.png" alt="Client 34">
+                </div>
+            </div>
+            <div class="client-cell" data-aos="flip-up">
+                <div class="logo-wrapper">
+                    <img src="assets/images/client13.png" alt="Client 35">
+                    <img src="assets/images/client1.png" alt="Client 36">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

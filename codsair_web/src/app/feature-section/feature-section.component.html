@@ -1,0 +1,50 @@
+<!-- Testimonial Section -->
+<section class="testimonial-box">
+    <h2 class="testimonial-heading">Real Experiences</h2>
+
+    <!-- Arrow buttons at top right -->
+    <div class="carousel-controls">
+        <button class="carousel-btn prev" (click)="scrollPrev()">&#9664;</button>
+        <button class="carousel-btn next" (click)="scrollNext()">&#9654;</button>
+    </div>
+
+    <div class="testimonial-carousel">
+        <div #carouselContainer class="testimonial-container">
+
+            <!-- Card -->
+            <div class="testimonial-card" *ngFor="let item of testimonials">
+                <img [src]="item.image" alt="testimonial image" class="testimonial-img" />
+
+                <div class="testimonial-card-content">
+                    <h3>
+                        {{ item.name }}
+                        <span class="stars">
+                            <ng-container *ngFor="let star of [].constructor(item.rating)">
+                                ★
+                            </ng-container>
+                        </span>
+                    </h3>
+
+                    <p>{{ item.feedback }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Feature Section -->
+<section class="feature-box">
+    <div class="feature-content">
+        <h1>Turn Ideas Into Reality – Start with <br> our expert solutions</h1>
+        <p>
+            Discover our wide range of services designed to help businesses grow in the digital era.
+            From mobile apps and web development to digital marketing and design,
+            we provide innovative solutions tailored to your needs.
+        </p>
+        <a href="#" class="feature-btn">Contact Us →</a>
+    </div>
+</section>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home-showcase-component',
@@ -9,8 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './home-showcase-component.component.css'
 })
 export class HomeShowcaseComponentComponent {
+  @ViewChild('experienceSection', { static: true }) experienceSection!: ElementRef;
 
-   locations = [
+  locations = [
     {
       country: 'India',
       flag: 'assets/images/india.jpg',
@@ -42,13 +43,16 @@ export class HomeShowcaseComponentComponent {
   ];
 
   stats = [
-    { value: '120', label: 'Projects Delivered' },
-    { value: '75+', label: 'Happy Clients' },
-    { value: '5', label: 'Happy Clients', icon: 'bi bi-star-fill' }, // Bootstrap icon
-    { value: '5/5', label: 'Client Rating' }
+    { value: 120, currentValue: 0, label: 'Projects Delivered' },
+    { value: 75, currentValue: 0, label: 'Happy Clients', suffix: '+' },
+    { value: 5, currentValue: 0, label: 'Happy Clients', icon: 'bi bi-star-fill' },
+    { value: 5, currentValue: 0, label: 'Client Rating', suffix: '/5' }
   ];
 
-   blogs = [
+  private observer!: IntersectionObserver;
+  private animated = false;
+
+  blogs = [
     {
       image: 'assets/images/blog-1.png',
       title: 'Codsair Launches New Mobile App Solutions'
@@ -62,5 +66,34 @@ export class HomeShowcaseComponentComponent {
       title: 'Codsair Launches New Mobile App Solutions'
     }
   ];
+
+  ngAfterViewInit(): void {
+    this.observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !this.animated) {
+        this.animated = true;
+        this.animateStats();
+      }
+    }, { threshold: 0.3 });
+
+    this.observer.observe(this.experienceSection.nativeElement);
+  }
+
+  animateStats() {
+    this.stats.forEach(stat => {
+      let start = 0;
+      const end = stat.value;
+      const duration = 1500; // 1.5 seconds
+      const stepTime = Math.max(Math.floor(duration / end), 20); // safe interval
+
+      const timer = setInterval(() => {
+        start++;
+        stat.currentValue = start;
+        if (start >= end) {
+          clearInterval(timer);
+          stat.currentValue = end;
+        }
+      }, stepTime);
+    });
+  }
 
 }

@@ -14,13 +14,14 @@
 .locations-card {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
   max-width: 1200px;
-  margin: 0 auto; /* center under map */
+  margin: 0 auto;
+  /* center under map */
   text-align: left;
 }
 
@@ -30,6 +31,24 @@
   align-items: flex-start;
   gap: 0.8rem;
 }
+
+.country-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem; /* spacing between flag & text */
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.country-heading img {
+  width: 28px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
 
 .flag img {
   width: 32px;
@@ -112,10 +131,12 @@
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.8;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(2.8);
     opacity: 0.3;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(4);
     opacity: 0;
@@ -126,7 +147,8 @@
 
 .tooltip {
   position: absolute;
-  bottom: 125%; /* show above marker */
+  bottom: 125%;
+  /* show above marker */
   left: 50%;
   transform: translateX(-50%);
   background: #333;
@@ -252,6 +274,7 @@
   .stat-value {
     font-size: 48px;
   }
+
 }
 
 @media (max-width: 768px) {
@@ -269,8 +292,9 @@
   }
 
   .stat-box:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid #d3d3d3;
   }
+
 }
 
 /* End of Experience Section */
@@ -278,171 +302,168 @@
 
 /* Blog Section */
 
+
 .blogs-section {
-  padding: 4rem 2rem; /* more padding around section */
-  background: #fff;
+  padding: 50px 15px;
 }
 
 /* Main Section Title */
 .main-title {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 700;
-  font-size: 48px;
-  text-align: center;
   color: #2196f3;
-  margin-bottom: 3rem; /* more gap below title */
+  margin-bottom: 3rem;
+  font-family: Roboto Slab;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 60px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
 }
 
-/* Layout */
 .blogs-container {
   display: flex;
-  gap: 3rem; /* increased gap between left + right */
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-top: 60px;
   flex-wrap: wrap;
 }
 
-/* Featured Blog */
-.featured-blog {
-  flex: 1 1 45%;
-}
-
-.featured-blog img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-/* Featured Blog Wrapper */
+/* Featured Image */
 .featured-wrapper {
   position: relative;
-  flex: 1 1 45%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1;
+  max-width: 500px;
 }
 
 .gradient-bg {
   position: absolute;
-  top: -25px;
-  left: -25px;
+  top: -40px;
+  left: -40px;
   width: 100%;
-  height: auto;
-  border-radius: 16px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
   z-index: 1;
 }
 
 .featured-img {
   position: relative;
   width: 100%;
-  height: auto;
-  border-radius: 16px;
+  border-radius: 8px;
   z-index: 2;
-  object-fit: cover;
+  bottom: -22px;
 }
 
-/* Right Content */
-.blogs-content {
-  flex: 1 1 50%;
-  padding-top: 0.5rem;
+/* Content */
+.content-wrapper {
+  flex: 1.2;
+  min-width: 300px;
 }
 
-.sub-title {
-  font-family: 'Roboto Slab', serif;
+.blog-title {
+  font-family: Roboto Slab;
   font-weight: 700;
-  font-size: 32px;
-  color: #2196f3;
-  margin-bottom: 1.5rem;
+  color: #1FA7F4;
+  font-style: Bold;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding-bottom: 20px;
 }
 
-.blogs-description {
-  font-family: 'Roboto', sans-serif;
+.description {
   font-size: 16px;
-  line-height: 28px; /* slightly taller line spacing */
-  color: #333;
-  margin-bottom: 2.5rem;
-  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
 
-/* Blog Cards */
 .blog-cards {
   display: flex;
-  gap: 1.5rem; /* more spacing between cards */
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .blog-card {
-  flex: 1 1 30%;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
+  flex: 1;
+  min-width: 160px;
+  max-width: 220px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  padding: 0.75rem; /* inner spacing */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.blog-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
 .blog-card img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
-.blog-title {
-  font-family: 'Roboto', sans-serif;
+.blog-card p {
+  font-family: Roboto;
+  font-weight: 400;
   font-size: 15px;
-  font-weight: 500;
-  color: #000;
-  padding: 0.25rem;
+  line-height: 22.5px;
+  letter-spacing: 0%;
+  text-align: justify;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
+/* ------------------- */
+/* Responsive Styles   */
+/* ------------------- */
+@media (max-width: 1200px) {
   .blogs-container {
     flex-direction: column;
-    gap: 2rem; /* reduce gap on smaller screens */
+    align-items: center;
+    text-align: center;
   }
 
-  .featured-blog,
-  .blogs-content {
-    flex: 1 1 100%;
+  .featured-wrapper {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  /* .gradient-bg {
+    top: -10px;
+    left: -10px;
+  } */
+
+  .content-wrapper {
+    flex: 1;
+    width: 100%;
+  }
+
+  .description {
+    text-align: justify;
   }
 
   .blog-cards {
     justify-content: center;
   }
-
-  .blog-card {
-    flex: 1 1 45%;
-  }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .main-title {
-    font-size: 36px;
-    margin-bottom: 2rem;
+    font-size: 28px;
   }
 
-  .sub-title {
-    font-size: 24px;
+  .section-title {
+    font-size: 22px;
   }
 
-  .blog-card {
-    flex: 1 1 100%;
-  }
-
-  .blog-card img {
-    height: 140px;
+  .description {
+    font-size: 14px;
   }
 }
+
+
+@media (max-width: 650px) {
+
+  .gradient-bg {
+    top: -10px;
+    left: -10px;
+  }
+
+}
+
 
 
 /* End of Blog Section */

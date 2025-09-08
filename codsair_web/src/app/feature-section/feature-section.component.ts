@@ -89,13 +89,29 @@ export class FeatureSectionComponent {
 
   scrollNext() {
     if (isPlatformBrowser(this.platformId)) {
-      this.carouselContainer.nativeElement.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
+      const container = this.carouselContainer.nativeElement;
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+      // If already at the end → reset to start
+      if (container.scrollLeft >= maxScrollLeft) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
+      }
     }
   }
 
   scrollPrev() {
     if (isPlatformBrowser(this.platformId)) {
-      this.carouselContainer.nativeElement.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
+      const container = this.carouselContainer.nativeElement;
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+      // If at the start → jump to the end
+      if (container.scrollLeft <= 0) {
+        container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
+      }
     }
   }
 

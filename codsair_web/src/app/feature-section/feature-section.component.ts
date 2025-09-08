@@ -83,7 +83,7 @@ export class FeatureSectionComponent {
         container.addEventListener('scroll', this.onScroll);
 
         // Auto-slide
-        this.autoSlideInterval = setInterval(() => this.scrollNext(), 1000);
+        this.autoSlideInterval = setInterval(() => this.scrollNext(), 3000);
       }
     }
   }

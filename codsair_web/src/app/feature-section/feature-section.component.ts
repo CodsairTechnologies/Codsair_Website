@@ -64,6 +64,9 @@ export class FeatureSectionComponent {
   cardWidth: number = 0;
 
   autoSlideInterval: any;
+  originalTestimonials = [...this.testimonials];
+  isAutoScrolling = false;
+
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -71,49 +74,67 @@ export class FeatureSectionComponent {
       if (card) {
         this.cardWidth = card.offsetWidth + 20; // width + gap
 
-        // Start auto-slide only in browser
-        this.autoSlideInterval = setInterval(() => {
-          this.scrollNext();
-        }, 3000);
+        const n = 30; // duplicate n times
+        this.testimonials = this.duplicateTestimonials(this.originalTestimonials, n);
+
+        const container = this.carouselContainer.nativeElement;
+        container.scrollLeft = 0;
+
+        container.addEventListener('scroll', this.onScroll);
+
+        // Auto-slide
+        this.autoSlideInterval = setInterval(() => this.scrollNext(), 1000);
       }
     }
   }
+
+  duplicateTestimonials(original: any[], n: number): any[] {
+    const result: any[] = [];
+    for (let i = 0; i < n; i++) {
+      result.push(...original);
+    }
+    return result;
+  }
+
+
+  onScroll = () => {
+    const container = this.carouselContainer.nativeElement;
+    const n = 30; // same number as duplicates
+    const originalWidth = container.scrollWidth / n; // width of one original set
+
+    if (this.isAutoScrolling) return;
+
+    if (container.scrollLeft >= originalWidth * (n - 1)) {
+      container.scrollLeft -= originalWidth;
+    } else if (container.scrollLeft < originalWidth) {
+      container.scrollLeft += originalWidth;
+    }
+  };
 
 
   ngOnDestroy(): void {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
     }
+    if (isPlatformBrowser(this.platformId)) {
+      const container = this.carouselContainer.nativeElement;
+      container.removeEventListener('scroll', this.onScroll);
+    }
   }
 
 
   scrollNext() {
-    if (isPlatformBrowser(this.platformId)) {
-      const container = this.carouselContainer.nativeElement;
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
-      // If already at the end → reset to start
-      if (container.scrollLeft >= maxScrollLeft) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
-      }
-    }
+    const container = this.carouselContainer.nativeElement;
+    this.isAutoScrolling = true;
+    container.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
+    setTimeout(() => (this.isAutoScrolling = false), 500);
   }
 
   scrollPrev() {
-    if (isPlatformBrowser(this.platformId)) {
-      const container = this.carouselContainer.nativeElement;
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
-      // If at the start → jump to the end
-      if (container.scrollLeft <= 0) {
-        container.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
-      }
-    }
+    const container = this.carouselContainer.nativeElement;
+    this.isAutoScrolling = true;
+    container.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
+    setTimeout(() => (this.isAutoScrolling = false), 500);
   }
-
 
 }

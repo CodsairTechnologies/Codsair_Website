@@ -1,10 +1,11 @@
 <!-- Products Section -->
 
-<section class="products-section">
+<section class="products-section" aria-label="Our Products">
     <div class="container text-center">
         <h2 class="main-title">Products</h2>
         <p class="section-subtitle">
-            Design is not just what it looks like and feels like. Design is how it works
+            We design mobile apps and web applications that not only look great but also work seamlessly.
+            <!-- Design is not just what it looks like and feels like. Design is how it works -->
         </p>
 
         <!-- Tabs -->
@@ -17,7 +18,7 @@
 
         <!-- Mobile Projects -->
         <div class="products-grid" *ngIf="activeTab === 'mobile'">
-            <div class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up">
+            <article class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up">
                 <img [src]="project.img" [alt]="project.title">
                 <div class="overlay"></div>
                 <div class="product-info">
@@ -25,27 +26,27 @@
                     <p class="desc">{{ project.desc }}</p>
                     <a href="#"><span>&#8599;</span></a>
                 </div>
-            </div>
+            </article>
         </div>
 
         <!-- Web Projects -->
         <div class="products-grid" *ngIf="activeTab === 'web'">
-            <div class="product-card" *ngFor="let project of webProjects" data-aos="fade-up">
-                <img [src]="project.img" [alt]="project.title">
+            <article class="product-card" *ngFor="let project of webProjects" data-aos="fade-up">
+                <img [src]="project.img" [alt]="project.title" loading="lazy">
                 <div class="overlay"></div>
                 <div class="product-info">
                     <h3>{{ project.title }}</h3>
                     <p class="desc">{{ project.desc }}</p>
                     <a href="#"><span>&#8599;</span></a>
                 </div>
-            </div>
+            </article>
         </div>
     </div>
 </section>
 
 <!-- Technology Section -->
 
-<section class="technologies-section">
+<section class="technologies-section" aria-label="Technologies We Use">
     <div class="container">
         <h2 class="main-title">Technologies We Use</h2>
 
@@ -96,7 +97,7 @@
 
                         <ng-container *ngIf="i % 2 === 0">
                             <div class="tech-circle" data-aos="fade-right">
-                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                                <img [src]="tech.img" [alt]="tech.name" width="40" loading="lazy"/>
                             </div>
                             <div class="tech-content">
                                 <h3>{{ tech.name }}</h3>
@@ -110,7 +111,7 @@
                                 <p>{{ tech.desc }}</p>
                             </div>
                             <div class="tech-circle" data-aos="fade-left">
-                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                                <img [src]="tech.img" [alt]="tech.name" width="40" loading="lazy"/>
                             </div>
                         </ng-container>
 
@@ -135,7 +136,7 @@
                     <div class="timeline-item" *ngFor="let tech of mobileTechnologies; let i = index"
                         [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
                         <div class="circle">
-                            <img [src]="tech.img" [alt]="tech.name" />
+                            <img [src]="tech.img" [alt]="tech.name" loading="lazy" />
                         </div>
                         <div class="content">
                             <h3>{{ tech.name }}</h3>
@@ -151,7 +152,7 @@
 
 <!-- Client section -->
 
-<section class="clients-section">
+<section class="clients-section" aria-label="Our Clients">
     <div class="container text-center">
         <h2 class="main-title">Our Clients</h2>
 
@@ -159,76 +160,76 @@
             <!-- Row 1 -->
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client1.png" alt="Client 1">
-                    <img src="assets/images/client12.png" alt="Client 2">
+                    <img src="assets/images/client1.png" alt="Duropet">
+                    <img src="assets/images/client12.png" alt="Dr.H&K">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client3.png" alt="Client 3">
-                    <img src="assets/images/client11.png" alt="Client 4">
+                    <img src="assets/images/client3.png" alt="Wiseway">
+                    <img src="assets/images/client11.png" alt="Jiara">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client10.png" alt="Client 5">
-                    <img src="assets/images/client3.png" alt="Client 6">
+                    <img src="assets/images/client10.png" alt="KotKot">
+                    <img src="assets/images/client3.png" alt="Wiseway">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client4.png" alt="Client 7">
-                    <img src="assets/images/client8.jpeg" alt="Client 8">
+                    <img src="assets/images/client4.png" alt="VeganValley">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client8.jpeg" alt="Client 10">
-                    <img src="assets/images/client5.png" alt="Client 9">
+                    <img src="assets/images/client10.png" alt="KotKot">
+                    <img src="assets/images/client5.png" alt="SugarCake">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client3.png" alt="Client 11">
-                    <img src="assets/images/stecon.webp" alt="Client 12">
+                    <img src="assets/images/client3.png" alt="Wiseway">
+                    <img src="assets/images/stecon.webp" alt="Stecon">
                 </div>
             </div>
 
             <!-- Row 2 -->
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client3.png" alt="Client 13">
-                    <img src="assets/images/client8.jpeg" alt="Client 14">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client12.png" alt="Client 15">
-                    <img src="assets/images/client11.png" alt="Client 16">
+                    <img src="assets/images/client12.png" alt="Dr.H&K">
+                    <img src="assets/images/client11.png" alt="Jiara">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client8.jpeg" alt="Client 17">
-                    <img src="assets/images/client3.png" alt="Client 18">
+                    <img src="assets/images/client4.png" alt="VeganValley">
+                    <img src="assets/images/client3.png" alt="Wiseway">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client1.png" alt="Client 19">
-                    <img src="assets/images/client3.png" alt="Client 20">
+                    <img src="assets/images/client1.png" alt="Duropet">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client8.jpeg" alt="Client 21">
-                    <img src="assets/images/client3.png" alt="Client 22">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
+                    <img src="assets/images/client3.png" alt="Wiseway">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/stecon.webp" alt="Client 24">
-                    <img src="assets/images/client8.jpeg" alt="Client 23">
+                    <img src="assets/images/stecon.webp" alt="Stecon">
+                    <img src="assets/images/client5.png" alt="SugarCake">
 
                 </div>
             </div>
@@ -236,38 +237,38 @@
             <!-- Row 3 -->
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client11.png" alt="Client 25">
-                    <img src="assets/images/client12.png" alt="Client 26">
+                    <img src="assets/images/client11.png" alt="Jiara">
+                    <img src="assets/images/client12.png" alt="Dr.H&K">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client10.png" alt="Client 27">
-                    <img src="assets/images/client8.jpeg" alt="Client 28">
+                    <img src="assets/images/client10.png" alt="KotKot">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client1.png" alt="Client 29">
-                    <img src="assets/images/client8.jpeg" alt="Client 30">
+                    <img src="assets/images/client1.png" alt="Duropet">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client3.png" alt="Client 31">
-                    <img src="assets/images/client4.png" alt="Client 32">
+                    <img src="assets/images/client3.png" alt="Wiseway">
+                    <img src="assets/images/client4.png" alt="VeganValley">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client5.png" alt="Client 33">
-                    <img src="assets/images/client13.png" alt="Client 34">
+                    <img src="assets/images/client5.png" alt="SugarCake">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client13.png" alt="Client 35">
-                    <img src="assets/images/client1.png" alt="Client 36">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
+                    <img src="assets/images/client1.png" alt="Duropet">
                 </div>
             </div>
         </div>

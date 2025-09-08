@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
 })
 export class ProductsComponent {
 
-  
- activeTab: string = 'mobile';
+
+  activeTab: string = 'mobile';
 
 
   mobileProjects = [
@@ -60,27 +60,28 @@ export class ProductsComponent {
     }
   ];
 
-activetechTab: string = 'web';
+  activetechTab: string = 'web';
 
-webTechnologies = [
-  { name: 'React JS', img: 'assets/images/technology1.png', desc: 'A JavaScript library UI' },
-  { name: 'Node JS', img: 'assets/images/technology2.png', desc: 'Server-side JS runtime' },
-  { name: 'Angular', img: 'assets/images/technology5.png', desc: 'Frontend framework' },
-  { name: 'MERN Stack', img: 'assets/images/technology4.png', desc: 'Modern JS stack' },
-  { name: 'MEAN Stack', img: 'assets/images/technology3.png', desc: 'Full JS framework' }
-];
+  webTechnologies = [
+    { name: 'React JS', img: 'assets/images/technology8.webp', desc: 'A JavaScript library UI' },
+    { name: 'Node JS', img: 'assets/images/technology9.webp', desc: 'Server-side JS runtime' },
+    { name: 'Angular', img: 'assets/images/technology7.webp', desc: 'Frontend framework' },
+    { name: 'Python', img: 'assets/images/technology6.webp', desc: 'Versatile language for web apps' },
+    { name: 'PHP', img: 'assets/images/technology10.webp', desc: 'Server-side scripting for websites' }
 
-mobileTechnologies = [
-  { name: 'Flutter', img: 'assets/images/technology6.png', desc: 'Cross-platform toolkit' },
-  { name: 'React Native', img: 'assets/images/technology7.png', desc: 'React for mobile' },
-  { name: 'Swift', img: 'assets/images/technology8.png', desc: 'Native iOS language' },
-  { name: 'Kotlin', img: 'assets/images/technology1.png', desc: 'Android language' },
-  { name: 'Ionic', img: 'assets/images/technology2.png', desc: 'Hybrid mob framework' }
-];
+  ];
+
+  mobileTechnologies = [
+    { name: 'Flutter', img: 'assets/images/technology5.webp', desc: 'Cross-platform toolkit' },
+    { name: 'React Native', img: 'assets/images/technology11.webp', desc: 'React for mobile' },
+    { name: 'Swift', img: 'assets/images/technology8.webp', desc: 'Native iOS language' },
+    { name: 'Kotlin', img: 'assets/images/technology1.webp', desc: 'Android language' },
+    { name: 'Ionic', img: 'assets/images/technology2.webp', desc: 'Hybrid mob framework' }
+  ];
 
 
-switchTab(tab: string): void {
+  switchTab(tab: string): void {
     this.activetechTab = tab;
   }
-  
+
 }

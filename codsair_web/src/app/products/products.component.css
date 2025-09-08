@@ -1,6 +1,4 @@
-/* ===============Product Section==================== */
-
-
+/* =============== START Product Section==================== */
 
 .products-section {
     padding: 60px 20px;
@@ -8,7 +6,7 @@
     font-family: "Roboto";
 }
 
-.products-section .section-title {
+.products-section .main-title {
     font-size: 2.5rem;
     font-weight: bold;
     color: #00bfff;
@@ -78,12 +76,27 @@
     font-size: 1.3rem;
     margin: 0;
 }
-
 .products-section .product-info .desc {
     font-size: 0.9rem;
     margin: 5px 0 10px;
     opacity: 0.85;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+
+    /* Flexbox fallback */
+    display: -webkit-box;    
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;   
+
+    display: box;          
+    box-orient: vertical;
+
+    overflow: hidden;
+    line-clamp: 3;             
 }
+
+
 
 .products-section .product-info a {
     font-size: 1.6rem;
@@ -148,11 +161,11 @@
     border-radius: 2px;
 }
 
-/* ✅ RESPONSIVENESS */
+/* RESPONSIVENESS */
 
 /* Tablets */
 @media (max-width: 991px) {
-    .products-section .section-title {
+    .products-section .main-title {
         font-size: 2rem;
     }
 
@@ -175,7 +188,7 @@
         padding: 40px 15px;
     }
 
-    .products-section .section-title {
+    .products-section .main-title {
         font-size: 1.8rem;
     }
 
@@ -184,11 +197,14 @@
         margin-bottom: 25px;
     }
 
-    /* ✅ Force 2 cards per row on mobile */
+    /*  One card per row on mobile */
     .products-section .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        /* smaller gap for mobile */
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .products-section .product-card {
+        padding-bottom: 20px; 
     }
 
     .products-section .product-card img {
@@ -207,6 +223,9 @@
 
     .products-section .product-info .desc {
         font-size: 0.85rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
     }
 
     .products-section .tabs {
@@ -215,52 +234,56 @@
     }
 }
 
+/* =============== END Product Section==================== */
 
 
 
 
 
-/* ================= Technologies Section ================= */
+/* ================= START Technologies Section ================= */
+
 .technologies-section {
   padding: 40px 15px;
   background: #fff;
   font-family: "Roboto";
 }
 
-.technologies-section .section-title {
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  font-weight: bold;
-  color: #00bfff;
-  text-align: center;
-  margin-bottom: 40px;
-  font-family: "Roboto Slab" !important;
+.technologies-section .main-title {
+  font-size: 2.5rem;
+    font-weight: bold;
+    color: #00bfff;
+    margin-bottom: 10px;
+    font-family: "Roboto Slab" !important;
 }
 
 .technologies-section .tech-wrapper {
   display: flex;
-  gap: 40px; /* increased for breathing space */
+  gap: 40px; 
   max-width: 1200px;
   margin: auto;
-  align-items: center; /* ✅ center tabs vertically with timeline */
+  align-items: center; 
 }
 
-/* Tabs */
+/* -------------------- TABS -------------------- */
 .technologies-section .tabs-vertical {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* ✅ center inside its own column */
+  justify-content: center;
   gap: 15px;
   min-width: 180px;
 }
 
 .technologies-section .tabs-vertical .tab {
+  display: inline-flex;           
+  align-items: center;
+  gap: 8px;
   font-size: clamp(0.9rem, 3vw, 1.1rem);
   color: #444;
   cursor: pointer;
-  position: relative;
   transition: color 0.3s ease;
   padding: 10px;
   text-align: left;
+  position: relative;
 }
 
 .technologies-section .tabs-vertical .tab.active {
@@ -268,23 +291,11 @@
   font-weight: 600;
 }
 
-/* .technologies-section .tabs-vertical .tab.active::after {
-  content: "›";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #00bfff;
-} */
 .technologies-section .tabs-vertical .tab.active::after {
-  content: "›";
-  margin-left: 8px;  /* space between text and arrow */
+  content: "›";                    
   font-size: 1.2rem;
   color: #00bfff;
-  position: static;  /* no absolute positioning */
 }
-
 
 /* -------------------- DESKTOP TIMELINE -------------------- */
 .technologies-section .tech-right {
@@ -456,30 +467,41 @@
     flex-direction: column;
     gap: 20px;
   }
+
   .technologies-section .tabs-vertical {
-    flex-direction: row;
+    flex-direction: row;           
     justify-content: center;
     flex-wrap: wrap;
+    gap: 10px;
   }
+
+  .technologies-section .tabs-vertical .tab {
+    text-align: center;
+    padding: 6px 12px;
+    font-size: 1.1rem;               
+  }
+
   .technologies-section .tech-timeline {
     display: none;
   }
+
   .technologies-section .tech-timeline-vertical {
     display: block;
   }
 }
 
+/* ================= END Technologies Section ================= */
 
 
 
-/* =============== Client Section =============== */
+/* =============== START Client Section =============== */
 .clients-section {
   padding: 60px 40px;
   background: #fff;
   font-family: "Roboto";
 }
 
-.clients-section .section-title {
+.clients-section .main-title {
   font-size: 2.5rem;
   font-weight: bold;
   color: #00bfff;
@@ -488,17 +510,17 @@
   font-family: "Roboto Slab" !important;
 }
 
-.clients-grid {
+.clients-section .clients-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* default: 6 columns */
+  grid-template-columns: repeat(6, 1fr); 
   margin: 0 40px;
-  gap: 0; /* no space between squares */
+  gap: 0;
 }
 
-.client-cell {
+.clients-section .client-cell {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1; /* keeps perfect squares */
+  aspect-ratio: 1 / 1; 
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -507,7 +529,8 @@
   border: 1px solid #eee;
   box-sizing: border-box;
 }
-.logo-wrapper {
+
+.clients-section .logo-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -516,19 +539,26 @@
 }
 
 /* Add delay for each cell */
-.clients-grid .client-cell:nth-child(1) .logo-wrapper { animation-delay: 0s; }
-.clients-grid .client-cell:nth-child(2) .logo-wrapper { animation-delay: 0.5s; }
-.clients-grid .client-cell:nth-child(3) .logo-wrapper { animation-delay: 1s; }
-.clients-grid .client-cell:nth-child(4) .logo-wrapper { animation-delay: 1.5s; }
-.clients-grid .client-cell:nth-child(5) .logo-wrapper { animation-delay: 2s; }
-.clients-grid .client-cell:nth-child(6) .logo-wrapper { animation-delay: 2.5s; }
-.clients-grid .client-cell:nth-child(7) .logo-wrapper { animation-delay: 3s; }
-.clients-grid .client-cell:nth-child(8) .logo-wrapper { animation-delay: 3.5s; }
-.clients-grid .client-cell:nth-child(9) .logo-wrapper { animation-delay: 4s; }
-.clients-grid .client-cell:nth-child(10) .logo-wrapper { animation-delay: 4.5s; }
-/* ...continue if you have more logos */
+.clients-section .clients-grid .client-cell:nth-child(1)  .logo-wrapper { animation-delay: 0s; }
+.clients-section .clients-grid .client-cell:nth-child(2)  .logo-wrapper { animation-delay: 0.5s; }
+.clients-section .clients-grid .client-cell:nth-child(3)  .logo-wrapper { animation-delay: 1s; }
+.clients-section .clients-grid .client-cell:nth-child(4)  .logo-wrapper { animation-delay: 1.5s; }
+.clients-section .clients-grid .client-cell:nth-child(5)  .logo-wrapper { animation-delay: 2s; }
+.clients-section .clients-grid .client-cell:nth-child(6)  .logo-wrapper { animation-delay: 2.5s; }
+.clients-section .clients-grid .client-cell:nth-child(7)  .logo-wrapper { animation-delay: 3s; }
+.clients-section .clients-grid .client-cell:nth-child(8)  .logo-wrapper { animation-delay: 3.5s; }
+.clients-section .clients-grid .client-cell:nth-child(9)  .logo-wrapper { animation-delay: 4s; }
+.clients-section .clients-grid .client-cell:nth-child(10) .logo-wrapper { animation-delay: 4.5s; }
+.clients-section .clients-grid .client-cell:nth-child(11) .logo-wrapper { animation-delay: 5s; }
+.clients-section .clients-grid .client-cell:nth-child(12) .logo-wrapper { animation-delay: 5.5s; }
+.clients-section .clients-grid .client-cell:nth-child(13) .logo-wrapper { animation-delay: 6s; }
+.clients-section .clients-grid .client-cell:nth-child(14) .logo-wrapper { animation-delay: 6.5s; }
+.clients-section .clients-grid .client-cell:nth-child(15) .logo-wrapper { animation-delay: 7s; }
+.clients-section .clients-grid .client-cell:nth-child(16) .logo-wrapper { animation-delay: 7.5s; }
+.clients-section .clients-grid .client-cell:nth-child(17) .logo-wrapper { animation-delay: 8s; }
+.clients-section .clients-grid .client-cell:nth-child(18) .logo-wrapper { animation-delay: 8.5s; }
 
-.logo-wrapper img {
+.clients-section .logo-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -538,7 +568,7 @@
   transition: filter 0.4s ease;
 }
 
-.logo-wrapper img:hover {
+.clients-section .logo-wrapper img:hover {
   filter: grayscale(0%);
 }
 
@@ -553,7 +583,7 @@
 
 /* Large tablets (max-width: 1200px) → 4 columns */
 @media (max-width: 1200px) {
-  .clients-grid {
+  .clients-section .clients-grid {
     grid-template-columns: repeat(4, 1fr);
     margin: 0 30px;
   }
@@ -565,11 +595,11 @@
     padding: 40px 20px;
   }
 
-  .clients-section .section-title {
+  .clients-section .main-title {
     font-size: 2rem;
   }
 
-  .clients-grid {
+  .clients-section .clients-grid {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 20px;
   }
@@ -581,16 +611,29 @@
     padding: 30px 15px;
   }
 
-  .clients-section .section-title {
+  .clients-section .main-title {
     font-size: 1.6rem;
   }
 
-  .clients-grid {
-    grid-template-columns: repeat(3, 1fr); /* ✅ 3 columns on mobile */
+  .clients-section .clients-grid {
+    grid-template-columns: repeat(3, 1fr);
     margin: 0 10px;
   }
 
-  .logo-wrapper img {
-    padding: 6px; /* tighter padding */
+  .clients-section .logo-wrapper img {
+    padding: 6px; 
   }
+}
+/* =============== END Client Section =============== */
+
+
+/* common style for resposniveness for large device */
+
+@media (min-width: 1920px) {
+    .products-section .container,
+    .technologies-section .container,
+    .clients-section .container {
+        max-width: 100%;  
+        padding: 0 40px;  
+    }
 }

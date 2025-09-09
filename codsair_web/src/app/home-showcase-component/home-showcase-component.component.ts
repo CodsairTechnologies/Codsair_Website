@@ -62,15 +62,15 @@ export class HomeShowcaseComponentComponent {
   blogs = [
     {
       image: 'assets/images/blog-1.png',
-      title: 'Codsair Launches New Mobile App Solutions'
+      titleKey: 'showcase.blog1'
     },
     {
       image: 'assets/images/blog-2.png',
-      title: 'Codsair Launches New Mobile App Solutions'
+      titleKey: 'showcase.blog2'
     },
     {
       image: 'assets/images/blog-3.png',
-      title: 'Codsair Launches New Mobile App Solutions'
+      titleKey: 'showcase.blog3'
     }
   ];
 

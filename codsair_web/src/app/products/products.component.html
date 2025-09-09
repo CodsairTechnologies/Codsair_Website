@@ -2,28 +2,27 @@
 
 <section class="products-section" aria-label="Our Products">
     <div class="container text-center">
-        <h2 class="main-title">Products</h2>
+        <h2 class="main-title">{{ languageService.translate('products.title') }}</h2>
         <p class="section-subtitle">
-            We design mobile apps and web applications that not only look great but also work seamlessly.
-            <!-- Design is not just what it looks like and feels like. Design is how it works -->
+            {{ languageService.translate('products.subtitle') }}
         </p>
 
         <!-- Tabs -->
         <div class="tabs">
-            <span class="tab" [class.active]="activeTab === 'mobile'" (click)="activeTab = 'mobile'">Mobile
-                Products</span>
+            <span class="tab" [class.active]="activeTab === 'mobile'" (click)="activeTab = 'mobile'">
+                {{ languageService.translate('products.mobile') }}</span>
 
-            <span class="tab" [class.active]="activeTab === 'web'" (click)="activeTab = 'web'">Web Products</span>
+            <span class="tab" [class.active]="activeTab === 'web'" (click)="activeTab = 'web'">{{ languageService.translate('products.web') }}</span>
         </div>
 
         <!-- Mobile Projects -->
         <div class="products-grid" *ngIf="activeTab === 'mobile'">
             <article class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up">
-                <img [src]="project.img" [alt]="project.title">
+                <img [src]="project.img" [alt]="languageService.translate(project.titleKey)">
                 <div class="overlay"></div>
                 <div class="product-info">
-                    <h3>{{ project.title }}</h3>
-                    <p class="desc">{{ project.desc }}</p>
+                    <h3>{{ languageService.translate(project.titleKey) }}</h3>
+                    <p class="desc">{{ languageService.translate(project.descKey) }}</p>
                     <a href="#"><span>&#8599;</span></a>
                 </div>
             </article>
@@ -32,11 +31,11 @@
         <!-- Web Projects -->
         <div class="products-grid" *ngIf="activeTab === 'web'">
             <article class="product-card" *ngFor="let project of webProjects" data-aos="fade-up">
-                <img [src]="project.img" [alt]="project.title" loading="lazy">
+                <img [src]="project.img" [alt]="languageService.translate(project.titleKey)" loading="lazy">
                 <div class="overlay"></div>
                 <div class="product-info">
-                    <h3>{{ project.title }}</h3>
-                    <p class="desc">{{ project.desc }}</p>
+                    <h3>{{ languageService.translate(project.titleKey) }}</h3>
+                    <p class="desc">{{ languageService.translate(project.descKey) }}</p>
                     <a href="#"><span>&#8599;</span></a>
                 </div>
             </article>
@@ -48,16 +47,16 @@
 
 <section class="technologies-section" aria-label="Technologies We Use">
     <div class="container">
-        <h2 class="main-title">Technologies We Use</h2>
+        <h2 class="main-title">{{ languageService.translate('products.technologies') }}</h2>
 
         <div class="tech-wrapper">
             <!-- Tabs -->
             <div class="tabs-vertical">
                 <span class="tab" [class.active]="activetechTab === 'web'" (click)="switchTab('web')">
-                    Web Development
+                    {{ languageService.translate('products.webdev') }}
                 </span>
                 <span class="tab" [class.active]="activetechTab === 'mobile'" (click)="switchTab('mobile')">
-                    Mobile Development
+                    {{ languageService.translate('products.mobiledev') }}
                 </span>
             </div>
 
@@ -70,23 +69,23 @@
 
                         <ng-container *ngIf="i % 2 === 0">
                             <div class="tech-circle" data-aos="fade-right">
-                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40" />
                             </div>
                             <div class="tech-content">
-                                <h3>{{ tech.name }}</h3>
-                                <p [title]="tech.desc">{{ tech.desc }}</p>
+                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
+                                <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
 
                             </div>
                         </ng-container>
 
                         <ng-container *ngIf="i % 2 !== 0">
                             <div class="tech-content">
-                                <h3>{{ tech.name }}</h3>
-                               <p [title]="tech.desc">{{ tech.desc }}</p>
+                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
+                               <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
 
                             </div>
                             <div class="tech-circle" data-aos="fade-left">
-                                <img [src]="tech.img" [alt]="tech.name" width="40" />
+                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40" />
                             </div>
                         </ng-container>
 
@@ -99,23 +98,23 @@
 
                         <ng-container *ngIf="i % 2 === 0">
                             <div class="tech-circle" data-aos="fade-right">
-                                <img [src]="tech.img" [alt]="tech.name" width="40" loading="lazy"/>
+                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40" loading="lazy"/>
                             </div>
                             <div class="tech-content">
-                                <h3>{{ tech.name }}</h3>
-                                <p [title]="tech.desc">{{ tech.desc }}</p>
+                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
+                                <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
 
                             </div>
                         </ng-container>
 
                         <ng-container *ngIf="i % 2 !== 0">
                             <div class="tech-content">
-                                <h3>{{ tech.name }}</h3>
-                               <p [title]="tech.desc">{{ tech.desc }}</p>
+                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
+                               <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
 
                             </div>
                             <div class="tech-circle" data-aos="fade-left">
-                                <img [src]="tech.img" [alt]="tech.name" width="40" loading="lazy"/>
+                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40" loading="lazy"/>
                             </div>
                         </ng-container>
 
@@ -127,11 +126,11 @@
                     <div class="timeline-item" *ngFor="let tech of webTechnologies; let i = index"
                         [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
                         <div class="circle">
-                            <img [src]="tech.img" [alt]="tech.name" />
+                            <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" />
                         </div>
                         <div class="content">
-                            <h3>{{ tech.name }}</h3>
-                            <p>{{ tech.desc }}</p>
+                            <h3>{{ languageService.translate(tech.nameKey) }}</h3>
+                            <p>{{ languageService.translate(tech.descKey) }}</p>
                         </div>
                     </div>
                 </div>
@@ -140,11 +139,11 @@
                     <div class="timeline-item" *ngFor="let tech of mobileTechnologies; let i = index"
                         [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
                         <div class="circle">
-                            <img [src]="tech.img" [alt]="tech.name" loading="lazy" />
+                            <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" loading="lazy" />
                         </div>
                         <div class="content">
-                            <h3>{{ tech.name }}</h3>
-                            <p>{{ tech.desc }}</p>
+                            <h3>{{ languageService.translate(tech.nameKey) }}</h3>
+                            <p>{{ languageService.translate(tech.descKey) }}</p>
                         </div>
                     </div>
                 </div>
@@ -158,7 +157,7 @@
 
 <section class="clients-section" aria-label="Our Clients">
     <div class="container text-center">
-        <h2 class="main-title">Our Clients</h2>
+        <h2 class="main-title">{{ languageService.translate('products.clients') }}</h2>
 
         <div class="clients-grid">
             <!-- Row 1 -->

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-products',
@@ -11,53 +10,52 @@ import { LanguageService } from '../services/language.service';
 })
 export class ProductsComponent {
 
-   constructor(public languageService: LanguageService) {}
 
   activeTab: string = 'mobile';
 
 
   mobileProjects = [
     {
-      titleKey: 'mobile.codspropay.title',
-      descKey: 'mobile.codspropay.desc',
+      title: 'Codspropay',
+      desc: 'Smart payroll & employee management system.',
       img: 'assets/images/product1.jpg'
     },
     {
-      titleKey: 'mobile.codscare.title',
-      descKey: 'mobile.codscare.desc',
+      title: 'Codscare',
+      desc: 'Healthcare management simplified.',
       img: 'assets/images/product2.jpg'
     },
     {
-      titleKey: 'mobile.codsbill.title',
-      descKey: 'mobile.codsbill.desc',
+      title: 'Codsbill',
+      desc: 'Mobile-first solutions for modern businesses.',
       img: 'assets/images/product5.jpg'
     },
     {
-      titleKey: 'mobile.codspoint.title',
-      descKey: 'mobile.codspoint.desc',
+      title: 'Codspoint',
+      desc: 'Seamless mobile connectivity and integration.',
       img: 'assets/images/product3.jpg'
     }
   ];
 
   webProjects = [
     {
-      titleKey: 'web.codscare.title',
-      descKey: 'web.codscare.desc',
+      title: 'Codscare web',
+      desc: 'Smart business analytics & dashboards.',
       img: 'assets/images/product3.jpg'
     },
     {
-      titleKey: 'web.codspropay.title',
-      descKey: 'web.codspropay.desc',
+      title: 'Codspropay Web',
+      desc: 'Secure payments with real-time reports.',
       img: 'assets/images/product4.jpg'
     },
     {
-      titleKey: 'web.codscommerce.title',
-      descKey: 'web.codscommerce.desc',
+      title: 'Codscommerce',
+      desc: 'E-commerce platform with advanced features.',
       img: 'assets/images/product5.jpg'
     },
     {
-      titleKey: 'web.codsadmin.title',
-      descKey: 'web.codsadmin.desc',
+      title: 'Codsadmin',
+      desc: 'Powerful admin dashboards for enterprises.',
       img: 'assets/images/product1.jpg'
     }
   ];
@@ -65,19 +63,20 @@ export class ProductsComponent {
   activetechTab: string = 'web';
 
   webTechnologies = [
-    { nameKey: 'tech.react', descKey: 'tech.react.desc', img: 'assets/images/technology8.webp' },
-    { nameKey: 'tech.node', descKey: 'tech.node.desc', img: 'assets/images/technology9.webp' },
-    { nameKey: 'tech.angular', descKey: 'tech.angular.desc', img: 'assets/images/technology7.webp' },
-    { nameKey: 'tech.python', descKey: 'tech.python.desc', img: 'assets/images/technology6.webp' },
-    { nameKey: 'tech.php', descKey: 'tech.php.desc', img: 'assets/images/technology10.webp' }
+    { name: 'React JS', img: 'assets/images/technology8.webp', desc: 'A JavaScript library UI' },
+    { name: 'Node JS', img: 'assets/images/technology9.webp', desc: 'Server-side JS runtime' },
+    { name: 'Angular', img: 'assets/images/technology7.webp', desc: 'Frontend framework' },
+    { name: 'Python', img: 'assets/images/technology6.webp', desc: 'Versatile language for web apps' },
+    { name: 'PHP', img: 'assets/images/technology10.webp', desc: 'Server-side scripting for websites' }
+
   ];
 
   mobileTechnologies = [
-    { nameKey: 'tech.flutter', descKey: 'tech.flutter.desc', img: 'assets/images/technology5.webp' },
-    { nameKey: 'tech.reactnative', descKey: 'tech.reactnative.desc', img: 'assets/images/technology11.webp' },
-    { nameKey: 'tech.swift', descKey: 'tech.swift.desc', img: 'assets/images/technology8.webp' },
-    { nameKey: 'tech.kotlin', descKey: 'tech.kotlin.desc', img: 'assets/images/technology1.webp' },
-    { nameKey: 'tech.ionic', descKey: 'tech.ionic.desc', img: 'assets/images/technology2.webp' }
+    { name: 'Flutter', img: 'assets/images/technology5.webp', desc: 'Cross-platform toolkit' },
+    { name: 'React Native', img: 'assets/images/technology11.webp', desc: 'React for mobile' },
+    { name: 'Swift', img: 'assets/images/technology8.webp', desc: 'Native iOS language' },
+    { name: 'Kotlin', img: 'assets/images/technology1.webp', desc: 'Android language' },
+    { name: 'Ionic', img: 'assets/images/technology2.webp', desc: 'Hybrid mob framework' }
   ];
 
 

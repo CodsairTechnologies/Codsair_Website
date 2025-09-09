@@ -2,41 +2,42 @@
 
 <section class="products-section" aria-label="Our Products">
     <div class="container text-center">
-        <h2 class="main-title">{{ languageService.translate('products.title') }}</h2>
-        <p class="section-subtitle text-center">
-            {{ languageService.translate('products.subtitle') }}
+        <h2 class="main-title">Products</h2>
+        <p class="section-subtitle">
+            We design mobile apps and web applications that not only look great but also work seamlessly.
+            <!-- Design is not just what it looks like and feels like. Design is how it works -->
         </p>
 
         <!-- Tabs -->
-        <div class="tabs" role="tablist" aria-label="Product categories">
-            <button class="tab" [class.active]="activeTab === 'mobile'" (click)="activeTab = 'mobile'" type="button" role="tab" [attr.aria-selected]="activeTab === 'mobile'" aria-controls="mobile-products">
-                {{ languageService.translate('products.mobile') }}</button>
+        <div class="tabs">
+            <span class="tab" [class.active]="activeTab === 'mobile'" (click)="activeTab = 'mobile'">Mobile
+                Products</span>
 
-            <button class="tab" [class.active]="activeTab === 'web'" (click)="activeTab = 'web'" type="button" role="tab" [attr.aria-selected]="activeTab === 'web'" aria-controls="web-products">{{ languageService.translate('products.web') }}</button>
+            <span class="tab" [class.active]="activeTab === 'web'" (click)="activeTab = 'web'">Web Products</span>
         </div>
 
         <!-- Mobile Projects -->
-        <div class="products-grid" *ngIf="activeTab === 'mobile'" role="tabpanel" id="mobile-products" aria-labelledby="mobile-tab">
-            <article class="product-card" *ngFor="let project of mobileProjects; let i = index" data-aos="fade-up">
-                <img [src]="project.img" [alt]="languageService.translate(project.titleKey) + ' mobile application screenshot'" loading="lazy" width="300" height="200">
-                <div class="overlay" aria-hidden="true"></div>
+        <div class="products-grid" *ngIf="activeTab === 'mobile'">
+            <article class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up">
+                <img [src]="project.img" [alt]="project.title">
+                <div class="overlay"></div>
                 <div class="product-info">
-                    <h3>{{ languageService.translate(project.titleKey) }}</h3>
-                    <p class="desc">{{ languageService.translate(project.descKey) }}</p>
-                    <a href="/contact" [attr.aria-label]="'Learn more about ' + languageService.translate(project.titleKey)"><span aria-hidden="true">&#8599;</span></a>
+                    <h3>{{ project.title }}</h3>
+                    <p class="desc">{{ project.desc }}</p>
+                    <a href="#"><span>&#8599;</span></a>
                 </div>
             </article>
         </div>
 
         <!-- Web Projects -->
-        <div class="products-grid" *ngIf="activeTab === 'web'" role="tabpanel" id="web-products" aria-labelledby="web-tab">
-            <article class="product-card" *ngFor="let project of webProjects; let i = index" data-aos="fade-up">
-                <img [src]="project.img" [alt]="languageService.translate(project.titleKey) + ' web application screenshot'" loading="lazy" width="300" height="200">
-                <div class="overlay" aria-hidden="true"></div>
+        <div class="products-grid" *ngIf="activeTab === 'web'">
+            <article class="product-card" *ngFor="let project of webProjects" data-aos="fade-up">
+                <img [src]="project.img" [alt]="project.title" loading="lazy">
+                <div class="overlay"></div>
                 <div class="product-info">
-                    <h3>{{ languageService.translate(project.titleKey) }}</h3>
-                    <p class="desc">{{ languageService.translate(project.descKey) }}</p>
-                    <a href="/contact" [attr.aria-label]="'Learn more about ' + languageService.translate(project.titleKey)"><span aria-hidden="true">&#8599;</span></a>
+                    <h3>{{ project.title }}</h3>
+                    <p class="desc">{{ project.desc }}</p>
+                    <a href="#"><span>&#8599;</span></a>
                 </div>
             </article>
         </div>
@@ -47,17 +48,17 @@
 
 <section class="technologies-section" aria-label="Technologies We Use">
     <div class="container">
-        <h2 class="main-title">{{ languageService.translate('products.technologies') }}</h2>
+        <h2 class="main-title">Technologies We Use</h2>
 
         <div class="tech-wrapper">
             <!-- Tabs -->
-            <div class="tabs-vertical" role="tablist" aria-label="Technology categories">
-                <button class="tab" [class.active]="activetechTab === 'web'" (click)="switchTab('web')" type="button" role="tab" [attr.aria-selected]="activetechTab === 'web'">
-                    {{ languageService.translate('products.webdev') }}
-                </button>
-                <button class="tab" [class.active]="activetechTab === 'mobile'" (click)="switchTab('mobile')" type="button" role="tab" [attr.aria-selected]="activetechTab === 'mobile'">
-                    {{ languageService.translate('products.mobiledev') }}
-                </button>
+            <div class="tabs-vertical">
+                <span class="tab" [class.active]="activetechTab === 'web'" (click)="switchTab('web')">
+                    Web Development
+                </span>
+                <span class="tab" [class.active]="activetechTab === 'mobile'" (click)="switchTab('mobile')">
+                    Mobile Development
+                </span>
             </div>
 
             <!-- Right side -->
@@ -69,21 +70,23 @@
 
                         <ng-container *ngIf="i % 2 === 0">
                             <div class="tech-circle" data-aos="fade-right">
-                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey) + ' technology logo'" width="40" height="40" loading="lazy" />
+                                <img [src]="tech.img" [alt]="tech.name" width="40" />
                             </div>
                             <div class="tech-content">
-                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                                <p>{{ languageService.translate(tech.descKey) }}</p>
+                                <h3>{{ tech.name }}</h3>
+                                <p [title]="tech.desc">{{ tech.desc }}</p>
+
                             </div>
                         </ng-container>
 
                         <ng-container *ngIf="i % 2 !== 0">
                             <div class="tech-content">
-                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                                <p>{{ languageService.translate(tech.descKey) }}</p>
+                                <h3>{{ tech.name }}</h3>
+                               <p [title]="tech.desc">{{ tech.desc }}</p>
+
                             </div>
                             <div class="tech-circle" data-aos="fade-left">
-                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey) + ' technology logo'" width="40" height="40" loading="lazy" />
+                                <img [src]="tech.img" [alt]="tech.name" width="40" />
                             </div>
                         </ng-container>
 
@@ -96,21 +99,23 @@
 
                         <ng-container *ngIf="i % 2 === 0">
                             <div class="tech-circle" data-aos="fade-right">
-                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey) + ' technology logo'" width="40" height="40" loading="lazy" />
+                                <img [src]="tech.img" [alt]="tech.name" width="40" loading="lazy"/>
                             </div>
                             <div class="tech-content">
-                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                                <p>{{ languageService.translate(tech.descKey) }}</p>
+                                <h3>{{ tech.name }}</h3>
+                                <p [title]="tech.desc">{{ tech.desc }}</p>
+
                             </div>
                         </ng-container>
 
                         <ng-container *ngIf="i % 2 !== 0">
                             <div class="tech-content">
-                                <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                                <p>{{ languageService.translate(tech.descKey) }}</p>
+                                <h3>{{ tech.name }}</h3>
+                               <p [title]="tech.desc">{{ tech.desc }}</p>
+
                             </div>
                             <div class="tech-circle" data-aos="fade-left">
-                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey) + ' technology logo'" width="40" height="40" loading="lazy" />
+                                <img [src]="tech.img" [alt]="tech.name" width="40" loading="lazy"/>
                             </div>
                         </ng-container>
 
@@ -122,11 +127,11 @@
                     <div class="timeline-item" *ngFor="let tech of webTechnologies; let i = index"
                         [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
                         <div class="circle">
-                            <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey) + ' technology logo'" loading="lazy" width="60" height="60" />
+                            <img [src]="tech.img" [alt]="tech.name" />
                         </div>
                         <div class="content">
-                            <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                            <p>{{ languageService.translate(tech.descKey) }}</p>
+                            <h3>{{ tech.name }}</h3>
+                            <p>{{ tech.desc }}</p>
                         </div>
                     </div>
                 </div>
@@ -135,11 +140,11 @@
                     <div class="timeline-item" *ngFor="let tech of mobileTechnologies; let i = index"
                         [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
                         <div class="circle">
-                            <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey) + ' technology logo'" loading="lazy" width="60" height="60" />
+                            <img [src]="tech.img" [alt]="tech.name" loading="lazy" />
                         </div>
                         <div class="content">
-                            <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                            <p>{{ languageService.translate(tech.descKey) }}</p>
+                            <h3>{{ tech.name }}</h3>
+                            <p>{{ tech.desc }}</p>
                         </div>
                     </div>
                 </div>
@@ -153,82 +158,82 @@
 
 <section class="clients-section" aria-label="Our Clients">
     <div class="container text-center">
-        <h2 class="main-title">{{ languageService.translate('products.clients') }}</h2>
+        <h2 class="main-title">Our Clients</h2>
 
         <div class="clients-grid">
             <!-- Row 1 -->
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client1.png" alt="Duropet - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client12.png" alt="Dr.H&K - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client1.png" alt="Duropet">
+                    <img src="assets/images/client12.png" alt="Dr.H&K">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client3.png" alt="Wiseway - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client11.png" alt="Jiara - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client3.png" alt="Wiseway">
+                    <img src="assets/images/client11.png" alt="Jiara">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client10.png" alt="KotKot - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client3.png" alt="Wiseway - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client10.png" alt="KotKot">
+                    <img src="assets/images/client3.png" alt="Wiseway">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client4.png" alt="VeganValley - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client4.png" alt="VeganValley">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client10.png" alt="KotKot - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client5.png" alt="SugarCake - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client10.png" alt="KotKot">
+                    <img src="assets/images/client5.png" alt="SugarCake">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client3.png" alt="Wiseway - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/stecon.webp" alt="Stecon - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client3.png" alt="Wiseway">
+                    <img src="assets/images/stecon.webp" alt="Stecon">
                 </div>
             </div>
 
             <!-- Row 2 -->
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client13.png" alt="Ceekzon - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client12.png" alt="Dr.H&K - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client11.png" alt="Jiara - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client12.png" alt="Dr.H&K">
+                    <img src="assets/images/client11.png" alt="Jiara">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client4.png" alt="VeganValley - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client3.png" alt="Wiseway - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client4.png" alt="VeganValley">
+                    <img src="assets/images/client3.png" alt="Wiseway">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client1.png" alt="Duropet - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client13.png" alt="Ceekzon - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client1.png" alt="Duropet">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client3.png" alt="Wiseway - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
+                    <img src="assets/images/client3.png" alt="Wiseway">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/stecon.webp" alt="Stecon - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client5.png" alt="SugarCake - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/stecon.webp" alt="Stecon">
+                    <img src="assets/images/client5.png" alt="SugarCake">
 
                 </div>
             </div>
@@ -236,38 +241,38 @@
             <!-- Row 3 -->
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client11.png" alt="Jiara - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client12.png" alt="Dr.H&K - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client11.png" alt="Jiara">
+                    <img src="assets/images/client12.png" alt="Dr.H&K">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client10.png" alt="KotKot - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client10.png" alt="KotKot">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client1.png" alt="Duropet - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client1.png" alt="Duropet">
+                    <img src="assets/images/client8.jpeg" alt="BoonLab Solutions">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client3.png" alt="Wiseway - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client4.png" alt="VeganValley - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client3.png" alt="Wiseway">
+                    <img src="assets/images/client4.png" alt="VeganValley">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client5.png" alt="SugarCake - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client13.png" alt="Ceekzon - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client5.png" alt="SugarCake">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
                 </div>
             </div>
             <div class="client-cell" data-aos="flip-up">
                 <div class="logo-wrapper">
-                    <img src="assets/images/client13.png" alt="Ceekzon - Client logo" loading="lazy" width="120" height="80">
-                    <img src="assets/images/client1.png" alt="Duropet - Client logo" loading="lazy" width="120" height="80">
+                    <img src="assets/images/client13.png" alt="Ceekzon">
+                    <img src="assets/images/client1.png" alt="Duropet">
                 </div>
             </div>
         </div>

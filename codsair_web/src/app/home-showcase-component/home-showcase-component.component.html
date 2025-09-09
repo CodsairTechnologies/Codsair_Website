@@ -52,7 +52,7 @@
 
 <!-- Blog section-->
 <div class="blogs-section container">
-  <h2 class="main-title">{{ languageService.translate('showcase.blogs') }}</h2>
+  <h2 class="main-title">Blogs and News</h2>
 
   <div class="blogs-container">
     <!-- Featured Image -->
@@ -63,16 +63,22 @@
 
     <!-- Right Content -->
     <div class="content-wrapper">
-      <h3 class="blog-title">{{ languageService.translate('showcase.updates') }}</h3>
+      <h3 class="blog-title">Latest Updates</h3>
       <p class="description">
-        {{ languageService.translate('showcase.description') }}
+        Discover the latest updates, insights, and stories from the world of technology and innovation.
+        In this section, we share expert articles, industry news, and company highlights that matter to you.
+        Whether it’s the launch of new projects, emerging trends in IT, or valuable tips from our team,
+        our blogs and news updates are designed to keep you informed, inspired, and ahead in today’s
+        fast-changing digital era. We believe that staying updated is the key to staying ahead,
+        and through this section, we aim to provide valuable content that inspires ideas, sparks
+        conversations, and helps you navigate the fast-changing world of digital trans.
       </p>
 
       <!-- Blog Cards -->
       <div class="blog-cards">
         <div class="blog-card" *ngFor="let blog of blogs">
-          <img [src]="blog.image" [alt]="languageService.translate(blog.titleKey)">
-          <p>{{ languageService.translate(blog.titleKey) }}</p>
+          <img [src]="blog.image" alt="{{ blog.title }}">
+          <p>{{ blog.title }}</p>
         </div>
       </div>
     </div>

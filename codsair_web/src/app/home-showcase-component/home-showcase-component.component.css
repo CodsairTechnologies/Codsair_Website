@@ -36,7 +36,8 @@
 .country-heading {
   display: flex;
   align-items: center;
-  gap: 0.6rem; /* spacing between flag & text */
+  gap: 0.6rem;
+  /* spacing between flag & text */
   font-size: 1rem;
   font-weight: 600;
   margin: 0 0 0.5rem;
@@ -47,7 +48,7 @@
   height: 20px;
   object-fit: cover;
   border-radius: 2px;
-  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -103,8 +104,8 @@
 
 .marker {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 8px;
+  height: 8px;
   background: #20c997;
   border: 3px solid white;
   border-radius: 50%;
@@ -306,7 +307,7 @@
 
 
 .blogs-section {
-  padding: 50px 15px;
+  padding: 50px 80px;
 }
 
 /* Main Section Title */
@@ -326,7 +327,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 70px;
+  gap: 40px;
   padding-top: 60px;
   flex-wrap: wrap;
 }
@@ -375,9 +376,13 @@
 }
 
 .description {
-  font-size: 16px;
-  line-height: 1.6;
   margin-bottom: 25px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0%;
+  text-align: justify;
 }
 
 .blog-cards {
@@ -389,7 +394,7 @@
 .blog-card {
   flex: 1;
   min-width: 160px;
-  max-width: 220px;
+  max-width: 100%;
   text-align: center;
 }
 
@@ -443,6 +448,10 @@
 }
 
 @media (max-width: 768px) {
+  .blogs-section {
+    padding: 50px 55px;
+  }
+
   .main-title {
     font-size: 28px;
   }
@@ -458,6 +467,9 @@
 
 
 @media (max-width: 650px) {
+  .blogs-section {
+    padding: 50px 35px;
+  }
 
   .gradient-bg {
     top: -10px;
@@ -466,6 +478,10 @@
 
 }
 
-
+@media (max-width: 550px) {
+  .blogs-section {
+    padding: 50px 25px;
+  }
+}
 
 /* End of Blog Section */

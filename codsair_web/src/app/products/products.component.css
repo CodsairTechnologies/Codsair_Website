@@ -18,8 +18,10 @@
 
 .products-section .section-subtitle {
   font-size: 1.1rem;
-  color: #444;
+  color: #050505;
   margin-bottom: 40px;
+  justify-content: center;
+  display: flex;
 }
 
 /* Grid */
@@ -142,6 +144,9 @@
   position: relative;
   padding: 4px 0;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  font-family: inherit;
 }
 
 .products-section .tab:hover {
@@ -306,7 +311,8 @@
 }
 
 .technologies-section .tabs-vertical .tab:focus {
-  outline: 2px solid #0096ff; /* custom focus for accessibility */
+  outline: 2px solid #0096ff;
+  /* custom focus for accessibility */
   outline-offset: 2px;
 }
 
@@ -554,18 +560,22 @@
 
   /* shrink timeline items */
   .technologies-section .tech-item {
-    height: 200px;   /* smaller height */
-    width: 22%;      /* a bit wider so items don’t feel cramped */
+    height: 200px;
+    /* smaller height */
+    width: 22%;
+    /* a bit wider so items don’t feel cramped */
   }
 
   .technologies-section .tech-circle {
     width: 55px;
     height: 55px;
-    border-width: 4px; /* thinner border */
+    border-width: 4px;
+    /* thinner border */
   }
 
   .technologies-section .tech-circle img {
-    width: 60%; /* scale icon smaller */
+    width: 60%;
+    /* scale icon smaller */
   }
 
   .technologies-section .tech-content h3 {

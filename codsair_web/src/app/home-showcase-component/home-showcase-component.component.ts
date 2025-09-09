@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-home-showcase-component',
@@ -11,9 +12,12 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class HomeShowcaseComponentComponent {
   @ViewChild('experienceSection', { static: true }) experienceSection!: ElementRef;
 
+   constructor(public languageService: LanguageService) {}
+
   locations = [
     {
       country: 'India',
+      countryKey: 'showcase.india',
       flag: 'assets/images/india.jpg',
       phone: '+91 836 013 9952',
       email: 'info@lilacinfotech.com',
@@ -21,6 +25,7 @@ export class HomeShowcaseComponentComponent {
     },
     {
       country: 'UAE',
+      countryKey: 'showcase.uae',
       flag: 'assets/images/uae.jpg',
       phone: '+971 50 520 9952',
       email: 'sales@lilacinfotech.ae',
@@ -28,6 +33,7 @@ export class HomeShowcaseComponentComponent {
     },
     {
       country: 'Canada',
+      countryKey: 'showcase.canada',
       flag: 'assets/images/canada.jpg',
       phone: '+1 647 889-2374',
       email: 'harleen@lilacinfotech.com',
@@ -35,6 +41,7 @@ export class HomeShowcaseComponentComponent {
     },
     {
       country: 'Germany',
+      countryKey: 'showcase.germany',
       flag: 'assets/images/germany.jpg',
       phone: '+49 173 3039344',
       email: 'jennifer@lilacinfotech.com',
@@ -43,10 +50,10 @@ export class HomeShowcaseComponentComponent {
   ];
 
   stats = [
-    { value: 120, currentValue: 0, label: 'Projects Delivered' },
-    { value: 75, currentValue: 0, label: 'Happy Clients', suffix: '+' },
-    { value: 5, currentValue: 0, label: 'Happy Clients', icon: 'bi bi-star-fill' },
-    { value: 5, currentValue: 0, label: 'Client Rating', suffix: '/5' }
+    { value: 120, currentValue: 0, labelKey: 'showcase.projects' },
+    { value: 75, currentValue: 0, labelKey: 'showcase.clients', suffix: '+' },
+    { value: 5, currentValue: 0, labelKey: 'showcase.rating', icon: 'bi bi-star-fill' },
+    { value: 5, currentValue: 0, labelKey: 'showcase.clientrating', suffix: '/5' }
   ];
 
   private observer!: IntersectionObserver;
@@ -55,15 +62,18 @@ export class HomeShowcaseComponentComponent {
   blogs = [
     {
       image: 'assets/images/blog-1.png',
-      title: 'Codsair Launches New Mobile App Solutions'
+      title: 'Blog 1',
+      titleKey: 'showcase.blog1'
     },
     {
       image: 'assets/images/blog-2.png',
-      title: 'Codsair Launches New Mobile App Solutions'
+      title: 'Blog 2',
+      titleKey: 'showcase.blog2'
     },
     {
       image: 'assets/images/blog-3.png',
-      title: 'Codsair Launches New Mobile App Solutions'
+      title: 'Blog 3',
+      titleKey: 'showcase.blog3'
     }
   ];
 

@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Global RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] * {
+  direction: rtl;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+[dir="ltr"] * {
+  direction: ltr;
+}
+
+/* Smooth transitions for language switching */
+* {
+  transition: direction 0.3s ease;
+}
+
+/* Hide scrollbars */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-common-navbar',
@@ -17,11 +18,11 @@ import { RouterModule } from '@angular/router';
 })
 export class CommonNavbarComponent {
 
-
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, public languageService: LanguageService) { }
 
   isMenuOpen = false;
+  isScrolled = false;
+  currentLanguage = 'en';
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -38,5 +39,21 @@ export class CommonNavbarComponent {
     if (!target.closest('.navbar') && this.isMenuOpen) {
       this.isMenuOpen = false;
     }
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
+
+  ngOnInit() {
+    this.languageService.currentLanguage$.subscribe(lang => {
+      this.currentLanguage = lang;
+    });
+  }
+
+  switchLanguage(lang: string) {
+    this.languageService.setLanguage(lang);
+    this.isMenuOpen = false;
   }
 }

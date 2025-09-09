@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-common-footer',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './common-footer.component.css'
 })
 export class CommonFooterComponent {
+
+  constructor(public languageService: LanguageService) {}
 
 }

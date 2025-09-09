@@ -80,8 +80,9 @@
     width: calc(25% - 20px);
     /* 4 cards per row with gap */
     flex: 0 0 auto;
-    /* box-shadow: 0 4px 12px rgba(168, 57, 57, 0.15); */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
     transition: transform 0.3s ease;
+    border: 1px solid #eee;
 }
 
 /* Tablet: 2 cards */

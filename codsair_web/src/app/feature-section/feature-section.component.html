@@ -1,34 +1,33 @@
 <!-- Testimonial Section -->
-<section class="testimonial-box">
-    <h2 class="testimonial-heading">Real Experiences</h2>
+<section class="testimonial-box" aria-label="Client Testimonials">
+    <h2 class="testimonial-heading">{{ languageService.translate('testimonial.title') }}</h2>
 
     <!-- Arrow buttons at top right -->
-    <div class="carousel-controls">
-        <button class="carousel-btn prev" (click)="scrollPrev()">&#10094;</button>
-        <button class="carousel-btn next" (click)="scrollNext()">&#10095;</button>
+    <div class="carousel-controls" role="group" aria-label="Testimonial navigation">
+        <button class="carousel-btn prev" (click)="scrollPrev()" type="button" aria-label="Previous testimonial">&#10094;</button>
+        <button class="carousel-btn next" (click)="scrollNext()" type="button" aria-label="Next testimonial">&#10095;</button>
     </div>
 
-
-    <div class="testimonial-carousel">
+    <div class="testimonial-carousel" role="region" aria-label="Customer testimonials carousel">
         <div #carouselContainer class="testimonial-container">
 
             <!-- Card -->
-            <div class="testimonial-card" *ngFor="let item of testimonials">
-                <img [src]="item.image" alt="testimonial image" class="testimonial-img" />
+            <article class="testimonial-card" *ngFor="let item of testimonials; let i = index" [attr.aria-label]="'Testimonial from ' + languageService.translate(item.nameKey)">
+                <img [src]="item.image" [alt]="languageService.translate(item.nameKey) + ' - Customer testimonial'" class="testimonial-img" loading="lazy" width="80" height="80" />
 
                 <div class="testimonial-card-content">
                     <h3>
-                        {{ item.name }}
-                        <span class="stars">
+                        {{ languageService.translate(item.nameKey) }}
+                        <span class="stars" [attr.aria-label]="item.rating + ' out of 5 stars'" role="img">
                             <ng-container *ngFor="let star of [].constructor(item.rating)">
                                 ★
                             </ng-container>
                         </span>
                     </h3>
 
-                    <p>{{ item.feedback }}</p>
+                    <p>{{ languageService.translate(item.feedbackKey) }}</p>
                 </div>
-            </div>
+            </article>
 
         </div>
     </div>
@@ -38,14 +37,12 @@
 
 
 <!-- Feature Section -->
-<section class="feature-box">
+<section class="feature-box" aria-label="Our Services and Solutions">
     <div class="feature-content">
-        <h1>Turn Ideas Into Reality – Start with <br> our expert solutions</h1>
+        <h2>{{ languageService.translate('feature.title') }}</h2>
         <p>
-            Discover our wide range of services designed to help businesses grow in the digital era.
-            From mobile apps and web development to digital marketing and design,
-            we provide innovative solutions tailored to your needs.
+            {{ languageService.translate('feature.desc') }}
         </p>
-        <a href="#" class="feature-btn">Contact Us →</a>
+        <a href="/contact" class="feature-btn" aria-label="Contact us to discuss your project">{{ languageService.translate('feature.button') }}</a>
     </div>
 </section>

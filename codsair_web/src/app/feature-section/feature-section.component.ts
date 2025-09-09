@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, PLATFORM_ID } from '@angular/core';
+import { LanguageService } from '../services/language.service';
 
 
 @Component({
@@ -12,50 +13,50 @@ import { Inject, PLATFORM_ID } from '@angular/core';
   styleUrl: './feature-section.component.css'
 })
 export class FeatureSectionComponent {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, public languageService: LanguageService) { }
   @ViewChild('carouselContainer') carouselContainer!: ElementRef;
 
   testimonials = [
     {
       image: 'assets/images/img8.jpg',
-      feedback: 'Codsair transformed our idea into a fully functional mobile app. Their team was highly professional, responsive, and delivered beyond expectations.',
-      name: 'Neha Verma',
+      feedbackKey: 'testimonial.neha.feedback',
+      nameKey: 'testimonial.neha.name',
       rating: 5
     },
     {
       image: 'assets/images/img3.jpg',
-      feedback: 'Working with Codsair was seamless. They ensured timely delivery and went the extra mile to support us.',
-      name: 'Rohit Mehta',
+      feedbackKey: 'testimonial.rohit.feedback',
+      nameKey: 'testimonial.rohit.name',
       rating: 4
     },
     {
       image: 'assets/images/img4.webp',
-      feedback: 'We got exactly what we envisioned, with excellent support throughout the project.',
-      name: 'Kavya Iyer',
+      feedbackKey: 'testimonial.kavya.feedback',
+      nameKey: 'testimonial.kavya.name',
       rating: 5
     },
     {
       image: 'assets/images/img5.jpg',
-      feedback: 'Amazing experience! Codsair helped us scale our idea into a reliable platform.',
-      name: 'Aditya Rao',
+      feedbackKey: 'testimonial.aditya.feedback',
+      nameKey: 'testimonial.aditya.name',
       rating: 3
     },
     {
       image: 'assets/images/img2.jpg',
-      feedback: 'Codsair’s team is extremely dedicated. They listened carefully to our needs and delivered beyond our expectations.',
-      name: 'Divya Menon',
+      feedbackKey: 'testimonial.divya.feedback',
+      nameKey: 'testimonial.divya.name',
       rating: 5
     },
     {
       image: 'assets/images/img1.avif',
-      feedback: 'The process was smooth from start to finish. The Codsair team made sure every detail was handled with care.',
-      name: 'Amala Nair',
+      feedbackKey: 'testimonial.amala.feedback',
+      nameKey: 'testimonial.amala.name',
       rating: 4
     },
     {
       image: 'assets/images/img7.jpg',
-      feedback: 'Highly recommend Codsair! They provided outstanding support and built a product that exceeded our vision.',
-      name: 'Aarav Sharma',
+      feedbackKey: 'testimonial.aarav.feedback',
+      nameKey: 'testimonial.aarav.name',
       rating: 5
     }
   ];
@@ -136,5 +137,6 @@ export class FeatureSectionComponent {
     container.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
     setTimeout(() => (this.isAutoScrolling = false), 500);
   }
+
 
 }

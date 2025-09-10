@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Import Global Heading Standardization */
+@import './global-headings.css';
+
 /* Global RTL Support */
 [dir="rtl"] {
   direction: rtl;

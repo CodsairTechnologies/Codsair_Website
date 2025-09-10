@@ -40,6 +40,28 @@ export class LanguageService {
       'process.research': 'Research',
       'process.qa': 'Quality Assurance',
       'process.launching': 'Launching',
+      
+      // Expertise section
+      'expertise.title': 'Our Expertise',
+      'expertise.subtitle': 'We deliver innovative computing solutions backed by proven experience and trusted technology.',
+      'expertise.mobile.title': 'Mobile App Development',
+      'expertise.mobile.desc': 'We build powerful Android and iOS applications with seamless performance, modern UI, and business-focused features. From startups to enterprises, our mobile solutions deliver scalability and lasting value.',
+      'expertise.web.title': 'Web Development',
+      'expertise.web.desc': 'Our team delivers scalable, creative, and responsive websites — from e-commerce platforms to enterprise portals. We focus on speed, security, and user-friendly designs that help businesses grow online.',
+      'expertise.digital.title': 'Digital Marketing',
+      'expertise.digital.desc': 'Boost your visibility with SEO, content, and social media marketing strategies that drive real engagement. Our digital campaigns are tailored to maximize ROI and brand awareness across platforms.',
+      'expertise.iot.title': 'Internet of Things (IoT)',
+      'expertise.iot.desc': 'We design IoT solutions that connect devices, automate workflows, and enable smarter decisions. Our IoT platforms enhance efficiency in homes, industries, healthcare, and enterprise environments worldwide.',
+      'expertise.robotics.title': 'Robotics',
+      'expertise.robotics.desc': 'Our robotics solutions combine intelligent design and advanced automation to optimize business operations. From robotic arms to smart machines, we create systems that simulate real-world movement and precision.',
+      'expertise.uiux.title': 'UI/UX Design',
+      'expertise.uiux.desc': 'We craft user-friendly digital experiences with intuitive interfaces that reflect your brand identity. Our designs improve usability, engagement, and customer satisfaction across web, mobile, and desktop platforms.',
+      'expertise.graphic.title': 'Graphic Design',
+      'expertise.graphic.desc': 'Our graphic design services deliver compelling visuals, branding assets, and creative storytelling that elevate your communication. From logos to marketing collateral, we design with impact and consistency.',
+      'expertise.advertisement.title': 'Advertisement',
+      'expertise.advertisement.desc': 'We create innovative advertising campaigns with powerful visuals and clear messaging that inspire audiences. Our strategies blend creativity with data-driven execution to achieve measurable business growth.',
+      'expertise.academic.title': 'Academic Projects',
+      'expertise.academic.desc': 'We guide students through academic projects with expert mentorship, improving coding, design, and problem-solving skills. Our support ensures practical learning, innovation, and better career opportunities.',
 
 
       
@@ -179,6 +201,28 @@ export class LanguageService {
       'process.qa': 'ضمان الجودة',
       'process.launching': 'الإطلاق',
       
+      // Expertise section
+      'expertise.title': 'خبرتنا',
+      'expertise.subtitle': 'نقدم حلول حاسوبية مبتكرة مدعومة بخبرة مثبتة وتكنولوجيا موثوقة.',
+      'expertise.mobile.title': 'تطوير تطبيقات الهاتف المحمول',
+      'expertise.mobile.desc': 'نبني تطبيقات أندرويد وآي أو إس قوية بأداء سلس وواجهة مستخدم حديثة وميزات تركز على الأعمال. من الشركات الناشئة إلى المؤسسات، تقدم حلولنا المحمولة قابلية التوسع والقيمة الدائمة.',
+      'expertise.web.title': 'تطوير الويب',
+      'expertise.web.desc': 'يقدم فريقنا مواقع ويب قابلة للتوسع وإبداعية ومتجاوبة - من منصات التجارة الإلكترونية إلى بوابات المؤسسات. نركز على السرعة والأمان والتصاميم سهلة الاستخدام التي تساعد الشركات على النمو عبر الإنترنت.',
+      'expertise.digital.title': 'التسويق الرقمي',
+      'expertise.digital.desc': 'عزز ظهورك باستراتيجيات تحسين محركات البحث والمحتوى ووسائل التواصل الاجتماعي التي تحفز المشاركة الحقيقية. حملاتنا الرقمية مصممة خصيصاً لتعظيم العائد على الاستثمار والوعي بالعلامة التجارية عبر المنصات.',
+      'expertise.iot.title': 'إنترنت الأشياء',
+      'expertise.iot.desc': 'نصمم حلول إنترنت الأشياء التي تربط الأجهزة وتؤتمت سير العمل وتمكن من اتخاذ قرارات أذكى. منصاتنا لإنترنت الأشياء تعزز الكفاءة في المنازل والصناعات والرعاية الصحية وبيئات المؤسسات في جميع أنحاء العالم.',
+      'expertise.robotics.title': 'الروبوتات',
+      'expertise.robotics.desc': 'تجمع حلولنا الروبوتية بين التصميم الذكي والأتمتة المتقدمة لتحسين عمليات الأعمال. من الأذرع الروبوتية إلى الآلات الذكية، نبتكر أنظمة تحاكي الحركة والدقة في العالم الحقيقي.',
+      'expertise.uiux.title': 'تصميم واجهة المستخدم/تجربة المستخدم',
+      'expertise.uiux.desc': 'نصنع تجارب رقمية سهلة الاستخدام بواجهات بديهية تعكس هوية علامتك التجارية. تصاميمنا تحسن سهولة الاستخدام والمشاركة ورضا العملاء عبر منصات الويب والهاتف المحمول وسطح المكتب.',
+      'expertise.graphic.title': 'التصميم الجرافيكي',
+      'expertise.graphic.desc': 'تقدم خدمات التصميم الجرافيكي لدينا مرئيات مقنعة وأصول علامة تجارية وسرد إبداعي يرفع من مستوى تواصلك. من الشعارات إلى المواد التسويقية، نصمم بتأثير واتساق.',
+      'expertise.advertisement.title': 'الإعلان',
+      'expertise.advertisement.desc': 'نبتكر حملات إعلانية مبتكرة بمرئيات قوية ورسائل واضحة تلهم الجماهير. استراتيجياتنا تمزج الإبداع مع التنفيذ المدفوع بالبيانات لتحقيق نمو أعمال قابل للقياس.',
+      'expertise.academic.title': 'المشاريع الأكاديمية',
+      'expertise.academic.desc': 'نوجه الطلاب خلال المشاريع الأكاديمية بإرشاد خبير، محسنين مهارات البرمجة والتصميم وحل المشكلات. دعمنا يضمن التعلم العملي والابتكار وفرص مهنية أفضل.',
+      
       // Products section
       'products.title': 'المنتجات',
       'products.subtitle': 'نصمم تطبيقات الهاتف المحمول وتطبيقات الويب التي لا تبدو رائعة فحسب، بل تعمل أيضاً بسلاسة',
@@ -239,6 +283,22 @@ export class LanguageService {
       'feature.button': 'اتصل بنا ←',
       'testimonial.title': 'تجارب حقيقية',
       
+      // Testimonials
+      'testimonial.neha.name': 'نيها فيرما',
+      'testimonial.neha.feedback': 'حولت كودزاير فكرتنا إلى تطبيق محمول يعمل بكامل طاقته. كان فريقهم محترفاً للغاية ومتجاوباً وقدم أكثر من التوقعات.',
+      'testimonial.rohit.name': 'روهيت ميهتا',
+      'testimonial.rohit.feedback': 'العمل مع كودزاير كان سلساً. لقد ضمنوا التسليم في الوقت المحدد وبذلوا جهداً إضافياً لدعمنا.',
+      'testimonial.kavya.name': 'كافيا أيير',
+      'testimonial.kavya.feedback': 'حصلنا على ما تصورناه بالضبط، مع دعم ممتاز طوال المشروع.',
+      'testimonial.aditya.name': 'أديتيا راو',
+      'testimonial.aditya.feedback': 'تجربة مذهلة! ساعدتنا كودزاير في توسيع فكرتنا إلى منصة موثوقة.',
+      'testimonial.divya.name': 'ديفيا مينون',
+      'testimonial.divya.feedback': 'فريق كودزاير مخلص للغاية. استمعوا بعناية لاحتياجاتنا وقدموا أكثر من توقعاتنا.',
+      'testimonial.amala.name': 'أمالا ناير',
+      'testimonial.amala.feedback': 'كانت العملية سلسة من البداية إلى النهاية. تأكد فريق كودزاير من التعامل مع كل التفاصيل بعناية.',
+      'testimonial.aarav.name': 'آراف شارما',
+      'testimonial.aarav.feedback': 'أوصي بشدة بكودزاير! قدموا دعماً متميزاً وبنوا منتجاً تجاوز رؤيتنا.',
+      
       // Showcase section
       'showcase.locations': 'المواقع',
       'showcase.experience': 'خبرتنا',
@@ -256,7 +316,20 @@ export class LanguageService {
       'showcase.india': 'الهند',
       'showcase.uae': 'الإمارات العربية المتحدة',
       'showcase.canada': 'كندا',
-      'showcase.germany': 'ألمانيا'
+      'showcase.germany': 'ألمانيا',
+      
+      // Footer
+      'footer.address': 'رقم 1716، الطابق السابع، هايلايت بيزنس بارك، بالاجي، كوجيكود، كيرالا 673014',
+      'footer.phone': 'الهاتف: +91 9497428487، +91 8848027097',
+      'footer.email': 'البريد الإلكتروني: info@codsairtechnologies.com infocodsair@gmail.com',
+      'footer.portfolio': 'المحفظة',
+      'footer.services': 'الخدمات',
+      'footer.webdev': 'تطوير الويب',
+      'footer.digitalmarketing': 'التسويق الرقمي',
+      'footer.uiux': 'تصميم واجهة المستخدم/تجربة المستخدم',
+      'footer.appdev': 'تطوير التطبيقات',
+      'footer.iot': 'إنترنت الأشياء',
+      'footer.graphic': 'مصمم جرافيك'
     }
   };
 
@@ -285,5 +358,9 @@ export class LanguageService {
     const currentLang = this.getCurrentLanguage();
     const newLang = currentLang === 'en' ? 'ar' : 'en';
     this.setLanguage(newLang);
+  }
+
+  isRTL(): boolean {
+    return this.getCurrentLanguage() === 'ar';
   }
 }

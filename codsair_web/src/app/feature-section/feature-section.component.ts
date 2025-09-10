@@ -1,19 +1,30 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { LanguageService } from '../services/language.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-feature-section',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './feature-section.component.html',
-  styleUrl: './feature-section.component.css'
+  styleUrl: './feature-section.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FeatureSectionComponent {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, public languageService: LanguageService) { }
+export class FeatureSectionComponent implements AfterViewInit, OnDestroy {
+  private languageSubscription: Subscription = new Subscription();
+  
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, public languageService: LanguageService, private cdr: ChangeDetectorRef) {
+    this.languageSubscription = this.languageService.currentLanguage$.subscribe(() => {
+      this.cdr.markForCheck();
+      if (isPlatformBrowser(this.platformId) && this.carouselContainer) {
+        setTimeout(() => this.recalculateCardWidth(), 100);
+      }
+    });
+  }
+
   @ViewChild('carouselContainer') carouselContainer!: ElementRef;
 
   testimonials = [
@@ -61,136 +72,108 @@ export class FeatureSectionComponent {
     }
   ];
 
-
   cardWidth: number = 0;
-
-  autoSlideInterval: any;
-  originalTestimonials = [...this.testimonials];
   isAutoScrolling = false;
-
+  autoSlideInterval: any;
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      const card = this.carouselContainer.nativeElement.querySelector('.testimonial-card');
-      if (card) {
-        this.cardWidth = card.offsetWidth + 20; // width + gap
+      this.setupCarousel();
+      window.addEventListener('resize', () => this.handleResize());
+    }
+  }
 
-        const n = 30; // duplicate n times
-        this.testimonials = this.duplicateTestimonials(this.originalTestimonials, n);
+  private setupCarousel(): void {
+    setTimeout(() => {
+      this.calculateCardWidth();
+      this.startAutoplay();
+    }, 200);
+  }
 
-        const container = this.carouselContainer.nativeElement;
-        container.scrollLeft = 0;
-
-        container.addEventListener('scroll', this.onScroll);
-
-        // Auto-slide
-        this.autoSlideInterval = setInterval(() => this.scrollNext(), 3000);
+  private calculateCardWidth(): void {
+    const card = this.carouselContainer.nativeElement.querySelector('.testimonial-card');
+    if (card) {
+      const containerWidth = this.carouselContainer.nativeElement.offsetWidth;
+      const width = window.innerWidth;
+      
+      if (width <= 600) {
+        this.cardWidth = containerWidth;
+      } else if (width <= 992) {
+        this.cardWidth = containerWidth / 2;
+      } else {
+        this.cardWidth = containerWidth / 4;
       }
     }
   }
 
-  duplicateTestimonials(original: any[], n: number): any[] {
-    const result: any[] = [];
-    for (let i = 0; i < n; i++) {
-      result.push(...original);
-    }
-    return result;
+  private recalculateCardWidth(): void {
+    this.calculateCardWidth();
   }
 
+  private handleResize(): void {
+    if (this.carouselContainer) {
+      setTimeout(() => this.recalculateCardWidth(), 100);
+    }
+  }
 
-  // onScroll = () => {
-  //   const container = this.carouselContainer.nativeElement;
-  //   const n = 30; // same number as duplicates
-  //   const originalWidth = container.scrollWidth / n; // width of one original set
-
-  //   if (this.isAutoScrolling) return;
-
-  //   if (container.scrollLeft >= originalWidth * (n - 1)) {
-  //     container.scrollLeft -= originalWidth;
-  //   } else if (container.scrollLeft < originalWidth) {
-  //     container.scrollLeft += originalWidth;
-  //   }
-  // };
-
-  onScroll = () => {
+  scrollNext(): void {
+    if (this.isAutoScrolling || !this.cardWidth) return;
+    
+    this.isAutoScrolling = true;
     const container = this.carouselContainer.nativeElement;
-    const n = 30;
-    const originalWidth = container.scrollWidth / n;
+    const isRTL = this.languageService.isRTL();
+    const scrollAmount = isRTL ? -this.cardWidth : this.cardWidth;
+    
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    
+    setTimeout(() => {
+      this.isAutoScrolling = false;
+    }, 500);
+  }
 
-    if (this.isAutoScrolling) return;
+  scrollPrev(): void {
+    if (this.isAutoScrolling || !this.cardWidth) return;
+    
+    this.isAutoScrolling = true;
+    const container = this.carouselContainer.nativeElement;
+    const isRTL = this.languageService.isRTL();
+    const scrollAmount = isRTL ? this.cardWidth : -this.cardWidth;
+    
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    
+    setTimeout(() => {
+      this.isAutoScrolling = false;
+    }, 500);
+  }
 
-    if (this.isRtl()) {
-      // RTL might have negative scrollLeft or inverted logic depending on browser
-      if (container.scrollLeft <= 0) {
-        container.scrollLeft += originalWidth;
-      } else if (container.scrollLeft >= originalWidth * (n - 1)) {
-        container.scrollLeft -= originalWidth;
-      }
-    } else {
-      if (container.scrollLeft >= originalWidth * (n - 1)) {
-        container.scrollLeft -= originalWidth;
-      } else if (container.scrollLeft <= 0) {
-        container.scrollLeft += originalWidth;
-      }
+  private startAutoplay(): void {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
     }
-  };
+    this.autoSlideInterval = setInterval(() => {
+      if (!this.isAutoScrolling) {
+        this.scrollNext();
+      }
+    }, 3000);
+  }
 
-  getScrollLeft(container: HTMLElement): number {
-    if (this.isRtl()) {
-      return container.scrollLeft;
-    } else {
-      return container.scrollLeft;
+  pauseAutoplay(): void {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
     }
   }
 
-
+  resumeAutoplay(): void {
+    this.startAutoplay();
+  }
 
   ngOnDestroy(): void {
     if (this.autoSlideInterval) {
       clearInterval(this.autoSlideInterval);
     }
+    this.languageSubscription.unsubscribe();
     if (isPlatformBrowser(this.platformId)) {
-      const container = this.carouselContainer.nativeElement;
-      container.removeEventListener('scroll', this.onScroll);
+      window.removeEventListener('resize', () => this.handleResize());
     }
   }
-
-
-  // scrollNext() {
-  //   const container = this.carouselContainer.nativeElement;
-  //   this.isAutoScrolling = true;
-  //   container.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
-  //   setTimeout(() => (this.isAutoScrolling = false), 500);
-  // }
-
-  // scrollPrev() {
-  //   const container = this.carouselContainer.nativeElement;
-  //   this.isAutoScrolling = true;
-  //   container.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
-  //   setTimeout(() => (this.isAutoScrolling = false), 500);
-  // }
-
-  isRtl(): boolean {
-    return document.documentElement.getAttribute('dir') === 'rtl';
-  }
-
-
-  scrollNext() {
-    const container = this.carouselContainer.nativeElement;
-    this.isAutoScrolling = true;
-    const direction = this.isRtl() ? -1 : 1;
-    container.scrollBy({ left: direction * this.cardWidth, behavior: 'smooth' });
-    setTimeout(() => (this.isAutoScrolling = false), 500);
-  }
-
-  scrollPrev() {
-    const container = this.carouselContainer.nativeElement;
-    this.isAutoScrolling = true;
-    const direction = this.isRtl() ? 1 : -1;
-    container.scrollBy({ left: direction * this.cardWidth, behavior: 'smooth' });
-    setTimeout(() => (this.isAutoScrolling = false), 500);
-  }
-
-
-
 }

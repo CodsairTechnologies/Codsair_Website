@@ -175,9 +175,6 @@
     text-align: justify;
 }
 
-/* ===============================
-   RESPONSIVE
-=================================*/
 @media (max-width: 768px) {
     .home-section-content h1 {
         font-size: 2.4rem;
@@ -208,9 +205,269 @@
     }
 }
 
+@media (max-width: 480px) {
+    .home-section-content h1 {
+        font-size: 2rem;
+    }
+    
+    .home-section-content p {
+        font-size: 1.2rem;
+    }
+    
+    .home-section-content p #typing {
+        font-size: 1.2rem;
+    }
+    
+    .social-bar {
+        left: 5px;
+    }
+    
+    .social-bar a {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
 /* ===============================
    HOME SECTION LAYOUT
 =================================*/
+
+
+
+
+
+
+/* our service section  */
+.sp-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.sp-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #1FA7F4;
+    font-family: "Roboto Slab";
+}
+
+.sp-subtitle {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Roboto";
+}
+
+/* Grid */
+.sp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Item */
+.sp-item {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.sp-item:hover {
+    transform: translateY(-8px);
+}
+
+/* Blob Shape */
+.sp-blob {
+    width: 120px;
+    height: 120px;
+    background: #f5f7fa;
+    box-shadow: 0 8px 25px rgba(57, 158, 225, 0.273);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: floatMove 4s ease-in-out infinite, waterFlow 5s ease-in-out infinite;
+    transition: background 0.3s ease;
+}
+
+.sp-blob i {
+    font-size: 36px;
+    color: #27aaff;
+    transition: color 0.3s ease;
+}
+
+.sp-item:hover .sp-blob {
+    background: #27aaff;
+}
+
+.sp-item:hover .sp-blob i {
+    color: #fff;
+}
+
+/* Floating movement */
+@keyframes floatMove {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-4px) translateX(1px) rotate(0.3deg);
+    }
+
+    66% {
+        transform: translateY(-2px) translateX(-1px) rotate(-0.2deg);
+    }
+}
+
+/* Gentle water-like morphing */
+@keyframes waterFlow {
+
+    0%,
+    100% {
+        border-radius: 58% 42% 68% 32% / 42% 58% 32% 68%;
+    }
+
+    25% {
+        border-radius: 52% 48% 62% 38% / 48% 52% 38% 62%;
+    }
+
+    50% {
+        border-radius: 65% 35% 55% 45% / 35% 65% 45% 55%;
+    }
+
+    75% {
+        border-radius: 48% 52% 72% 28% / 52% 48% 28% 72%;
+    }
+}
+
+/* Titles & Text */
+.sp-item-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.sp-item-text {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    font-family: "Roboto";
+}
+
+/* Responsive Breakpoints */
+
+/* Large Tablets / Small Desktops */
+@media (max-width: 1200px) {
+    .sp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .sp-title {
+        font-size: 2.4rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+    .sp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .sp-title {
+        font-size: 2.2rem;
+    }
+
+    .sp-subtitle {
+        font-size: 15px;
+        margin-bottom: 40px;
+    }
+}
+
+/* Large Mobiles */
+@media (max-width: 768px) {
+    .sp-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+        /* Center text */
+    }
+
+    .sp-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center blob + title + text */
+    }
+
+    .sp-item-title,
+    .sp-item-text {
+        text-align: center;
+        /* Ensure titles & text are centered */
+    }
+
+    .sp-title {
+        font-size: 2rem;
+    }
+
+    .sp-subtitle {
+        font-size: 14px;
+    }
+
+    .sp-blob {
+        width: 100px;
+        height: 100px;
+    }
+
+    .sp-blob i {
+        font-size: 30px;
+    }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+    .sp-section {
+        padding: 40px 15px;
+    }
+
+    .sp-title {
+        font-size: 1.6rem;
+    }
+
+    .sp-subtitle {
+        font-size: 13px;
+    }
+
+    .sp-item-title {
+        font-size: 18px;
+    }
+
+    .sp-item-text {
+        font-size: 14px;
+    }
+
+    .sp-blob {
+        width: 80px;
+        height: 80px;
+    }
+
+    .sp-blob i {
+        font-size: 26px;
+    }
+}
+
+
+/* our service section  */
+
 
 
 
@@ -449,7 +706,7 @@
     position: relative;
     overflow: hidden;
     padding: 60px 0;
-    margin: 40px 0;
+    margin: 0px 0;
     width: 100%;
 }
 
@@ -457,7 +714,7 @@
     font-size: 2.8rem;
     font-weight: bold;
     color: #1FA7F4;
-    margin-bottom: 80px;
+    margin-bottom: 90px;
     position: relative;
     display: inline-block;
     font-family: "Roboto Slab";
@@ -471,7 +728,7 @@
     transform: translateX(-50%);
     width: 150px;
     height: 2px;
-    background: linear-gradient(90deg, #27aaff, #0088cc);
+    /* background: linear-gradient(90deg, #27aaff, #0088cc); */
     border-radius: 2px;
 }
 
@@ -806,37 +1063,37 @@
 
 /* Parallax Effects */
 .parallax-section {
-  transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .parallax-text {
-  transform: translateZ(0);
-  will-change: transform;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .parallax-images {
-  transform: translateZ(0);
-  will-change: transform;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .parallax-mini {
-  transform: translateZ(0);
-  will-change: transform;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .parallax-title {
-  transform: translateZ(0);
-  will-change: transform;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .parallax-container {
-  transform: translateZ(0);
-  will-change: transform;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .parallax-step {
-  transform: translateZ(0);
-  will-change: transform;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 

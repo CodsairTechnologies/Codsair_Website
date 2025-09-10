@@ -8,10 +8,8 @@
         <button class="carousel-btn next" (click)="scrollNext()" type="button" aria-label="Next testimonial">&#10095;</button>
     </div>
 
-    <div class="testimonial-carousel" role="region" aria-label="Customer testimonials carousel">
+    <div class="testimonial-carousel" role="region" aria-label="Customer testimonials carousel" (mouseenter)="pauseAutoplay()" (mouseleave)="resumeAutoplay()">
         <div #carouselContainer class="testimonial-container">
-
-            <!-- Card -->
             <article class="testimonial-card" *ngFor="let item of testimonials; let i = index" [attr.aria-label]="'Testimonial from ' + languageService.translate(item.nameKey)">
                 <img [src]="item.image" [alt]="languageService.translate(item.nameKey) + ' - Customer testimonial'" class="testimonial-img" loading="lazy" width="80" height="80" />
 
@@ -28,7 +26,6 @@
                     <p>{{ languageService.translate(item.feedbackKey) }}</p>
                 </div>
             </article>
-
         </div>
     </div>
 </section>
@@ -39,10 +36,11 @@
 <!-- Feature Section -->
 <section class="feature-box" aria-label="Our Services and Solutions">
     <div class="feature-content">
-        <h2>{{ languageService.translate('feature.title') }}</h2>
+        <h1>{{ languageService.translate('feature.title') }}</h1>
         <p>
             {{ languageService.translate('feature.desc') }}
         </p>
-        <a href="/contact" class="feature-btn" aria-label="Contact us to discuss your project">{{ languageService.translate('feature.button') }}</a>
+        <a href="/contact" class="feature-btn" aria-label="Contact us to discuss your project">{{
+            languageService.translate('feature.button') }}</a>
     </div>
 </section>

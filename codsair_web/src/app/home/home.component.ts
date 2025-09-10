@@ -6,7 +6,8 @@ import { HomeShowcaseComponentComponent } from "../home-showcase-component/home-
 import { LanguageService } from '../services/language.service';
 import { ProductsComponent } from "../products/products.component";
 import { Meta, Title } from '@angular/platform-browser';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,9 @@ import { isPlatformBrowser } from '@angular/common';
     CommonFooterComponent,
     FeatureSectionComponent,
     HomeShowcaseComponentComponent,
-    ProductsComponent
-],
+    ProductsComponent,
+    CommonModule
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -25,12 +27,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   private resizeTimeout: any;
   private observer?: IntersectionObserver;
 
+
+
   constructor(
     public languageService: LanguageService,
     private meta: Meta,
     private title: Title,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.setSEOData();
@@ -48,25 +52,27 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private setSEOData() {
     const isArabic = this.languageService.getCurrentLanguage() === 'ar';
-    
+
     // Set page title
-    const pageTitle = isArabic 
+    const pageTitle = isArabic
       ? 'كودزاير تكنولوجيز - حلول برمجية مبتكرة | تطوير تطبيقات الهاتف والويب'
       : 'Codsair Technologies - Innovative Software Solutions | Mobile & Web Development';
-    
+
     this.title.setTitle(pageTitle);
-    
+
     // Set meta description
     const description = isArabic
       ? 'كودزاير تكنولوجيز - شركة رائدة في تطوير البرمجيات والتطبيقات المحمولة وتطبيقات الويب. نقدم حلول تقنية مبتكرة للشركات في الهند والإمارات وكندا وألمانيا.'
       : 'Codsair Technologies - Leading software development company specializing in mobile apps, web applications, and digital solutions. Serving clients globally from India, UAE, Canada, and Germany.';
-    
+
     // Update meta tags
     this.meta.updateTag({ name: 'description', content: description });
-    this.meta.updateTag({ name: 'keywords', content: isArabic 
-      ? 'تطوير التطبيقات, تطوير الويب, كودزاير, تقنية المعلومات, تطبيقات الهاتف, حلول رقمية, برمجة, تصميم واجهات'
-      : 'mobile app development, web development, software solutions, Codsair Technologies, digital transformation, UI/UX design, React, Angular, Flutter' });
-    
+    this.meta.updateTag({
+      name: 'keywords', content: isArabic
+        ? 'تطوير التطبيقات, تطوير الويب, كودزاير, تقنية المعلومات, تطبيقات الهاتف, حلول رقمية, برمجة, تصميم واجهات'
+        : 'mobile app development, web development, software solutions, Codsair Technologies, digital transformation, UI/UX design, React, Angular, Flutter'
+    });
+
     // Open Graph tags
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });
@@ -74,13 +80,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.meta.updateTag({ property: 'og:url', content: 'https://codsairtechnologies.com' });
     this.meta.updateTag({ property: 'og:image', content: 'https://codsairtechnologies.com/assets/images/codsair-og-image.jpg' });
     this.meta.updateTag({ property: 'og:site_name', content: 'Codsair Technologies' });
-    
+
     // Twitter Card tags
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: pageTitle });
     this.meta.updateTag({ name: 'twitter:description', content: description });
     this.meta.updateTag({ name: 'twitter:image', content: 'https://codsairtechnologies.com/assets/images/codsair-twitter-card.jpg' });
-    
+
     // Additional SEO tags
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
     this.meta.updateTag({ name: 'author', content: 'Codsair Technologies' });
@@ -145,13 +151,80 @@ export class HomeComponent implements OnInit, OnDestroy {
   wordIndex: number = 0;
   charIndex: number = 0;
 
+
+cards = [
+  {
+    icon: 'bi bi-phone',
+    titleKey: 'expertise.mobile.title',
+    descKey: 'expertise.mobile.desc'
+  },
+  {
+    icon: 'bi bi-laptop',
+    titleKey: 'expertise.web.title',
+    descKey: 'expertise.web.desc'
+  },
+  {
+    icon: 'bi bi-bullseye',
+    titleKey: 'expertise.digital.title',
+    descKey: 'expertise.digital.desc'
+  },
+  {
+    icon: 'bi bi-wifi',
+    titleKey: 'expertise.iot.title',
+    descKey: 'expertise.iot.desc'
+  },
+  {
+    icon: 'bi bi-robot',
+    titleKey: 'expertise.robotics.title',
+    descKey: 'expertise.robotics.desc'
+  },
+  {
+    icon: 'bi bi-ui-checks',
+    titleKey: 'expertise.uiux.title',
+    descKey: 'expertise.uiux.desc'
+  },
+  {
+    icon: 'bi bi-brush',
+    titleKey: 'expertise.graphic.title',
+    descKey: 'expertise.graphic.desc'
+  },
+  {
+    icon: 'bi bi-megaphone',
+    titleKey: 'expertise.advertisement.title',
+    descKey: 'expertise.advertisement.desc'
+  },
+  {
+    icon: 'bi bi-mortarboard',
+    titleKey: 'expertise.academic.title',
+    descKey: 'expertise.academic.desc'
+  }
+];
+
+
+
+
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
+      this.initVideo();
       this.typingEffect();
       setTimeout(() => {
         this.setupProcessPath();
+        if (typeof (window as any).AOS !== 'undefined') {
+          (window as any).AOS.refresh();
+        }
       }, 200);
       this.initParallax();
+    }
+  }
+
+  private initVideo() {
+    const video = document.querySelector('.home-section-video') as HTMLVideoElement;
+    if (video) {
+      video.load();
+      video.play().catch(() => {
+        video.muted = true;
+        video.play();
+      });
     }
   }
 
@@ -167,7 +240,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   updateParallax() {
     const scrolled = window.pageYOffset;
     const scrollPercent = scrolled / (document.body.scrollHeight - window.innerHeight);
-    
+
     const video = document.querySelector('.home-section-video') as HTMLElement;
     const content = document.querySelector('.home-section-content') as HTMLElement;
     const socialBar = document.querySelector('.social-bar') as HTMLElement;
@@ -181,12 +254,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       const scale = 1 + scrollPercent * 0.1;
       video.style.transform = `translateY(${scrolled * 0.6}px) scale(${scale})`;
     }
-    
+
     // Enhanced content
     if (content) {
       content.style.transform = `translate(-50%, -50%) translateY(${scrolled * -0.4}px)`;
     }
-    
+
     // Enhanced social bar with horizontal movement
     if (socialBar) {
       const horizontalOffset = Math.sin(scrolled * 0.01) * 5;
@@ -272,7 +345,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const svg = document.querySelector('.process-line') as SVGSVGElement | null;
     const container = document.querySelector('#processContainer') as HTMLElement | null;
     const processSection = document.querySelector('#process') as HTMLElement | null;
-    
+
     if (!path || !svg || !container || !processSection) return;
 
     const total = path.getTotalLength();
@@ -297,27 +370,27 @@ export class HomeComponent implements OnInit, OnDestroy {
       const viewBoxW = 1100;
       const viewBoxH = 500;
       const screenWidth = window.innerWidth;
-      
+
       steps.forEach((step) => {
         let ratio = parseFloat(step.getAttribute('data-pos') || '0');
         ratio = Math.max(0, Math.min(1, ratio));
 
         const pt = path.getPointAtLength(total * ratio);
-        
+
         let x, y;
-        
+
         if (screenWidth <= 768) {
           // Mobile: Direct SVG coordinate mapping with proper scaling
           const scaleX = containerRect.width / viewBoxW;
           const scaleY = containerRect.height / viewBoxH;
-          
+
           x = pt.x * scaleX;
           y = pt.y * scaleY;
         } else {
           // Desktop/Tablet: Center the SVG and calculate offset
           const svgOffsetX = (containerRect.width - svgRect.width) / 2;
           const svgOffsetY = (containerRect.height - svgRect.height) / 2;
-          
+
           x = svgOffsetX + (pt.x / viewBoxW) * svgRect.width;
           y = svgOffsetY + (pt.y / viewBoxH) * svgRect.height;
         }
@@ -328,7 +401,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         const label = step.querySelector('p') as HTMLElement | null;
         if (!label) return;
-        
+
         if (screenWidth <= 768) {
           // Mobile: Position labels based on available space
           if (pt.x < 400) {
@@ -366,7 +439,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     window.addEventListener('orientationchange', () => {
       setTimeout(placeSteps, 200);
     });
-    
+
     // Ensure proper initial positioning
     requestAnimationFrame(() => {
       setTimeout(placeSteps, 100);
@@ -374,7 +447,26 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
+  getVideoSrc(): string {
+    return `/assets/images/home-video.mp4?v=${Date.now()}`;
+  }
 
+  onVideoLoaded(event: Event) {
+    const video = event.target as HTMLVideoElement;
+    video.classList.add('loaded');
+  }
+
+  onVideoCanPlay(event: Event) {
+    const video = event.target as HTMLVideoElement;
+    video.classList.add('loaded');
+    video.play().catch(() => {
+      console.log('Video autoplay failed');
+    });
+  }
+
+  onVideoError(event: Event) {
+    console.log('Video failed to load - using fallback background');
+  }
 
 
 }

@@ -9,7 +9,5 @@ import { LanguageService } from '../services/language.service';
   styleUrl: './common-footer.component.css'
 })
 export class CommonFooterComponent {
-
   constructor(public languageService: LanguageService) {}
-
 }

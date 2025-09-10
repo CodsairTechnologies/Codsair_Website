@@ -1,0 +1,122 @@
+/* Global Heading Standardization - All Devices */
+
+/* Primary Heading (h1) - Main page titles */
+h1, .h1 {
+  font-size: 2.8rem !important;
+  color: #1FA7F4 !important;
+  font-weight: 700 !important;
+  font-family: "Roboto Slab", serif !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Secondary Heading (h2) - Section titles */
+h2, .h2 {
+  font-size: 2.8rem !important;
+  color: #1FA7F4 !important;
+  font-weight: 700 !important;
+  font-family: "Roboto Slab", serif !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Tertiary Heading (h3) - Subsection titles */
+h3, .h3 {
+  font-size: 1.5rem !important;
+  color: #333 !important;
+  font-weight: 600 !important;
+  font-family: "Roboto Slab", serif !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.8rem !important;
+}
+
+/* Quaternary Heading (h4) - Minor headings */
+h4, .h4 {
+  font-size: 1.2rem !important;
+  color: #333 !important;
+  font-weight: 600 !important;
+  font-family: "Roboto Slab", serif !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+/* Small Headings (h5, h6) */
+h5, .h5, h6, .h6 {
+  font-size: 1rem !important;
+  color: #333 !important;
+  font-weight: 600 !important;
+  font-family: "Roboto Slab", serif !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Tablet Responsive (768px - 1024px) */
+@media (max-width: 1024px) {
+  h1, .h1, h2, .h2 {
+    font-size: 2.2rem !important;
+  }
+  
+  h3, .h3 {
+    font-size: 1.3rem !important;
+  }
+  
+  h4, .h4 {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Mobile Responsive (max-width: 768px) */
+@media (max-width: 768px) {
+  h1, .h1, h2, .h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  h3, .h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  h4, .h4 {
+    font-size: 1rem !important;
+  }
+  
+  h5, .h5, h6, .h6 {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  h1, .h1, h2, .h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3, .h3 {
+    font-size: 1.1rem !important;
+  }
+  
+  h4, .h4 {
+    font-size: 0.95rem !important;
+  }
+  
+  h5, .h5, h6, .h6 {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Exception for feature section - maintain original styling */
+.feature-box h1 {
+  color: #fff !important;
+  font-size: 32px !important;
+}
+
+@media (max-width: 992px) {
+  .feature-box h1 {
+    font-size: 26px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .feature-box h1 {
+    font-size: 22px !important;
+  }
+}

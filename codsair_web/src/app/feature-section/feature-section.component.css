@@ -25,6 +25,7 @@
     justify-content: flex-end;
     gap: 15px;
     margin-bottom: 15px;
+    position: relative;
 }
 
 .carousel-btn {
@@ -48,7 +49,6 @@
     border-color: #00bfff;
 }
 
-
 .testimonial-carousel {
     display: flex;
     align-items: center;
@@ -58,10 +58,15 @@
 .testimonial-container {
     display: flex;
     gap: 20px;
-    overflow: hidden;
+    overflow-x: auto;
     scroll-behavior: smooth;
     width: 100%;
-    direction: inherit;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.testimonial-container::-webkit-scrollbar {
+    display: none;
 }
 
 .testimonial-card-content {
@@ -73,15 +78,14 @@
     transform: translateY(-5px);
 }
 
-/* Default: 4 cards (desktop) */
+/* Desktop: 4 cards */
 .testimonial-card {
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    width: calc(25% - 20px);
-    /* 4 cards per row with gap */
+    width: calc(25% - 15px);
+    min-width: calc(25% - 15px);
     flex: 0 0 auto;
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
     transition: transform 0.3s ease;
     border: 1px solid #eee;
 }
@@ -89,22 +93,30 @@
 /* Tablet: 2 cards */
 @media (max-width: 992px) {
     .testimonial-card {
-        width: calc(50% - 20px);
+        width: calc(50% - 10px);
+        min-width: calc(50% - 10px);
     }
 }
 
-/* Mobile: 1 card full width */
+/* Mobile: 1 card */
 @media (max-width: 600px) {
     .testimonial-card {
-        width: 100%;
-        min-width: 100%;
-        /* force single card */
-        max-width: 100%;
+        width: calc(100% - 20px);
+        min-width: calc(100% - 20px);
     }
 
     .carousel-controls {
         justify-content: center;
-        /* center arrows */
+    }
+
+    .testimonial-container {
+        gap: 10px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
 
@@ -143,17 +155,7 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .testimonial-card {
-        min-width: 250px;
-        max-width: 250px;
-    }
 
-    .carousel-controls {
-        justify-content: center;
-        /* center buttons on small screens */
-    }
-}
 
 
 

@@ -51,7 +51,7 @@
 
 
 <!-- Blog section-->
-<div class="blogs-section container">
+<div class="blogs-section container" [attr.dir]="languageService.getCurrentLanguage() === 'ar' ? 'rtl' : 'ltr'">
   <h2 class="main-title">{{ languageService.translate('showcase.blogs.title') }}</h2>
 
   <div class="blogs-container">

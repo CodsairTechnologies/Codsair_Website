@@ -20,7 +20,7 @@ export class HomeShowcaseComponentComponent {
       countryKey: 'showcase.india',
       flag: 'assets/images/india.jpg',
       phone: '+91 836 013 9952',
-      email: 'info@lilacinfotech.com',
+      email: 'info@codsair.com',
       top: '59%', left: '65%'
     },
     {
@@ -28,7 +28,7 @@ export class HomeShowcaseComponentComponent {
       countryKey: 'showcase.uae',
       flag: 'assets/images/uae.jpg',
       phone: '+971 50 520 9952',
-      email: 'sales@lilacinfotech.ae',
+      email: 'sales@codsair.ae',
       top: '54%', left: '58.5%'
     },
     {
@@ -36,7 +36,7 @@ export class HomeShowcaseComponentComponent {
       countryKey: 'showcase.canada',
       flag: 'assets/images/canada.jpg',
       phone: '+1 647 889-2374',
-      email: 'harleen@lilacinfotech.com',
+      email: 'harleen@codsair.com',
       top: '34%', left: '16.5%'
     },
     {
@@ -44,7 +44,7 @@ export class HomeShowcaseComponentComponent {
       countryKey: 'showcase.germany',
       flag: 'assets/images/germany.jpg',
       phone: '+49 173 3039344',
-      email: 'jennifer@lilacinfotech.com',
+      email: 'jennifer@codsair.com',
       top: '40%', left: '50%'
     }
   ];

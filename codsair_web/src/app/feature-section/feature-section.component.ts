@@ -98,19 +98,51 @@ export class FeatureSectionComponent {
   }
 
 
+  // onScroll = () => {
+  //   const container = this.carouselContainer.nativeElement;
+  //   const n = 30; // same number as duplicates
+  //   const originalWidth = container.scrollWidth / n; // width of one original set
+
+  //   if (this.isAutoScrolling) return;
+
+  //   if (container.scrollLeft >= originalWidth * (n - 1)) {
+  //     container.scrollLeft -= originalWidth;
+  //   } else if (container.scrollLeft < originalWidth) {
+  //     container.scrollLeft += originalWidth;
+  //   }
+  // };
+
   onScroll = () => {
     const container = this.carouselContainer.nativeElement;
-    const n = 30; // same number as duplicates
-    const originalWidth = container.scrollWidth / n; // width of one original set
+    const n = 30;
+    const originalWidth = container.scrollWidth / n;
 
     if (this.isAutoScrolling) return;
 
-    if (container.scrollLeft >= originalWidth * (n - 1)) {
-      container.scrollLeft -= originalWidth;
-    } else if (container.scrollLeft < originalWidth) {
-      container.scrollLeft += originalWidth;
+    if (this.isRtl()) {
+      // RTL might have negative scrollLeft or inverted logic depending on browser
+      if (container.scrollLeft <= 0) {
+        container.scrollLeft += originalWidth;
+      } else if (container.scrollLeft >= originalWidth * (n - 1)) {
+        container.scrollLeft -= originalWidth;
+      }
+    } else {
+      if (container.scrollLeft >= originalWidth * (n - 1)) {
+        container.scrollLeft -= originalWidth;
+      } else if (container.scrollLeft <= 0) {
+        container.scrollLeft += originalWidth;
+      }
     }
   };
+
+  getScrollLeft(container: HTMLElement): number {
+    if (this.isRtl()) {
+      return container.scrollLeft;
+    } else {
+      return container.scrollLeft;
+    }
+  }
+
 
 
   ngOnDestroy(): void {
@@ -124,19 +156,41 @@ export class FeatureSectionComponent {
   }
 
 
+  // scrollNext() {
+  //   const container = this.carouselContainer.nativeElement;
+  //   this.isAutoScrolling = true;
+  //   container.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
+  //   setTimeout(() => (this.isAutoScrolling = false), 500);
+  // }
+
+  // scrollPrev() {
+  //   const container = this.carouselContainer.nativeElement;
+  //   this.isAutoScrolling = true;
+  //   container.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
+  //   setTimeout(() => (this.isAutoScrolling = false), 500);
+  // }
+
+  isRtl(): boolean {
+    return document.documentElement.getAttribute('dir') === 'rtl';
+  }
+
+
   scrollNext() {
     const container = this.carouselContainer.nativeElement;
     this.isAutoScrolling = true;
-    container.scrollBy({ left: this.cardWidth, behavior: 'smooth' });
+    const direction = this.isRtl() ? -1 : 1;
+    container.scrollBy({ left: direction * this.cardWidth, behavior: 'smooth' });
     setTimeout(() => (this.isAutoScrolling = false), 500);
   }
 
   scrollPrev() {
     const container = this.carouselContainer.nativeElement;
     this.isAutoScrolling = true;
-    container.scrollBy({ left: -this.cardWidth, behavior: 'smooth' });
+    const direction = this.isRtl() ? 1 : -1;
+    container.scrollBy({ left: direction * this.cardWidth, behavior: 'smooth' });
     setTimeout(() => (this.isAutoScrolling = false), 500);
   }
+
 
 
 }

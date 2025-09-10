@@ -61,6 +61,7 @@
     overflow: hidden;
     scroll-behavior: smooth;
     width: 100%;
+    direction: inherit;
 }
 
 .testimonial-card-content {

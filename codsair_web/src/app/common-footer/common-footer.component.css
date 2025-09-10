@@ -107,3 +107,20 @@
         margin-bottom: 15px;
     }
 }
+
+/* Fix alignment issues on specific devices like iPhone 15 */
+@media (max-width: 430px) {
+    .footer-links {
+        justify-content: center;
+    }
+
+    .footer-links ul {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-links li {
+        display: inline-block;
+        margin: 5px 10px;
+    }
+}

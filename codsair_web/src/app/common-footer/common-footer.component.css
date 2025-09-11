@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     background-color: #000;
     color: #fff;
     padding: 40px 20px;
@@ -68,10 +68,10 @@
 .footer-links li:hover {
     color: #0088cc;
     cursor: pointer;
-}
+} */
 
 /* Tablet - Medium devices */
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
     .footer-container {
         flex-direction: column;
         align-items: center;
@@ -91,10 +91,10 @@
         margin-bottom: 20px;
         min-width: unset;
     }
-}
+} */
 
 /* Small Devices - Phones */
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
     .footer {
         padding: 30px 15px;
     }
@@ -110,10 +110,10 @@
     .footer-links ul {
         margin-bottom: 15px;
     }
-}
+} */
 
 /* Fix alignment issues on specific devices like iPhone 15 */
-@media (max-width: 430px) {
+/* @media (max-width: 430px) {
     .footer-links {
         flex-direction: column;
         align-items: center;
@@ -122,5 +122,203 @@
     .footer-links ul {
         width: 100%;
         text-align: center;
+    }
+} */
+
+:host {
+    display: block;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    width: 250px;
+    height: auto;
+}
+
+.footer-links {
+    display: grid;
+    gap: 20px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    transition: color 0.3s;
+}
+
+.links-home li:hover,
+.links-book li:hover {
+    color: #1FA7F4;
+    cursor: pointer;
+}
+
+.links-contact li {
+    color: inherit;
+    cursor: default;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+}
+
+.links-contact .address {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.links-contact li {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.footer-social-icons i {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #ccc;
+}
+
+.footer-social-icons i:hover {
+    color: #fff;
+    text-decoration: underline;
+    cursor: default;
+}
+
+/* Desktop Design (above 768px) */
+@media (min-width: 769px) {
+    .footer-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-logo {
+        grid-column: 1 / 2;
+    }
+
+    .footer-links {
+        grid-column: 2 / 5;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .links-home {
+        grid-column: 1 / 2;
+    }
+
+    .links-book {
+        grid-column: 2 / 3;
+    }
+
+    .links-contact {
+        grid-column: 3 / 4;
+    }
+}
+
+/* Mobile and Tablet Design (below 768px) */
+@media (max-width: 768px) {
+    .footer-container {
+        text-align: center;
+    }
+
+    .footer-logo {
+        margin: 0 auto 20px auto;
+    }
+
+    .footer-logo img {
+        width: 180px;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+
+    .links-home {
+        order: 1;
+    }
+
+    .links-book {
+        order: 2;
+    }
+
+    .links-contact {
+        order: 3;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 0 10px;
+    }
+
+    .footer-logo img {
+        width: 170px;
+    }
+
+    .footer-links ul li a {
+        font-size: 14px;
+        /* Increased from 12px */
+    }
+
+    .footer-social-icons i {
+        font-size: 18px;
+        /* Increased from 16px */
+    }
+}
+
+@media (max-width: 320px) {
+    .footer-logo img {
+        width: 150px;
+    }
+
+    .footer-links ul li a {
+        font-size: 12px;
+        /* Increased from 10px */
+    }
+
+    .footer-social-icons i {
+        font-size: 16px;
+        /* Increased from 14px */
+        margin-right: 5px;
+    }
+
+    .links-contact .address {
+        font-size: 12px;
+        /* Increased from 10px */
+    }
+
+    .links-contact li {
+        font-size: 12px;
+        /* Increased from 10px */
     }
 }

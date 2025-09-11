@@ -33,6 +33,26 @@ export class CommonNavbarComponent {
     this.isMenuOpen = false;
   }
 
+  scrollToSection(sectionId: string) {
+    if (this.router.url !== '/home' && this.router.url !== '/') {
+      this.router.navigate(['/home']).then(() => {
+        setTimeout(() => this.scrollToElement(sectionId), 100);
+      });
+    } else {
+      this.scrollToElement(sectionId);
+    }
+    this.isMenuOpen = false;
+  }
+
+  private scrollToElement(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = 80;
+      const elementPosition = element.offsetTop - navbarHeight;
+      window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+    }
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
     const target = event.target as HTMLElement;
@@ -54,6 +74,17 @@ export class CommonNavbarComponent {
 
   switchLanguage(lang: string) {
     this.languageService.setLanguage(lang);
+    this.isMenuOpen = false;
+  }
+
+  navigateHome() {
+    if (this.router.url !== '/home' && this.router.url !== '/') {
+      this.router.navigate(['/home']).then(() => {
+        setTimeout(() => this.scrollToElement('hero'), 100);
+      });
+    } else {
+      this.scrollToElement('hero');
+    }
     this.isMenuOpen = false;
   }
 }

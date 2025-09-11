@@ -2,7 +2,7 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="home-section" aria-label="Hero Section">
+    <section id="hero" class="home-section" aria-label="Hero Section">
         <!-- Background video -->
         <video autoplay muted loop playsinline preload="auto" class="home-section-video">
             <source src="assets/images/home-video.mp4" type="video/mp4">
@@ -53,7 +53,7 @@
 
 
     <!-- About Us Section -->
-    <section class="aboutus-container mt-3 parallax-section" aria-label="About Codsair Technologies">
+    <section id="about" class="aboutus-container mt-3 parallax-section" aria-label="About Codsair Technologies">
         <div class="aboutus-text parallax-text" data-aos="fade-right" data-aos-duration="1000">
             <h2 data-aos="fade-down" data-aos-delay="200">{{ languageService.translate('about.title') }}</h2>
             <p data-aos="fade-up" data-aos-delay="400">
@@ -99,7 +99,7 @@
 
 
     <!-- our services  -->
-    <div class="sp-section">
+    <div id="services" class="sp-section">
         <h2 class="sp-title">{{ languageService.translate('expertise.title') }}</h2>
         <p class="sp-subtitle">
             {{ languageService.translate('expertise.subtitle') }}
@@ -177,7 +177,9 @@
     </section>
 
 
-    <app-products></app-products>
+    <div id="products">
+        <app-products></app-products>
+    </div>
 
     <app-home-showcase-component></app-home-showcase-component>
 

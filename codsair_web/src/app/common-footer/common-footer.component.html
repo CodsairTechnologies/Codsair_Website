@@ -42,39 +42,34 @@
     </div>
 </footer> -->
 
-<footer class="footer">
+<footer class="footer" id="contact">
     <div class="footer-container">
         <div class="footer-logo">
             <img src="assets/images/Group 207.png" alt="Codsair Technologies Logo" />
         </div>
         <div class="footer-links">
             <ul class="links-home">
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Services</li>
-                <li>Portfolio</li>
+                <li (click)="scrollToSection('home')">{{ languageService.translate('home') }}</li>
+                <li (click)="scrollToSection('about')">{{ languageService.translate('about') }}</li>
+                <!-- <li (click)="scrollToSection('contact')">{{ languageService.translate('contact') }}</li> -->
+                <li (click)="scrollToSection('services')">{{ languageService.translate('footer.services') }}</li>
+                <li (click)="scrollToSection('products')">{{ languageService.translate('products') }}</li>
+
             </ul>
             <ul class="links-book">
-                <li>App Development</li>
-                <li>Web Development</li>
-                <li>Digital Marketing</li>
-                <li>UI/UX Design</li>
-                <li>IOT</li>
-                <li>Graphic Designer</li>
+                <li (click)="scrollToSection('services')">{{ languageService.translate('footer.appdev') }}</li>
+                <li (click)="scrollToSection('services')">{{ languageService.translate('footer.webdev') }}</li>
+                <li (click)="scrollToSection('services')">{{ languageService.translate('footer.digitalmarketing') }}</li>
+                <li (click)="scrollToSection('services')">{{ languageService.translate('footer.uiux') }}</li>
+                <!-- <li (click)="scrollToSection('services')">{{ languageService.translate('footer.iot') }}</li> -->
+                <li (click)="scrollToSection('services')">{{ languageService.translate('footer.graphic') }}</li>
             </ul>
             <ul class="links-contact">
                 <li class="address">
-                    Address: No 1716, 7th FLOOR,<br>
-                    HILITE BUSINESS PARK<br>
-                    Palazhi, Kozhikode, Kerala<br>
-                    673014
+                    {{ languageService.translate('footer.address') }}
                 </li>
-                <li>Email: info&#64;codsairtechnologies.com ,<br>
-                    infocodsair&#64;gmail.com
-                </li>
-                <li>Phone: +91 9497428487 ,<br>
-                    +91 8848027097</li>
+                <li>{{ languageService.translate('footer.email') }}</li>
+                <li>{{ languageService.translate('footer.phone') }}</li>
             </ul>
         </div>
     </div>

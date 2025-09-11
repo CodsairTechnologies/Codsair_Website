@@ -31,38 +31,32 @@
 </section> -->
 
 
-<!-- carousel section -->
-<div class="card">
-    <!-- Heading -->
-    <h2 class="carousel-heading">Real Experiences</h2>
+<!-- Testimonial Section -->
+<section class="testimonial-box" aria-label="Client Testimonials">
+    <h2 class="testimonial-heading">{{ languageService.translate('testimonial.title') || 'Real Experiences' }}</h2>
 
-    <p-carousel [value]="testimonials" [numVisible]="3" [numScroll]="1" [circular]="true"
-        [responsiveOptions]="responsiveOptions" autoplayInterval="3000">
+    <div class="carousel-controls" role="group" aria-label="Testimonial navigation">
+        <button class="carousel-btn prev" (click)="scrollPrev()" type="button" aria-label="Previous testimonial">&#10094;</button>
+        <button class="carousel-btn next" (click)="scrollNext()" type="button" aria-label="Next testimonial">&#10095;</button>
+    </div>
 
-        <ng-template pTemplate="header">
-            <div class="carousel-header">
-                <button pButton icon="pi pi-chevron-left" class="p-button-text p-button-sm" (click)="prev()"></button>
-                <button pButton icon="pi pi-chevron-right" class="p-button-text p-button-sm" (click)="next()"></button>
-            </div>
-        </ng-template>
-
-        <ng-template let-testimonial pTemplate="item">
-            <div class="testimonial-card">
-                <img [src]="testimonial.image" [alt]="testimonial.name" class="testimonial-image" />
-                <div class="testimonial-content">
-                    <h3 class="testimonial-name">{{ testimonial.name }}</h3>
-                    <div class="testimonial-rating">
-                        <ng-container *ngFor="let star of getStars(testimonial.rating); let i = index">
-                            <i class="pi pi-star" style="color: gold;" *ngIf="star"></i>
-                            <i class="pi pi-star-o" style="color: gold;" *ngIf="!star"></i>
-                        </ng-container>
+    <div class="testimonial-carousel" role="region" aria-label="Customer testimonials carousel">
+        <div #carouselContainer class="testimonial-container">
+            <article class="testimonial-card" *ngFor="let item of testimonials; let i = index" 
+                [attr.aria-label]="'Testimonial from ' + (languageService.translate(item.nameKey) || item.name)">
+                <img [src]="item.image" [alt]="(languageService.translate(item.nameKey) || item.name) + ' - Customer testimonial'" 
+                    class="testimonial-img" loading="lazy" width="80" height="80" />
+                <div class="testimonial-card-content">
+                    <p class="testimonial-text">{{ languageService.translate(item.feedbackKey) || item.feedback }}</p>
+                    <h3 class="testimonial-name">{{ languageService.translate(item.nameKey) || item.name }}</h3>
+                    <div class="stars" [attr.aria-label]="item.rating + ' out of 5 stars'" role="img">
+                        <ng-container *ngFor="let star of [].constructor(item.rating)">★</ng-container>
                     </div>
-                    <p class="testimonial-text">{{ testimonial.feedback }}</p>
                 </div>
-            </div>
-        </ng-template>
-    </p-carousel>
-</div>
+            </article>
+        </div>
+    </div>
+</section>
 
 
 

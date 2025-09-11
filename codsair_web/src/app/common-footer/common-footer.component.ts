@@ -10,4 +10,11 @@ import { LanguageService } from '../services/language.service';
 })
 export class CommonFooterComponent {
   constructor(public languageService: LanguageService) {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }

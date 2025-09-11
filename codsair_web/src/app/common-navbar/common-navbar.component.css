@@ -68,6 +68,7 @@
     font-weight: 600;
     transition: color 0.3s ease;
     border: none;
+    outline: none;
 
 }
 
@@ -229,8 +230,7 @@
 /* Accessibility */
 .nav-links a:focus,
 .hamburger:focus {
-    outline: 2px solid #00bfff;
-    outline-offset: 2px;
+    outline: none;
 }
 
 

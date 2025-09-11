@@ -19,15 +19,15 @@
     </li>
 
     <li>
-      <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      <a href="javascript:void(0)" (click)="navigateHome()">
         {{ languageService.translate('home') }}
       </a>
     </li>
-    <li><a routerLink="/services" routerLinkActive="active-link">{{ languageService.translate('services') }}</a></li>
-    <li><a routerLink="/about" routerLinkActive="active-link">{{ languageService.translate('about') }}</a></li>
-    <li><a routerLink="/products" routerLinkActive="active-link">{{ languageService.translate('products') }}</a></li>
+    <li><a href="javascript:void(0)" (click)="scrollToSection('services')">{{ languageService.translate('services') }}</a></li>
+    <li><a href="javascript:void(0)" (click)="scrollToSection('about')">{{ languageService.translate('about') }}</a></li>
+    <li><a href="javascript:void(0)" (click)="scrollToSection('products')">{{ languageService.translate('products') }}</a></li>
     <li>
-      <a routerLink="/contact" routerLinkActive="active-link" class="contact-link">{{ languageService.translate('contact') }}</a>
+      <a href="javascript:void(0)" (click)="scrollToSection('contact')" class="contact-link">{{ languageService.translate('contact') }}</a>
     </li>
 
   </ul>

@@ -83,8 +83,11 @@
 }
 
 .products-section .product-info h3 {
-  font-size: 1.3rem;
+  font-size: 1.3rem !important;
   margin: 0;
+  color: #fff !important;
+  font-weight: 600;
+  font-family: "Roboto Slab", serif;
 }
 
 .products-section .product-info .desc {

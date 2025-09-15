@@ -360,6 +360,13 @@
     color: #666;
     line-height: 1.6;
     font-family: "Roboto";
+    text-align: justify; /* align text on both sides */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    font-family: "Roboto"; */
 }
 
 /* Responsive Breakpoints */

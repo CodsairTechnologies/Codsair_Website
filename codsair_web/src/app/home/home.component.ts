@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       ],
       "sameAs": [
         "https://facebook.com/codsairtechnologies",
-        "https://instagram.com/codsairtechnologies",
+        "https://instagram.com/codsair_technologies/",
         "https://linkedin.com/company/codsair-technologies",
         "https://twitter.com/codsairtech"
       ],
@@ -169,16 +169,6 @@ cards = [
     descKey: 'expertise.digital.desc'
   },
   {
-    icon: 'bi bi-wifi',
-    titleKey: 'expertise.iot.title',
-    descKey: 'expertise.iot.desc'
-  },
-  {
-    icon: 'bi bi-robot',
-    titleKey: 'expertise.robotics.title',
-    descKey: 'expertise.robotics.desc'
-  },
-  {
     icon: 'bi bi-ui-checks',
     titleKey: 'expertise.uiux.title',
     descKey: 'expertise.uiux.desc'
@@ -193,11 +183,21 @@ cards = [
     titleKey: 'expertise.advertisement.title',
     descKey: 'expertise.advertisement.desc'
   },
-  {
-    icon: 'bi bi-mortarboard',
-    titleKey: 'expertise.academic.title',
-    descKey: 'expertise.academic.desc'
-  }
+  // {
+  //   icon: 'bi bi-wifi',
+  //   titleKey: 'expertise.iot.title',
+  //   descKey: 'expertise.iot.desc'
+  // },
+  // {
+  //   icon: 'bi bi-robot',
+  //   titleKey: 'expertise.robotics.title',
+  //   descKey: 'expertise.robotics.desc'
+  // },
+  // {
+  //   icon: 'bi bi-mortarboard',
+  //   titleKey: 'expertise.academic.title',
+  //   descKey: 'expertise.academic.desc'
+  // }
 ];
 
 

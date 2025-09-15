@@ -19,40 +19,44 @@ export class HomeShowcaseComponentComponent {
       country: 'India',
       countryKey: 'showcase.india',
       flag: 'assets/images/india.jpg',
-      phone: '+91 836 013 9952',
-      email: 'info@codsair.com',
+      phone: '+91 9497428487',
+      email: 'info@codsairtechnologies.com',
+      address:'No 1716, 7th FLOOR, HILITE BUSINESS PARK, Palazhi, Kozhikode, Kerala 673014',
       top: '59%', left: '65%'
     },
     {
       country: 'UAE',
       countryKey: 'showcase.uae',
       flag: 'assets/images/uae.jpg',
-      phone: '+971 50 520 9952',
-      email: 'sales@codsair.ae',
-      top: '54%', left: '58.5%'
+      phone: '+971 502419970',
+      email: 'info@codsairtechnologies.com',
+      address:'Office 540, Al Quoz Industrial Area 2, Dubai, UAE.',
+      top: '54%', left: '59%'
     },
     {
-      country: 'Canada',
+      country: 'UK',
       countryKey: 'showcase.canada',
-      flag: 'assets/images/canada.jpg',
-      phone: '+1 647 889-2374',
-      email: 'harleen@codsair.com',
-      top: '34%', left: '16.5%'
+      flag: 'assets/images/ukflag.png',
+      phone: '+44 7769632504 ',
+      email: 'info@codsairtechnologies.com',
+      address : 'Unit 1, 10 stonefield way, Ruislip HA4 0JS',
+      top: '37%', left: '46%'
     },
     {
-      country: 'Germany',
+      country: 'KSA',
       countryKey: 'showcase.germany',
-      flag: 'assets/images/germany.jpg',
-      phone: '+49 173 3039344',
-      email: 'jennifer@codsair.com',
-      top: '40%', left: '50%'
+      flag: 'assets/images/saudiflag.png',
+      phone: '+966 596979106',
+      email: 'info@codsairtechnologies.com',
+      address :'6228, Salahuddin Al Ayyoubi Street, Al Malaz, Riyadh, Saudi Arabia',
+      top: '53%', left: '56%'
     }
   ];
 
   stats = [
-    { value: 120, currentValue: 0, labelKey: 'showcase.projects' },
-    { value: 75, currentValue: 0, labelKey: 'showcase.clients', suffix: '+' },
-    { value: 5, currentValue: 0, labelKey: 'showcase.rating', icon: 'bi bi-star-fill' },
+    { value: 120, currentValue: 0, labelKey: 'showcase.projects', suffix: '+' },
+    { value: 100, currentValue: 0, labelKey: 'showcase.clients', suffix: '+' },
+    { value: 5, currentValue: 0, labelKey: 'showcase.years',suffix: '+'  },
     { value: 5, currentValue: 0, labelKey: 'showcase.clientrating', suffix: '/5' }
   ];
 

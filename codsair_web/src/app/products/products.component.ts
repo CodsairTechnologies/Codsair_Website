@@ -64,19 +64,19 @@ export class ProductsComponent {
   activetechTab: string = 'web';
 
   webTechnologies = [
-    { nameKey: 'tech.react', img: 'assets/images/technology8.webp', descKey: 'tech.react.desc' },
-    { nameKey: 'tech.node', img: 'assets/images/technology9.webp', descKey: 'tech.node.desc' },
-    { nameKey: 'tech.angular', img: 'assets/images/technology7.webp', descKey: 'tech.angular.desc' },
-    { nameKey: 'tech.python', img: 'assets/images/technology6.webp', descKey: 'tech.python.desc' },
+    { nameKey: 'tech.react', img: 'assets/images/React.png', descKey: 'tech.react.desc' },
+    { nameKey: 'tech.node', img: 'assets/images/nodejs.png', descKey: 'tech.node.desc' },
+    { nameKey: 'tech.angular', img: 'assets/images/Angular.webp', descKey: 'tech.angular.desc' },
+    { nameKey: 'tech.python', img: 'assets/images/python.webp', descKey: 'tech.python.desc' },
     { nameKey: 'tech.php', img: 'assets/images/technology10.webp', descKey: 'tech.php.desc' }
   ];
 
   mobileTechnologies = [
-    { nameKey: 'tech.flutter', img: 'assets/images/technology5.webp', descKey: 'tech.flutter.desc' },
-    { nameKey: 'tech.reactnative', img: 'assets/images/technology11.webp', descKey: 'tech.reactnative.desc' },
-    { nameKey: 'tech.swift', img: 'assets/images/technology8.webp', descKey: 'tech.swift.desc' },
-    { nameKey: 'tech.kotlin', img: 'assets/images/technology1.webp', descKey: 'tech.kotlin.desc' },
-    { nameKey: 'tech.ionic', img: 'assets/images/technology2.webp', descKey: 'tech.ionic.desc' }
+    { nameKey: 'tech.flutter', img: 'assets/images/flutter.png', descKey: 'tech.flutter.desc' },
+    { nameKey: 'tech.reactnative', img: 'assets/images/React.png', descKey: 'tech.reactnative.desc' },
+    { nameKey: 'tech.swift', img: 'assets/images/swift.png', descKey: 'tech.swift.desc' },
+    { nameKey: 'tech.kotlin', img: 'assets/images/kotlin.png', descKey: 'tech.kotlin.desc' },
+    { nameKey: 'tech.ionic', img: 'assets/images/ionic.png', descKey: 'tech.ionic.desc' }
   ];
 
 

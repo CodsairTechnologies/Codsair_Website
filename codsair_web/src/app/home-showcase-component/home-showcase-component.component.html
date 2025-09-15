@@ -20,12 +20,16 @@
           <img [src]="loc.flag" [alt]="languageService.translate(loc.countryKey)">
           {{ languageService.translate(loc.countryKey) }}
         </h4>
+         <p><i class="bi bi-geo-alt"></i>
+          <a [href]="">{{ loc.address }}</a>
+        </p>
         <p><i class="bi bi-telephone"></i>
           <a [href]="'tel:' + loc.phone">{{ loc.phone }}</a>
         </p>
         <p *ngIf="loc.email"><i class="bi bi-envelope"></i>
           <a [href]="'mailto:' + loc.email">{{ loc.email }}</a>
         </p>
+       
       </div>
     </div>
   </div>
@@ -41,7 +45,7 @@
     <div class="stat-box" *ngFor="let stat of stats">
       <div class="stat-value">
         <span>{{ stat.currentValue }}{{ stat.suffix || '' }}</span>
-        <i *ngIf="stat.icon" [class]="stat.icon"></i>
+        <!-- <i *ngIf="stat.icon" [class]="stat.icon"></i> -->
       </div>
       <div class="stat-label">{{ languageService.translate(stat.labelKey) }}</div>
     </div>

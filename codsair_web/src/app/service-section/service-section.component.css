@@ -1,0 +1,377 @@
+/* banner-section */
+.banner-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height */
+    overflow: hidden;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    /* Distance from the left side on larger screens */
+    transform: translateY(-50%);
+    max-width: 600px;
+    color: white;
+    text-align: left;
+    padding: 0 20px;
+    /* padding for smaller screens */
+}
+
+.banner-content h1 {
+    font-size: 43px !important;
+    margin-bottom: 20px !important;
+    font-family: 'Roboto Slab', serif !important;
+    font-weight: 600 !important;
+    color: white !important;
+}
+
+.banner-content p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    color: white;
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .banner-content {
+        left: 30px;
+    }
+
+    .banner-content h1 {
+        font-size: 36px;
+    }
+
+    .banner-content p {
+        font-size: 16px;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .banner-content {
+        left: 20px;
+    }
+
+    .banner-content h1 {
+        font-size: 28px;
+    }
+
+    .banner-content p {
+        font-size: 14px;
+    }
+}
+
+/* Small mobile view */
+@media (max-width: 480px) {
+    .banner-content {
+        left: 15px;
+    }
+
+    .banner-content h1 {
+        font-size: 22px;
+    }
+
+    .banner-content p {
+        font-size: 13px;
+    }
+}
+/* ================= banner-section ends================ */
+
+/* ================= solution-section================ */
+.solution-section {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    /* Increased gap between columns */
+    align-items: center;
+}
+
+.col {
+    flex: 1;
+    min-width: 300px;
+}
+
+.left-col h2 {
+    font-size: 43px !important;
+    font-weight: 400 !important;
+    font-family: Roboto Slab !important;
+    color: #000 !important;
+    margin: 0;
+    line-height: 72px;
+}
+
+.right-col p {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 13px;
+    color: #333;
+    line-height: 27px;
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .row {
+        gap: 30px;
+    }
+
+    .left-col h2 {
+        font-size: 28px;
+    }
+
+    .right-col p {
+        font-size: 15px;
+    }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .left-col h2 {
+        font-size: 24px;
+    }
+
+    .right-col p {
+        font-size: 14px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .left-col h2 {
+        font-size: 20px;
+    }
+
+    .right-col p {
+        font-size: 13px;
+    }
+}
+/* ================= solution-section-ends================ */
+
+/* ================= card-section================ */
+.card-section {
+    padding: 60px 10px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card-col {
+    flex: 1;
+    min-width: 300px;
+    max-width: 33.33%;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px 8px 8px 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: Roboto Slab;
+    color: #000000;
+}
+
+.card .description {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 15px;
+    color: #333;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    /* Show only 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .read-more {
+    margin-top: 10px;
+    font-weight: 500;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.card .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .card-col {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-col {
+        max-width: 100%;
+    }
+}
+
+.read-more {
+    background: none;
+    border: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+}
+/* ================= card-section-ends================ */
+
+/* Modal backdrop */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    /* High enough to overlay the navbar */
+    overflow-y: auto;
+    /* Enable scrolling if needed */
+    padding: 20px;
+    /* Prevent modal from touching viewport edges */
+}
+
+/* Modal box */
+.modal {
+    background: #fff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    /* Limit height to 90% of viewport */
+    overflow-y: auto;
+    /* Scroll inside modal when content overflows */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+    z-index: 100000;
+    /* Higher than backdrop and navbar */
+    padding: 20px;
+}
+
+/* Modal header styling */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Modal body styling */
+.modal-body {
+    margin-top: 20px;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.modal-body h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.modal-body p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.modal-body ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.modal-body ul li {
+    font-size: 17px; /* increase from 16px */
+    line-height: 1.6; /* keep readability */
+    margin-bottom: 6px; /* slight spacing between points */
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

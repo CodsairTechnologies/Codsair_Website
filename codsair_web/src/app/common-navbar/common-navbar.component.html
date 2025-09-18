@@ -23,7 +23,8 @@
         {{ languageService.translate('home') }}
       </a>
     </li>
-    <li><a href="javascript:void(0)" (click)="scrollToSection('services')">{{ languageService.translate('services') }}</a></li>
+    <!-- <li><a href="javascript:void(0)" (click)="scrollToSection('services')">{{ languageService.translate('services') }}</a></li> -->
+         <li><a [routerLink]="['/service-section']">{{ languageService.translate('services') }}</a></li>
     <li><a href="javascript:void(0)" (click)="scrollToSection('about')">{{ languageService.translate('about') }}</a></li>
     <li><a href="javascript:void(0)" (click)="scrollToSection('products')">{{ languageService.translate('products') }}</a></li>
     <li>

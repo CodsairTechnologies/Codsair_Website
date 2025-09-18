@@ -1,0 +1,79 @@
+<app-common-navbar></app-common-navbar>
+
+<!-- banner section -->
+<section class="banner-section">
+    <img src="assets/images/Rectangle 717.png" alt="Office environment" class="banner-image" />
+    <div class="banner-content">
+        <h1>Our Products, Your Solutions</h1>
+        <p>
+            Explore Codsair’s innovative digital products designed to simplify business processes, enhance efficiency,
+            and drive growth.
+        </p>
+    </div>
+</section>
+<!-- banner section ends -->
+
+<!-- solution section -->
+<section class="solution-section">
+    <div class="container">
+        <div class="row">
+            <div class="col left-col">
+                <h2>Transforming Ideas into Digital Solutions</h2>
+            </div>
+            <div class="col right-col">
+                <p> At Codsair Technology, we design and deliver powerful digital solutions that cater to the evolving
+                    needs of businesses. Each product in our portfolio is built to streamline processes, enhance
+                    productivity, and drive measurable growth. Explore our range of innovative tools and find the right
+                    solution that aligns with your business goals. </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- solution section ends -->
+
+
+<!-- card section -->
+<section class="card-section">
+    <div class="container">
+        <div class="row">
+            <div class="col card-col" *ngFor="let card of cards">
+                <div class="card">
+                    <img [src]="card.image" alt="{{ card.title }}" class="card-image" />
+                    <h3>{{ card.title }}</h3>
+                    <p class="description">{{ card.description }}</p>
+                    <button class="read-more" (click)="openModal(card)">Show More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- card section ends -->
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="selectedCard">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>{{ selectedCard.title }}</h2>
+            <button class="close-button" (click)="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <img [src]="selectedCard.image" alt="{{ selectedCard.title }}" class="modal-image" />
+            <h3>About</h3>
+            <p>{{ selectedCard.description }}</p>
+
+            <h3>Key Features</h3>
+            <div *ngFor="let group of selectedCard.keyFacilities">
+                <h4>{{ group.heading }}</h4>
+                <ul>
+                    <li *ngFor="let point of group.points">{{ point }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal ends -->
+
+
+
+<app-common-footer></app-common-footer>

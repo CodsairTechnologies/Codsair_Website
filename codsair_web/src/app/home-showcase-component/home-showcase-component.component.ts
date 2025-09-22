@@ -21,7 +21,7 @@ export class HomeShowcaseComponentComponent {
       flag: 'assets/images/india.jpg',
       phone: '+91 9497428487',
       email: 'info@codsairtechnologies.com',
-      address:'No 1716, 7th FLOOR, HILITE BUSINESS PARK, Palazhi, Kozhikode, Kerala 673014',
+      address:'No 1716, 7th floor, Hilite Business Park, Palazhi, Kozhikode, Kerala 673014',
       top: '59%', left: '65%'
     },
     {

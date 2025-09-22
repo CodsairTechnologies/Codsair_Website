@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonNavbarComponent } from '../common-navbar/common-navbar.component';
 import { CommonFooterComponent } from '../common-footer/common-footer.component';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-section',
@@ -13,6 +14,8 @@ import { CommonModule } from '@angular/common';
 export class ServiceSectionComponent {
   selectedCard: any = null;
 
+  constructor(private router: Router) { }
+
   openModal(card: any) {
     this.selectedCard = card;
   }
@@ -23,7 +26,7 @@ export class ServiceSectionComponent {
 
   cards = [
     {
-      id: 1,
+      id: 'codsbuy',
       title: 'CodsBUY',
       description: ` In today’s digital-first world, having an online presence is no longer optional — it’s essential. 
 CodsBuy is built to simplify online selling, providing a secure, scalable, and customizable 
@@ -81,7 +84,7 @@ all-in-one solution for businesses ready to take their sales online.`,
     },
 
     {
-      id: 2,
+      id: 'codscare',
       title: 'CodsCARE',
       description: `Managing a clinic or hospital goes beyond patient care — it’s about ensuring smooth 
 operations, secure data, and efficient communication. CodsCare is built to meet 
@@ -141,7 +144,7 @@ managed — it’s transformed. `,
 
     },
     {
-      id: 3,
+      id: 'codsevent',
       title: 'CodsEvent',
       description: `CodsEvent is an advanced event management software built to handle everything 
 from corporate expos to private functions. With tools for stall management, 
@@ -201,7 +204,7 @@ time tracking. .`,
 
     },
     {
-      id: 4,
+      id: 'codshms',
       title: 'CodsHMS',
       description: ` Managing a hostel requires balancing multiple operations — from student admissions and 
 room allocations to kitchen purchases and stock management. CodsHMS brings everything 
@@ -234,7 +237,7 @@ built to save time, reduce errors, and improve transparency.`,
 
     },
     {
-      id: 5,
+      id: 'codsOptima',
       title: 'CodsOptima',
       description: `Managing production is complex — balancing stock, orders, purchases, and delivery while 
 ensuring smooth operations. CodsOptima centralizes it all into one platform, helping 
@@ -300,7 +303,7 @@ CodsOptima ensures everyone in the chain is connected and informed.`,
 
     },
     {
-      id: 6,
+      id: 'codspoint',
       title: 'CodsPOINT',
       description: `Every business needs a simple and reliable way to manage sales. CodsPoint is designed to 
 make billing quick, accurate, and hassle-free.
@@ -350,7 +353,7 @@ easier than ever.`,
 
     },
     {
-      id: 7,
+      id: 'codspropay',
       title: 'CodsProPay',
       description: `Managing payroll doesn’t need to be complex. CodsProPay is designed for modern 
 businesses to automate HR and payroll tasks with accuracy and ease. From attendance 
@@ -397,7 +400,7 @@ time, reduce errors, and keep your team motivated with smooth salary management.
 
     },
     {
-      id: 8,
+      id: 'codsRMS',
       title: 'CodsRMS',
       description: `Running a restaurant is more than just serving food — it’s about balancing 
 operations, managing staff, monitoring inventory, and keeping customers happy. 
@@ -455,7 +458,7 @@ CodsRMS gives you complete visibility and control over your restaurant operation
 
     },
     {
-      id: 9,
+      id: 'codsAudit',
       title: 'CodsAudit',
       description: `CodsAudit simplifies stock auditing with barcode scanning, real-time tracking, and 
 smart stock management—all from your mobile app. 
@@ -511,7 +514,7 @@ real-time visibility into your stock flow. `,
 
     },
     {
-      id: 10,
+      id: 'codsbill',
       title: 'CodsBill',
       description: ` CodBill is the all-in-one billing solution for modern businesses. Whether you run a small 
 shop, supermarket, restaurant, or wholesale store, CodBill helps you manage billing, 
@@ -575,7 +578,7 @@ integration, you can generate bills instantly, making it fast, reliable, and use
 
     },
     {
-      id: 11,
+      id: 'codsbuylite',
       title: 'CodsBuy Mobile App',
       description: ` CodsBuy Mobile App is designed for convenient buying and selling on the go. It offers a 
 smooth shopping experience for customers and easy product management for sellers. From 
@@ -628,7 +631,7 @@ browsing items to completing sales, everything is just a tap away.`,
 
     },
     {
-      id: 12,
+      id: 'codslabel',
       title: 'CodsLabel',
       description: `CodsLabel is a complete label printing and food management solution that helps 
 businesses manage their food products effectively. It automatically calculates the 
@@ -685,7 +688,7 @@ brings clarity, speed, and automation to your labeling process.`,
 
     },
     {
-      id: 13,
+      id: 'codspropaylite',
       title: 'CodsProPay Lite',
       description: `Managing employees doesn’t have to be complicated. CodsProPay (Lite) brings the 
 essential HR and employee features into a mobile-friendly, easy-to-use platform. From 
@@ -730,4 +733,7 @@ without the complexity of a full payroll suite.`,
 
   ];
 
+  goToProduct(id: string) {
+    this.router.navigate(['/product', id]);
+  }
 }

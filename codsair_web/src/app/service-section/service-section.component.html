@@ -41,7 +41,7 @@
                     <img [src]="card.image" alt="{{ card.title }}" class="card-image" />
                     <h3>{{ card.title }}</h3>
                     <p class="description">{{ card.description }}</p>
-                    <button class="read-more" (click)="openModal(card)">Show More</button>
+                    <button class="read-more" (click)="goToProduct(card.id)">Show More</button>
                 </div>
             </div>
         </div>

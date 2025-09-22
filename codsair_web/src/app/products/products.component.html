@@ -17,7 +17,7 @@
 
         <!-- Mobile Projects -->
         <div class="products-grid" *ngIf="activeTab === 'mobile'">
-            <article class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up">
+            <article class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up" (click)="goToProduct(project.id)">
                 <img [src]="project.img" [alt]="languageService.translate(project.titleKey)">
                 <div class="overlay"></div>
                 <div class="product-info">
@@ -30,7 +30,7 @@
 
         <!-- Web Projects -->
         <div class="products-grid" *ngIf="activeTab === 'web'">
-            <article class="product-card" *ngFor="let project of webProjects" data-aos="fade-up">
+            <article class="product-card" *ngFor="let project of webProjects" data-aos="fade-up" (click)="goToProduct(project.id)">
                 <img [src]="project.img" [alt]="languageService.translate(project.titleKey)" loading="lazy">
                 <div class="overlay"></div>
                 <div class="product-info">

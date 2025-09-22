@@ -1,0 +1,324 @@
+<app-common-navbar></app-common-navbar>
+
+<!-- Home Page -->
+<section class="product-hero">
+  <div class="product-bg"></div>
+
+  <div class="container">
+    <div class="product-text">
+      <h1>{{ productData?.hero.title }}</h1>
+      <p>{{ productData?.hero.subtitle }}</p>
+    </div>
+    <!-- <div class="product-text">
+      <h1>Simplify Payroll,<br>Empower Your<br>Workforce</h1>
+      <p>
+        CodsProPay is an advanced payroll management software that automates
+        salary processing, attendance tracking, and employee benefits. With
+        powerful integrations like biometrics, WiFi, face recognition, and
+        location-based attendance, CodsProPay is the one-stop solution for
+        smart workforce management.
+      </p>
+    </div> -->
+  </div>
+
+
+  <div class="product-laptop">
+    <!-- <img src="assets/images/main-sub.png" alt="CodsProPay Screenshot" /> -->
+    <img [src]="productData?.hero.image" [alt]="productData?.hero.title" />
+  </div>
+</section>
+<!-- End of Home Page -->
+
+<!-- About Section -->
+<section class="about-section">
+  <div class="about-container">
+
+    <div class="about-text">
+      <h2>{{ productData?.about.title }}</h2>
+      <p *ngFor="let para of productData?.about.text">{{ para }}</p>
+    </div>
+    <!-- <div class="about-text">
+      <h2>About CodsProPay</h2>
+      <p>
+        Managing payroll doesn’t need to be complex. CodsProPay is designed for modern
+        businesses to automate HR and payroll tasks with accuracy and ease. From
+        attendance marking to salary slips, every step is seamless, secure, and transparent.
+      </p>
+      <p>
+        Whether you’re running a small business or a large enterprise, CodsProPay helps
+        you save time, reduce errors, and keep your team motivated with smooth salary
+        management.
+      </p>
+    </div> -->
+
+    <!-- Right Side (Cards) -->
+    <div class="about-features" *ngIf="productData?.about?.features">
+      <div class="feature-card" *ngFor="let f of productData?.about.features">
+        <span class="icon">{{ f.icon }}</span>
+        <span class="text">{{ f.text }}</span>
+      </div>
+    </div>
+
+    <!-- <div class="about-features">
+      <div class="feature-card">
+        <span class="icon">🔍</span>
+        <span class="text">Real-Time analytics</span>
+      </div>
+      <div class="feature-card">
+        <span class="icon">💻</span>
+        <span class="text">Terms of any size</span>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🛡️</span>
+        <span class="text">Secure and Compliant</span>
+      </div>
+    </div> -->
+
+  </div>
+</section>
+<!-- End of About Section -->
+
+<!-- Feature Section -->
+<section class="key-features-section" *ngIf="productData.keyFeatures">
+  <h2 class="kf-title">Key Features</h2>
+  <div class="kf-container">
+    <div class="kf-card" *ngFor="let kf of productData?.keyFeatures" [ngClass]="kf.color">
+      <h3>{{ kf.title }}</h3>
+      <ul>
+        <li *ngFor="let p of kf.points">
+          <img [src]="p.icon" alt="icon" /> {{ p.text }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="key-features-section">
+  <h2 class="kf-title">Key Features</h2>
+  <div class="kf-container">
+    
+    <div class="kf-card peach">
+      <h3>Smart Attendance Integration</h3>
+      <ul>
+        <li><img src="assets/images/bio.svg" alt=""> Biometric machine integration</li>
+        <li><img src="icons/wifi.svg" alt=""> Wi-Fi based check-in system</li>
+        <li><img src="icons/face.svg" alt=""> Face recognition attendance</li>
+        <li><img src="icons/gps.svg" alt=""> GPS/location-based attendance (perfect for field employees)</li>
+      </ul>
+    </div>
+
+    <div class="kf-card blue">
+      <h3>Automated Payroll</h3>
+      <ul>
+        <li><img src="icons/salary.svg" alt=""> Auto salary calculation based on attendance and policies</li>
+        <li><img src="icons/loan.svg" alt=""> Advance salary & loan management (auto-deducted from payroll)</li>
+        <li><img src="icons/face.svg" alt=""> Face recognition attendance</li>
+        <li><img src="icons/gps.svg" alt=""> GPS/location-based attendance (perfect for field employees)</li>
+      </ul>
+    </div>
+
+    <div class="kf-card cyan">
+      <h3>Employee Self-Service</h3>
+      <ul>
+        <li><img src="icons/biometric.svg" alt=""> Biometric machine integration</li>
+        <li><img src="icons/wifi.svg" alt=""> Wi-Fi based check-in system</li>
+        <li><img src="icons/face.svg" alt=""> Face recognition attendance</li>
+        <li><img src="icons/gps.svg" alt=""> GPS/location-based attendance (perfect for field employees)</li>
+      </ul>
+    </div>
+
+    <div class="kf-card pink">
+      <h3>Smart Attendance Integration</h3>
+      <ul>
+        <li><img src="icons/biometric.svg" alt=""> Biometric machine integration</li>
+        <li><img src="icons/wifi.svg" alt=""> Wi-Fi based check-in system</li>
+        <li><img src="icons/face.svg" alt=""> Face recognition attendance</li>
+        <li><img src="icons/gps.svg" alt=""> GPS/location-based attendance (perfect for field employees)</li>
+      </ul>
+    </div>
+
+  </div>
+</section> -->
+<!-- End of Feature Section -->
+
+<!-- Choose Us Section -->
+<section class="why-choose-section" *ngIf="productData.whyChoose">
+  <h2 class="wcu-title">Why Choose Us</h2>
+  <div class="wcu-container">
+
+    <!-- Left Image -->
+    <div class="wcu-image">
+      <img src="assets/images/choose.png" alt="Why Choose Us">
+    </div>
+
+    <!-- Right Content -->
+    <div class="wcu-features">
+      <div class="wcu-item" *ngFor="let why of productData.whyChoose">
+        <div class="wcu-icon">
+          <img [src]="why.icon" [alt]="why.title">
+        </div>
+        <div class="wcu-text">
+          <h3>{{ why.title }}</h3>
+          <p>{{ why.desc }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="wcu-features">
+      <div class="wcu-item">
+        <div class="wcu-icon">
+          <img src="icons/payroll.svg" alt="">
+        </div>
+        <div class="wcu-text">
+          <h3>End-to-End Payroll Solution</h3>
+          <p>From attendance to payslip, all in one system</p>
+        </div>
+      </div>
+
+      <div class="wcu-item">
+        <div class="wcu-icon">
+          <img src="icons/mobile.svg" alt="">
+        </div>
+        <div class="wcu-text">
+          <h3>Mobile-First Design</h3>
+          <p>Easy access for employees on-the-go.</p>
+        </div>
+      </div>
+
+      <div class="wcu-item">
+        <div class="wcu-icon">
+          <img src="icons/accuracy.svg" alt="">
+        </div>
+        <div class="wcu-text">
+          <h3>Accuracy</h3>
+          <p>Eliminate manual errors in salary calculation.</p>
+        </div>
+      </div>
+
+      <div class="wcu-item">
+        <div class="wcu-icon">
+          <img src="icons/secure.svg" alt="">
+        </div>
+        <div class="wcu-text">
+          <h3>Secure & Reliable</h3>
+          <p>Encrypted data storage with role-based access.</p>
+        </div>
+      </div>
+
+      <div class="wcu-item">
+        <div class="wcu-icon">
+          <img src="icons/scalable.svg" alt="">
+        </div>
+        <div class="wcu-text">
+          <h3>Scalable</h3>
+          <p>Suitable for startups, SMEs, and enterprises.</p>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+</section>
+
+<!-- End of choose Section -->
+
+<!-- dashboard section-->
+<section class="dashboard-section">
+  <div class="dashboard-showcase">
+    <div class="dashboard-wrapper">
+      <img [src]="productData?.dashboardImage || 'assets/images/Desktop.png'" alt="Dashboard Preview" class="dashboard-img" />
+      <!-- <img src="assets/images/Desktop.png" alt="Dashboard Preview" class="dashboard-img" /> -->
+    </div>
+  </div>
+</section>
+<!-- End of dashboard section-->
+
+<!-- How it works section-->
+<section class="how-it-works-container" *ngIf="productData.howItWorks">
+  <h2>How It Works</h2>
+
+  <div class="steps-wrapper">
+    <ng-container *ngFor="let step of productData.howItWorks; let i = index">
+      
+      <!-- Step -->
+      <div class="step" [ngClass]="'step-' + (i+1)">
+        <div class="icon">
+          <img [src]="step.icon" [alt]="'Step ' + (i+1)" />
+        </div>
+        <p class="description">{{ step.desc }}</p>
+      </div>
+
+      <!-- Dotted Line (skip last step) -->
+      <img 
+        *ngIf="i < productData.howItWorks.length - 1" 
+        [src]="'assets/images/Line-' + (i+1) + '.svg'" 
+        [alt]="'Dotted Line ' + (i+1)" 
+        class="dotted-line"
+        [ngClass]="'line-' + (i+1) + '-svg'"
+      />
+
+    </ng-container>
+  </div>
+  <!-- <div class="steps-wrapper">
+    <div class="step step-1">
+      <div class="icon">
+        <img src="assets/images/work-1.svg" alt="Step 1 Icon">
+      </div>
+      <p class="description">Employees mark attendance via mobile app, biometric, or Wi-Fi.</p>
+    </div>
+
+    <img src="assets/images/Line-1.svg" alt="Dotted Line 1" class="dotted-line line-1-svg">
+
+    <div class="step step-2">
+      <div class="icon">
+        <img src="assets/images/work-2.svg" alt="Step 2 Icon">
+      </div>
+      <p class="description">CodsProPay automatically tracks attendance and calculates working hours.</p>
+    </div>
+
+    <img src="assets/images/Line-2.svg" alt="Dotted Line 2" class="dotted-line line-2-svg">
+
+    <div class="step step-3">
+      <div class="icon">
+        <img src="assets/images/work-3.svg" alt="Step 3 Icon">
+      </div>
+      <p class="description">Payroll is generated instantly with advance salary/loan/fine deductions.</p>
+    </div>
+
+    <img src="assets/images/Line-3.svg" alt="Dotted Line 3" class="dotted-line line-3-svg">
+
+    <div class="step step-4">
+      <div class="icon">
+        <img src="assets/images/work-4.svg" alt="Step 4 Icon">
+      </div>
+      <p class="description">Employees download salary slips directly from the app.</p>
+    </div>
+  </div> -->
+</section>
+<!-- End of works section-->
+
+<!-- demo section-->
+<section class="cta-section">
+  <div class="cta-container">
+    <div class="cta-image-wrapper">
+      <img src="assets/images/devices.png" alt="Devices showing website" class="cta-image">
+    </div>
+    <div class="cta-content">
+      <h3>{{ productData.cta.title }}</h3>
+      <p>{{ productData.cta.text }}</p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary">{{ productData.cta.buttons[0] }}</button>
+        <button class="btn btn-secondary">{{ productData.cta.buttons[1] }}</button>
+      </div>
+    </div>
+    <!-- <div class="cta-content">
+      <h3>Ready to transform your payroll process?</h3>
+      <p>Let CodsProPay handle the complexity while you focus on growing your business.</p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary">Request a Demo</button>
+        <button class="btn btn-secondary">Contact Us</button>
+      </div>
+    </div> -->
+  </div>
+</section>
+<!-- End of demo section-->
+
+<app-common-footer></app-common-footer>

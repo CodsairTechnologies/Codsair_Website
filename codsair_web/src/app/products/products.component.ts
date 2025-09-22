@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { LanguageService } from '../services/language.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -11,27 +12,31 @@ import { LanguageService } from '../services/language.service';
 })
 export class ProductsComponent {
 
-  constructor(public languageService: LanguageService) {}
+  constructor(public languageService: LanguageService, private router: Router) {}
 
   activeTab: string = 'mobile';
 
   mobileProjects = [
     {
+      id: 'codsAudit',
       titleKey: 'mobile.codspropay.title',
       descKey: 'mobile.codspropay.desc',
       img: 'assets/images/product1.jpg'
     },
     {
+      id: 'codslabel',
       titleKey: 'mobile.codscare.title',
       descKey: 'mobile.codscare.desc',
       img: 'assets/images/product2.jpg'
     },
     {
+      id: 'codsbill',
       titleKey: 'mobile.codsbill.title',
       descKey: 'mobile.codsbill.desc',
       img: 'assets/images/product5.jpg'
     },
     {
+      id: 'codsbuy',
       titleKey: 'mobile.codspoint.title',
       descKey: 'mobile.codspoint.desc',
       img: 'assets/images/product3.jpg'
@@ -40,21 +45,25 @@ export class ProductsComponent {
 
   webProjects = [
     {
+      id: 'codscare',
       titleKey: 'web.codscare.title',
       descKey: 'web.codscare.desc',
       img: 'assets/images/product3.jpg'
     },
     {
+      id: 'codspropay',
       titleKey: 'web.codspropay.title',
       descKey: 'web.codspropay.desc',
       img: 'assets/images/product4.jpg'
     },
     {
+      id: 'codspoint',
       titleKey: 'web.codscommerce.title',
       descKey: 'web.codscommerce.desc',
       img: 'assets/images/product5.jpg'
     },
     {
+      id: 'codsRMS',
       titleKey: 'web.codsadmin.title',
       descKey: 'web.codsadmin.desc',
       img: 'assets/images/product1.jpg'
@@ -83,5 +92,9 @@ export class ProductsComponent {
   switchTab(tab: string): void {
     this.activetechTab = tab;
   }
+
+  goToProduct(id: string) {
+  this.router.navigate(['/product', id]);
+}
 
 }

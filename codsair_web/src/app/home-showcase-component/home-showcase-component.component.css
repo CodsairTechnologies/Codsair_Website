@@ -84,6 +84,7 @@
 .details a {
   color: #555;
   text-decoration: none;
+  font-family: 'Roboto';
 }
 
 .details a:hover {

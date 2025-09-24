@@ -188,7 +188,7 @@ export class ServiceSectionComponent {
       id: 'codshms',
       titleKey: 'product.codshms.title',
       descriptionKey: 'product.codshms.desc',
-      image: 'assets/images/cods-rms.png',
+      image: 'assets/images/cods-hms.png',
       keyFacilities: [
         {
           heading: 'Public Website',

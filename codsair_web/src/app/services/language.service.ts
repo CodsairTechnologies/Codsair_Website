@@ -76,6 +76,8 @@ export class LanguageService {
       'products.webdev': 'Web Development',
       'products.mobiledev': 'Mobile Development',
       'products.clients': 'Brands That Trust Us',
+
+      'products.view': 'View All',
       
       // Mobile products
       'mobile.codspropay.title': 'CodsAudit',
@@ -892,6 +894,8 @@ export class LanguageService {
       'products.webdev': 'تطوير الويب',
       'products.mobiledev': 'تطوير تطبيقات الهاتف المحمول',
       'products.clients': 'العلامات التجارية التي تثق بنا',
+
+      'products.view': ' عرض الكل',
       
       // Mobile products
       'mobile.codspropay.title': 'كودز أوديت',

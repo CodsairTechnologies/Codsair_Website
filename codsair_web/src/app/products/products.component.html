@@ -12,12 +12,14 @@
             <span class="tab" [class.active]="activeTab === 'mobile'" (click)="activeTab = 'mobile'">
                 {{ languageService.translate('products.mobile') }}</span>
 
-            <span class="tab" [class.active]="activeTab === 'web'" (click)="activeTab = 'web'">{{ languageService.translate('products.web') }}</span>
+            <span class="tab" [class.active]="activeTab === 'web'" (click)="activeTab = 'web'">{{
+                languageService.translate('products.web') }}</span>
         </div>
 
         <!-- Mobile Projects -->
         <div class="products-grid" *ngIf="activeTab === 'mobile'">
-            <article class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up" (click)="goToProduct(project.id)">
+            <article class="product-card" *ngFor="let project of mobileProjects" data-aos="fade-up"
+                (click)="goToProduct(project.id)">
                 <img [src]="project.img" [alt]="languageService.translate(project.titleKey)">
                 <div class="overlay"></div>
                 <div class="product-info">
@@ -30,7 +32,8 @@
 
         <!-- Web Projects -->
         <div class="products-grid" *ngIf="activeTab === 'web'">
-            <article class="product-card" *ngFor="let project of webProjects" data-aos="fade-up" (click)="goToProduct(project.id)">
+            <article class="product-card" *ngFor="let project of webProjects" data-aos="fade-up"
+                (click)="goToProduct(project.id)">
                 <img [src]="project.img" [alt]="languageService.translate(project.titleKey)" loading="lazy">
                 <div class="overlay"></div>
                 <div class="product-info">
@@ -39,6 +42,12 @@
                     <a href="#"><span>&#8599;</span></a>
                 </div>
             </article>
+        </div>
+
+        <div class="view-all">
+            <a [routerLink]="['/service-section']">
+                {{ languageService.translate('products.view') }} →
+            </a>
         </div>
     </div>
 </section>
@@ -73,7 +82,8 @@
                             </div>
                             <div class="tech-content">
                                 <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                                <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
+                                <p [title]="languageService.translate(tech.descKey)">{{
+                                    languageService.translate(tech.descKey) }}</p>
 
                             </div>
                         </ng-container>
@@ -81,7 +91,8 @@
                         <ng-container *ngIf="i % 2 !== 0">
                             <div class="tech-content">
                                 <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                               <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
+                                <p [title]="languageService.translate(tech.descKey)">{{
+                                    languageService.translate(tech.descKey) }}</p>
 
                             </div>
                             <div class="tech-circle" data-aos="fade-left">
@@ -98,11 +109,13 @@
 
                         <ng-container *ngIf="i % 2 === 0">
                             <div class="tech-circle" data-aos="fade-right">
-                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40" loading="lazy"/>
+                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40"
+                                    loading="lazy" />
                             </div>
                             <div class="tech-content">
                                 <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                                <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
+                                <p [title]="languageService.translate(tech.descKey)">{{
+                                    languageService.translate(tech.descKey) }}</p>
 
                             </div>
                         </ng-container>
@@ -110,11 +123,13 @@
                         <ng-container *ngIf="i % 2 !== 0">
                             <div class="tech-content">
                                 <h3>{{ languageService.translate(tech.nameKey) }}</h3>
-                               <p [title]="languageService.translate(tech.descKey)">{{ languageService.translate(tech.descKey) }}</p>
+                                <p [title]="languageService.translate(tech.descKey)">{{
+                                    languageService.translate(tech.descKey) }}</p>
 
                             </div>
                             <div class="tech-circle" data-aos="fade-left">
-                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40" loading="lazy"/>
+                                <img [src]="tech.img" [alt]="languageService.translate(tech.nameKey)" width="40"
+                                    loading="lazy" />
                             </div>
                         </ng-container>
 

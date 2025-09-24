@@ -175,6 +175,21 @@
   border-radius: 2px;
 }
 
+.view-all {
+  margin-top: 20px;
+  text-align: end;
+}
+.view-all a {
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.view-all a:hover {
+  color: var(--secondary-color);
+}
+
+
 /* RESPONSIVENESS */
 
 

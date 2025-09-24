@@ -130,84 +130,84 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codspropay.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "assets/images/bio.svg", text: "codspropay.keyfeature1.point1" },
-            { icon: "icons/wifi.svg", text: "codspropay.keyfeature1.point2" },
-            { icon: "icons/face.svg", text: "codspropay.keyfeature1.point3" },
-            { icon: "icons/gps.svg", text: "codspropay.keyfeature1.point4" }
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature1.point4" }
           ]
         },
         {
           title: "codspropay.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/salary.svg", text: "codspropay.keyfeature2.point1" },
-            { icon: "icons/loan.svg", text: "codspropay.keyfeature2.point2" },
-            { icon: "icons/fine.svg", text: "codspropay.keyfeature2.point3" },
-            { icon: "icons/structure.svg", text: "codspropay.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature2.point4" }
           ]
         },
         {
           title: "codspropay.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/salary.svg", text: "codspropay.keyfeature3.point1" },
-            { icon: "icons/loan.svg", text: "codspropay.keyfeature3.point2" },
-            { icon: "icons/fine.svg", text: "codspropay.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature3.point3" },
           ]
         }
         ,
         {
           title: "codspropay.keyfeature4.title",
-          color: "blue",
+          color: "pink",
           points: [
-            { icon: "icons/salary.svg", text: "codspropay.keyfeature4.point1" },
-            { icon: "icons/loan.svg", text: "codspropay.keyfeature4.point2" },
-            { icon: "icons/fine.svg", text: "codspropay.keyfeature4.point3" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codspropay.keyfeature4.point3" },
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/payroll.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropay.whychoose1.title',
           desc: 'codspropay.whychoose1.desc'
         },
         {
-          icon: 'icons/mobile.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropay.whychoose2.title',
           desc: 'codspropay.whychoose2.desc'
         },
         {
-          icon: 'icons/accuracy.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropay.whychoose3.title',
           desc: 'codspropay.whychoose3.desc'
         },
         {
-          icon: 'icons/secure.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropay.whychoose4.title',
           desc: 'codspropay.whychoose4.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropay.whychoose5.title',
           desc: 'codspropay.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codspropay/work-1.svg',
           desc: 'codspropay.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codspropay/work-2.svg',
           desc: 'codspropay.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codspropay/work-3.svg',
           desc: 'codspropay.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codspropay/work-4.svg',
           desc: 'codspropay.howitworks4'
         }
       ],
@@ -241,84 +241,84 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codsbuy.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "assets/images/jewellery.svg", text: "codsbuy.keyfeature1.point1" },
-            { icon: "assets/images/catalog-outline.svg", text: "codsbuy.keyfeature1.point2" },
-            { icon: "assets/images/filter.svg", text: "codsbuy.keyfeature1.point3" }
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature1.point3" }
           ]
         },
         {
           title: "codsbuy.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "assets/images/products.svg", text: "codsbuy.keyfeature2.point1" },
-            { icon: "assets/images/orders.png", text: "codsbuy.keyfeature2.point2" },
-            { icon: "assets/images/roles.svg", text: "codsbuy.keyfeature2.point3" },
-            { icon: "assets/images/sales.png", text: "codsbuy.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature2.point4" }
           ]
         },
         {
           title: "codsbuy.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "assets/images/payment.png", text: "codsbuy.keyfeature3.point1" },
-            { icon: "assets/images/secure.png", text: "codsbuy.keyfeature3.point2" },
-            { icon: "assets/images/returns.png", text: "codsbuy.keyfeature3.point3" },
-            { icon: "assets/images/cart.png", text: "codsbuy.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature3.point4" }
           ]
         },
         {
           title: "codsbuy.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "assets/images/account.png", text: "codsbuy.keyfeature4.point1" },
-            { icon: "assets/images/loyalty.png", text: "codsbuy.keyfeature4.point2" },
-            { icon: "assets/images/reviews.png", text: "codsbuy.keyfeature4.point3" },
-            { icon: "assets/images/notifications.png", text: "codsbuy.keyfeature4.point4" }
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature4.point3" },
+            { icon: "assets/images/feature.png", text: "codsbuy.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/versatile.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuy.whychoose1.title',
           desc: 'codsbuy.whychoose1.desc'
         },
         {
-          icon: 'icons/customizable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuy.whychoose2.title',
           desc: 'codsbuy.whychoose2.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuy.whychoose3.title',
           desc: 'codsbuy.whychoose3.desc'
         },
         {
-          icon: 'icons/analytics.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuy.whychoose4.title',
           desc: 'codsbuy.whychoose4.desc'
         },
         {
-          icon: 'icons/secure.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuy.whychoose5.title',
           desc: 'codsbuy.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codsbuy/work-1.png',
           desc: 'codsbuy.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codsbuy/work-2.png',
           desc: 'codsbuy.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codsbuy/work-3.png',
           desc: 'codsbuy.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codsbuy/work-4.png',
           desc: 'codsbuy.howitworks4'
         }
       ],
@@ -352,85 +352,85 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codscare.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/patient.svg", text: "codscare.keyfeature1.point1" },
-            { icon: "icons/calendar.svg", text: "codscare.keyfeature1.point2" },
-            { icon: "icons/report.svg", text: "codscare.keyfeature1.point3" },
-            { icon: "icons/history.svg", text: "codscare.keyfeature1.point4" }
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature1.point4" }
           ]
         },
         {
           title: "codscare.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/prescription.svg", text: "codscare.keyfeature2.point1" },
-            { icon: "icons/history.svg", text: "codscare.keyfeature2.point2" },
-            { icon: "icons/lab.svg", text: "codscare.keyfeature2.point3" },
-            { icon: "icons/remote.svg", text: "codscare.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature2.point4" }
           ]
         },
         {
           title: "codscare.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/calendar.svg", text: "codscare.keyfeature3.point1" },
-            { icon: "icons/queue.svg", text: "codscare.keyfeature3.point2" },
-            { icon: "icons/bill.svg", text: "codscare.keyfeature3.point3" },
-            { icon: "icons/updates.svg", text: "codscare.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature3.point4" }
           ]
         },
         {
           title: "codscare.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/lab.svg", text: "codscare.keyfeature4.point1" },
-            { icon: "icons/integration.svg", text: "codscare.keyfeature4.point2" },
-            { icon: "icons/notification.svg", text: "codscare.keyfeature4.point3" },
-            { icon: "icons/branch.svg", text: "codscare.keyfeature4.point4" }
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature4.point3" },
+            { icon: "assets/images/feature.png", text: "codscare.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/clinic.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codscare.whychoose1.title',
           desc: 'codscare.whychoose1.desc'
         },
         {
-          icon: 'icons/secure.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codscare.whychoose2.title',
           desc: 'codscare.whychoose2.desc'
         },
         {
-          icon: 'icons/branch.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codscare.whychoose3.title',
           desc: 'codscare.whychoose3.desc'
         },
         {
-          icon: 'icons/report.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codscare.whychoose4.title',
           desc: 'codscare.whychoose4.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codscare.whychoose5.title',
           desc: 'codscare.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codscare/work-1.png',
           desc: 'codscare.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codscare/work-2.png',
           desc: 'codscare.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codscare/work-3.png',
           desc: 'codscare.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codscare/work-4.png',
           desc: 'codscare.howitworks4'
         }
       ],
@@ -464,85 +464,85 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codshms.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/web.svg", text: "codshms.keyfeature1.point1" },
-            { icon: "icons/status.svg", text: "codshms.keyfeature1.point2" },
-            { icon: "icons/booking.svg", text: "codshms.keyfeature1.point3" },
-            { icon: "icons/gallery.svg", text: "codshms.keyfeature1.point4" }
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature1.point4" }
           ]
         },
         {
           title: "codshms.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/student.svg", text: "codshms.keyfeature2.point1" },
-            { icon: "icons/room.svg", text: "codshms.keyfeature2.point2" },
-            { icon: "icons/attendance.svg", text: "codshms.keyfeature2.point3" },
-            { icon: "icons/report.svg", text: "codshms.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature2.point4" }
           ]
         },
         {
           title: "codshms.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/kitchen.svg", text: "codshms.keyfeature3.point1" },
-            { icon: "icons/expense.svg", text: "codshms.keyfeature3.point2" },
-            { icon: "icons/finance.svg", text: "codshms.keyfeature3.point3" },
-            { icon: "icons/chart.svg", text: "codshms.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature3.point4" }
           ]
         },
         {
           title: "codshms.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/branch.svg", text: "codshms.keyfeature4.point1" },
-            { icon: "icons/dashboard.svg", text: "codshms.keyfeature4.point2" },
-            { icon: "icons/report.svg", text: "codshms.keyfeature4.point3" },
-            { icon: "icons/security.svg", text: "codshms.keyfeature4.point4" }
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature4.point3" },
+            { icon: "assets/images/feature.png", text: "codshms.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/website.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codshms.whychoose1.title',
           desc: 'codshms.whychoose1.desc'
         },
         {
-          icon: 'icons/student.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codshms.whychoose2.title',
           desc: 'codshms.whychoose2.desc'
         },
         {
-          icon: 'icons/kitchen.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codshms.whychoose3.title',
           desc: 'codshms.whychoose3.desc'
         },
         {
-          icon: 'icons/transparent.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codshms.whychoose4.title',
           desc: 'codshms.whychoose4.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codshms.whychoose5.title',
           desc: 'codshms.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codshms/work-1.png',
           desc: 'codshms.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codshms/work-2.png',
           desc: 'codshms.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codshms/work-3.png',
           desc: 'codshms.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codshms/work-4.png',
           desc: 'codshms.howitworks4'
         }
       ],
@@ -576,85 +576,85 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codsevent.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/dashboard.svg", text: "codsevent.keyfeature1.point1" },
-            { icon: "icons/stall.svg", text: "codsevent.keyfeature1.point2" },
-            { icon: "icons/vendor.svg", text: "codsevent.keyfeature1.point3" },
-            { icon: "icons/finance.svg", text: "codsevent.keyfeature1.point4" },
-            { icon: "icons/report.svg", text: "codsevent.keyfeature1.point5" }
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature1.point4" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature1.point5" }
           ]
         },
         {
           title: "codsevent.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/stall.svg", text: "codsevent.keyfeature2.point1" },
-            { icon: "icons/requirement.svg", text: "codsevent.keyfeature2.point2" },
-            { icon: "icons/approval.svg", text: "codsevent.keyfeature2.point3" },
-            { icon: "icons/payment.svg", text: "codsevent.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature2.point4" }
           ]
         },
         {
           title: "codsevent.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/schedule.svg", text: "codsevent.keyfeature3.point1" },
-            { icon: "icons/qr.svg", text: "codsevent.keyfeature3.point2" },
-            { icon: "icons/sponsor.svg", text: "codsevent.keyfeature3.point3" },
-            { icon: "icons/resource.svg", text: "codsevent.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature3.point4" }
           ]
         },
         {
           title: "codsevent.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/notification.svg", text: "codsevent.keyfeature4.point1" },
-            { icon: "icons/feedback.svg", text: "codsevent.keyfeature4.point2" },
-            { icon: "icons/task.svg", text: "codsevent.keyfeature4.point3" }
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codsevent.keyfeature4.point3" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/platform.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsevent.whychoose1.title',
           desc: 'codsevent.whychoose1.desc'
         },
         {
-          icon: 'icons/stall.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsevent.whychoose2.title',
           desc: 'codsevent.whychoose2.desc'
         },
         {
-          icon: 'icons/sponsor.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsevent.whychoose3.title',
           desc: 'codsevent.whychoose3.desc'
         },
         {
-          icon: 'icons/analytics.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsevent.whychoose4.title',
           desc: 'codsevent.whychoose4.desc'
         },
         {
-          icon: 'icons/events.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsevent.whychoose5.title',
           desc: 'codsevent.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codsevent/work-1.png',
           desc: 'codsevent.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codsevent/work-2.png',
           desc: 'codsevent.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codsevent/work-3.png',
           desc: 'codsevent.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codsevent/work-4.png',
           desc: 'codsevent.howitworks4'
         }
       ],
@@ -688,84 +688,84 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codsbill.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/billing.svg", text: "codsbill.keyfeature1.point1" },
-            { icon: "icons/printer.svg", text: "codsbill.keyfeature1.point2" },
-            { icon: "icons/payment.svg", text: "codsbill.keyfeature1.point3" },
-            { icon: "icons/gst.svg", text: "codsbill.keyfeature1.point4" }
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature1.point4" }
           ]
         },
         {
           title: "codsbill.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/stock.svg", text: "codsbill.keyfeature2.point1" },
-            { icon: "icons/alert.svg", text: "codsbill.keyfeature2.point2" },
-            { icon: "icons/category.svg", text: "codsbill.keyfeature2.point3" },
-            { icon: "icons/barcode.svg", text: "codsbill.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature2.point4" }
           ]
         },
         {
           title: "codsbill.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/report.svg", text: "codsbill.keyfeature3.point1" },
-            { icon: "icons/purchase.svg", text: "codsbill.keyfeature3.point2" },
-            { icon: "icons/profit.svg", text: "codsbill.keyfeature3.point3" },
-            { icon: "icons/customer.svg", text: "codsbill.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature3.point4" }
           ]
         },
         {
           title: "codsbill.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/expense.svg", text: "codsbill.keyfeature4.point1" },
-            { icon: "icons/income.svg", text: "codsbill.keyfeature4.point2" },
-            { icon: "icons/cashbook.svg", text: "codsbill.keyfeature4.point3" }
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codsbill.keyfeature4.point3" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/easy.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbill.whychoose1.title',
           desc: 'codsbill.whychoose1.desc'
         },
         {
-          icon: 'icons/affordable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbill.whychoose2.title',
           desc: 'codsbill.whychoose2.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbill.whychoose3.title',
           desc: 'codsbill.whychoose3.desc'
         },
         {
-          icon: 'icons/realtime.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbill.whychoose4.title',
           desc: 'codsbill.whychoose4.desc'
         },
         {
-          icon: 'icons/billing.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbill.whychoose5.title',
           desc: 'codsbill.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codsbill/work-1.png',
           desc: 'codsbill.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codsbill/work-2.png',
           desc: 'codsbill.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codsbill/work-3.png',
           desc: 'codsbill.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codsbill/work-4.png',
           desc: 'codsbill.howitworks4'
         }
       ],
@@ -799,85 +799,85 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codspoint.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/invoice.svg", text: "codspoint.keyfeature1.point1" },
-            { icon: "icons/gst.svg", text: "codspoint.keyfeature1.point2" },
-            { icon: "icons/barcode.svg", text: "codspoint.keyfeature1.point3" },
-            { icon: "icons/billformat.svg", text: "codspoint.keyfeature1.point4" }
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature1.point4" }
           ]
         },
         {
           title: "codspoint.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/inventory.svg", text: "codspoint.keyfeature2.point1" },
-            { icon: "icons/alert.svg", text: "codspoint.keyfeature2.point2" },
-            { icon: "icons/auto-stock.svg", text: "codspoint.keyfeature2.point3" },
-            { icon: "icons/warehouse.svg", text: "codspoint.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature2.point4" }
           ]
         },
         {
           title: "codspoint.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/restaurant.svg", text: "codspoint.keyfeature3.point1" },
-            { icon: "icons/counter.svg", text: "codspoint.keyfeature3.point2" },
-            { icon: "icons/payment.svg", text: "codspoint.keyfeature3.point3" },
-            { icon: "icons/loyalty.svg", text: "codspoint.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature3.point4" }
           ]
         },
         {
           title: "codspoint.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/report.svg", text: "codspoint.keyfeature4.point1" },
-            { icon: "icons/profit.svg", text: "codspoint.keyfeature4.point2" },
-            { icon: "icons/staff.svg", text: "codspoint.keyfeature4.point3" },
-            { icon: "icons/download.svg", text: "codspoint.keyfeature4.point4" }
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature4.point3" },
+            { icon: "assets/images/feature.png", text: "codspoint.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/pos.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspoint.whychoose1.title',
           desc: 'codspoint.whychoose1.desc'
         },
         {
-          icon: 'icons/inventory.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspoint.whychoose2.title',
           desc: 'codspoint.whychoose2.desc'
         },
         {
-          icon: 'icons/billing.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspoint.whychoose3.title',
           desc: 'codspoint.whychoose3.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspoint.whychoose4.title',
           desc: 'codspoint.whychoose4.desc'
         },
         {
-          icon: 'icons/mobile.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspoint.whychoose5.title',
           desc: 'codspoint.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'icons/install.svg',
+          icon: 'assets/images/codspoint/work-1.png',
           desc: 'codspoint.howitworks1'
         },
         {
-          icon: 'icons/configure.svg',
+          icon: 'assets/images/codspoint/work-2.png',
           desc: 'codspoint.howitworks2'
         },
         {
-          icon: 'icons/pos.svg',
+          icon: 'assets/images/codspoint/work-3.png',
           desc: 'codspoint.howitworks3'
         },
         {
-          icon: 'icons/reports.svg',
+          icon: 'assets/images/codspoint/work-4.png',
           desc: 'codspoint.howitworks4'
         }
       ],
@@ -911,77 +911,77 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codslabel.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/mobile.svg", text: "codslabel.keyfeature1.point1" },
-            { icon: "icons/dashboard.svg", text: "codslabel.keyfeature1.point2" }
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature1.point2" }
           ]
         },
         {
           title: "codslabel.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/branch.svg", text: "codslabel.keyfeature2.point1" },
-            { icon: "icons/role.svg", text: "codslabel.keyfeature2.point2" }
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature2.point2" }
           ]
         },
         {
           title: "codslabel.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/shelf-life.svg", text: "codslabel.keyfeature3.point1" },
-            { icon: "icons/checklist.svg", text: "codslabel.keyfeature3.point2" }
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature3.point2" }
           ]
         },
         {
           title: "codslabel.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/label.svg", text: "codslabel.keyfeature4.point1" },
-            { icon: "icons/secure.svg", text: "codslabel.keyfeature4.point2" }
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codslabel.keyfeature4.point2" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/accuracy.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codslabel.whychoose1.title',
           desc: 'codslabel.whychoose1.desc'
         },
         {
-          icon: 'icons/secure.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codslabel.whychoose2.title',
           desc: 'codslabel.whychoose2.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codslabel.whychoose3.title',
           desc: 'codslabel.whychoose3.desc'
         },
         {
-          icon: 'icons/payroll.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codslabel.whychoose4.title',
           desc: 'codslabel.whychoose4.desc'
         },
         {
-          icon: 'icons/mobile.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codslabel.whychoose5.title',
           desc: 'codslabel.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codslabel/work-1.png',
           desc: 'codslabel.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codslabel/work-2.png',
           desc: 'codslabel.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codslabel/work-3.png',
           desc: 'codslabel.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codslabel/work-4.png',
           desc: 'codslabel.howitworks4'
         }
       ],
@@ -1015,85 +1015,85 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codsaudit.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/scan.svg", text: "codsaudit.keyfeature1.point1" },
-            { icon: "icons/sync.svg", text: "codsaudit.keyfeature1.point2" },
-            { icon: "icons/batch.svg", text: "codsaudit.keyfeature1.point3" }
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature1.point3" }
           ]
         },
         {
           title: "codsaudit.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/edit.svg", text: "codsaudit.keyfeature2.point1" },
-            { icon: "icons/category.svg", text: "codsaudit.keyfeature2.point2" },
-            { icon: "icons/alert.svg", text: "codsaudit.keyfeature2.point3" },
-            { icon: "icons/location.svg", text: "codsaudit.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature2.point4" }
           ]
         },
         {
           title: "codsaudit.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/compare.svg", text: "codsaudit.keyfeature3.point1" },
-            { icon: "icons/auto-check.svg", text: "codsaudit.keyfeature3.point2" },
-            { icon: "icons/report.svg", text: "codsaudit.keyfeature3.point3" }
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature3.point3" }
           ]
         },
         {
           title: "codsaudit.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/report.svg", text: "codsaudit.keyfeature4.point1" },
-            { icon: "icons/dashboard.svg", text: "codsaudit.keyfeature4.point2" },
-            { icon: "icons/export.svg", text: "codsaudit.keyfeature4.point3" },
-            { icon: "icons/user.svg", text: "codsaudit.keyfeature4.point4" },
-            { icon: "icons/secure.svg", text: "codsaudit.keyfeature4.point5" },
-            { icon: "icons/approval.svg", text: "codsaudit.keyfeature4.point6" }
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature4.point3" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature4.point4" },
+            { icon: "assets/images/feature.png", text: "codsaudit.keyfeature4.point5" },
+            // { icon: "assets/images/feature.png", text: "codsaudit.keyfeature4.point6" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/barcode.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsaudit.whychoose1.title',
           desc: 'codsaudit.whychoose1.desc'
         },
         {
-          icon: 'icons/visibility.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsaudit.whychoose2.title',
           desc: 'codsaudit.whychoose2.desc'
         },
         {
-          icon: 'icons/reports.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsaudit.whychoose3.title',
           desc: 'codsaudit.whychoose3.desc'
         },
         {
-          icon: 'icons/mobile.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsaudit.whychoose4.title',
           desc: 'codsaudit.whychoose4.desc'
         },
         {
-          icon: 'icons/efficiency.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsaudit.whychoose5.title',
           desc: 'codsaudit.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codsAudit/work-1.png',
           desc: 'codsaudit.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codsAudit/work-2.png',
           desc: 'codsaudit.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codsAudit/work-3.png',
           desc: 'codsaudit.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codsAudit/work-4.png',
           desc: 'codsaudit.howitworks4'
         }
       ],
@@ -1127,75 +1127,75 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codsrms.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/inventory.svg", text: "codsrms.keyfeature1.point1" },
-            { icon: "icons/alert.svg", text: "codsrms.keyfeature1.point2" },
-            { icon: "icons/kitchen.svg", text: "codsrms.keyfeature1.point3" },
-            { icon: "icons/profit.svg", text: "codsrms.keyfeature1.point4" }
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature1.point4" }
           ]
         },
         {
           title: "codsrms.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/attendance.svg", text: "codsrms.keyfeature2.point1" },
-            { icon: "icons/salary.svg", text: "codsrms.keyfeature2.point2" },
-            { icon: "icons/loan.svg", text: "codsrms.keyfeature2.point3" },
-            { icon: "icons/selfservice.svg", text: "codsrms.keyfeature2.point4" }
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature2.point4" }
           ]
         },
         {
           title: "codsrms.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/finance.svg", text: "codsrms.keyfeature3.point1" },
-            { icon: "icons/report.svg", text: "codsrms.keyfeature3.point2" },
-            { icon: "icons/gst.svg", text: "codsrms.keyfeature3.point3" },
-            { icon: "icons/vendor.svg", text: "codsrms.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature3.point4" }
           ]
         },
         {
           title: "codsrms.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/customer.svg", text: "codsrms.keyfeature4.point1" },
-            { icon: "icons/feedback.svg", text: "codsrms.keyfeature4.point2" },
-            { icon: "icons/outlet.svg", text: "codsrms.keyfeature4.point3" },
-            { icon: "icons/menu.svg", text: "codsrms.keyfeature4.point4" }
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature4.point3" },
+            { icon: "assets/images/feature.png", text: "codsrms.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/allinone.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsrms.whychoose1.title',
           desc: 'codsrms.whychoose1.desc'
         },
         {
-          icon: 'icons/flexible.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsrms.whychoose2.title',
           desc: 'codsrms.whychoose2.desc'
         },
         {
-          icon: 'icons/insights.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsrms.whychoose3.title',
           desc: 'codsrms.whychoose3.desc'
         },
         {
-          icon: 'icons/mobileweb.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsrms.whychoose4.title',
           desc: 'codsrms.whychoose4.desc'
         },
         {
-          icon: 'icons/customerfirst.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsrms.whychoose5.title',
           desc: 'codsrms.whychoose5.desc'
         }
       ],
       howItWorks: [
-        { icon: 'assets/images/work-1.svg', desc: 'codsrms.howitworks1' },
-        { icon: 'assets/images/work-2.svg', desc: 'codsrms.howitworks2' },
-        { icon: 'assets/images/work-3.svg', desc: 'codsrms.howitworks3' },
-        { icon: 'assets/images/work-4.svg', desc: 'codsrms.howitworks4' }
+        { icon: 'assets/images/codsRMS/work-1.png', desc: 'codsrms.howitworks1' },
+        { icon: 'assets/images/codsRMS/work-2.png', desc: 'codsrms.howitworks2' },
+        { icon: 'assets/images/codsRMS/work-3.png', desc: 'codsrms.howitworks3' },
+        { icon: 'assets/images/codsRMS/work-4.png', desc: 'codsrms.howitworks4' }
       ],
       cta: {
         title: "codsrms.cta.title",
@@ -1227,91 +1227,91 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codsoptima.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/stock.svg", text: "codsoptima.keyfeature1.point1" },
-            { icon: "icons/update.svg", text: "codsoptima.keyfeature1.point2" },
-            { icon: "icons/store.svg", text: "codsoptima.keyfeature1.point3" },
-            { icon: "icons/alert.svg", text: "codsoptima.keyfeature1.point4" },
-            { icon: "icons/order.svg", text: "codsoptima.keyfeature1.point5" },
-            { icon: "icons/dashboard.svg", text: "codsoptima.keyfeature1.point6" },
-            { icon: "icons/status.svg", text: "codsoptima.keyfeature1.point7" }
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature1.point3" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature1.point4" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature1.point5" },
+            // { icon: "assets/images/feature.png", text: "codsoptima.keyfeature1.point6" },
+            // { icon: "assets/images/feature.png", text: "codsoptima.keyfeature1.point7" }
           ]
         },
         {
           title: "codsoptima.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/track.svg", text: "codsoptima.keyfeature2.point1" },
-            { icon: "icons/resource.svg", text: "codsoptima.keyfeature2.point2" },
-            { icon: "icons/timeline.svg", text: "codsoptima.keyfeature2.point3" },
-            { icon: "icons/efficiency.svg", text: "codsoptima.keyfeature2.point4" },
-            { icon: "icons/request.svg", text: "codsoptima.keyfeature2.point5" },
-            { icon: "icons/vendor.svg", text: "codsoptima.keyfeature2.point6" },
-            { icon: "icons/report.svg", text: "codsoptima.keyfeature2.point7" },
-            { icon: "icons/stock-update.svg", text: "codsoptima.keyfeature2.point8" }
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point3" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point4" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point5" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point6" },
+            // { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point7" },
+            // { icon: "assets/images/feature.png", text: "codsoptima.keyfeature2.point8" }
           ]
         },
         {
           title: "codsoptima.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/delivery.svg", text: "codsoptima.keyfeature3.point1" },
-            { icon: "icons/update.svg", text: "codsoptima.keyfeature3.point2" },
-            { icon: "icons/report.svg", text: "codsoptima.keyfeature3.point3" },
-            { icon: "icons/branch.svg", text: "codsoptima.keyfeature3.point4" }
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature3.point2" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature3.point3" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature3.point4" }
           ]
         },
         {
           title: "codsoptima.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/admin.svg", text: "codsoptima.keyfeature4.point1" },
-            { icon: "icons/rep.svg", text: "codsoptima.keyfeature4.point2" },
-            { icon: "icons/customer.svg", text: "codsoptima.keyfeature4.point3" }
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature4.point2" },
+            { icon: "assets/images/feature.png", text: "codsoptima.keyfeature4.point3" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/production.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsoptima.whychoose1.title',
           desc: 'codsoptima.whychoose1.desc'
         },
         {
-          icon: 'icons/ecosystem.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsoptima.whychoose2.title',
           desc: 'codsoptima.whychoose2.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsoptima.whychoose3.title',
           desc: 'codsoptima.whychoose3.desc'
         },
         {
-          icon: 'icons/insights.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsoptima.whychoose4.title',
           desc: 'codsoptima.whychoose4.desc'
         },
         {
-          icon: 'icons/secure.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsoptima.whychoose5.title',
           desc: 'codsoptima.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codsoptima/work-1.png',
           desc: 'codsoptima.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codsoptima/work-2.png',
           desc: 'codsoptima.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codsoptima/work-3.png',
           desc: 'codsoptima.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codsoptima/work-4.png',
           desc: 'codsoptima.howitworks4'
         }
       ],
@@ -1345,74 +1345,74 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codspropaylite.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/hr.svg", text: "codspropaylite.keyfeature1.point1" },
-            { icon: "icons/attendance.svg", text: "codspropaylite.keyfeature1.point2" },
-            { icon: "icons/salary.svg", text: "codspropaylite.keyfeature1.point3" }
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature1.point3" }
           ]
         },
         {
           title: "codspropaylite.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/user.svg", text: "codspropaylite.keyfeature2.point1" },
-            { icon: "icons/slip.svg", text: "codspropaylite.keyfeature2.point2" },
-            { icon: "icons/attendance.svg", text: "codspropaylite.keyfeature2.point3" }
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature2.point2" },
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature2.point3" }
           ]
         },
         {
           title: "codspropaylite.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/mobile.svg", text: "codspropaylite.keyfeature3.point1" },
-            { icon: "icons/responsive.svg", text: "codspropaylite.keyfeature3.point2" }
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature3.point1" },
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature3.point2" }
           ]
         },
         {
           title: "codspropaylite.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/lock.svg", text: "codspropaylite.keyfeature4.point1" },
-            { icon: "icons/ui.svg", text: "codspropaylite.keyfeature4.point2" }
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature4.point1" },
+            { icon: "assets/images/feature.png", text: "codspropaylite.keyfeature4.point2" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/paperwork.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropaylite.whychoose1.title',
           desc: 'codspropaylite.whychoose1.desc'
         },
         {
-          icon: 'icons/efficiency.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropaylite.whychoose2.title',
           desc: 'codspropaylite.whychoose2.desc'
         },
         {
-          icon: 'icons/quick-access.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropaylite.whychoose3.title',
           desc: 'codspropaylite.whychoose3.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codspropaylite.whychoose4.title',
           desc: 'codspropaylite.whychoose4.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codspropaylite/work-1.png',
           desc: 'codspropaylite.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codspropaylite/work-2.png',
           desc: 'codspropaylite.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codspropaylite/work-3.png',
           desc: 'codspropaylite.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codspropaylite/work-4.png',
           desc: 'codspropaylite.howitworks4'
         }
       ],
@@ -1446,71 +1446,71 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
           title: "codsbuylite.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/browse.svg", text: "codsbuylite.keyfeature1.point1" },
-            { icon: "icons/cart.svg", text: "codsbuylite.keyfeature1.point2" },
-            { icon: "icons/mobile.svg", text: "codsbuylite.keyfeature1.point3" }
+            { icon: "assets/images/feature.png", text: "codsbuylite.keyfeature1.point1" },
+            { icon: "assets/images/feature.png", text: "codsbuylite.keyfeature1.point2" },
+            { icon: "assets/images/feature.png", text: "codsbuylite.keyfeature1.point3" }
           ]
         },
         {
           title: "codsbuylite.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/track.svg", text: "codsbuylite.keyfeature2.point1" },
-            { icon: "icons/notification.svg", text: "codsbuylite.keyfeature2.point2" }
+            { icon: "assets/images/feature.png", text: "codsbuylite.keyfeature2.point1" },
+            { icon: "assets/images/feature.png", text: "codsbuylite.keyfeature2.point2" }
           ]
         },
         {
           title: "codsbuylite.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/payment.svg", text: "codsbuylite.keyfeature3.point1" }
+            { icon: "assets/images/feature.png", text: "codsbuylite.keyfeature3.point1" }
           ]
         },
         {
           title: "codsbuylite.keyfeature4.title",
-          color: "green",
+          color: "pink",
           points: [
-            { icon: "icons/dashboard.svg", text: "codsbuylite.keyfeature4.point1" }
+            { icon: "assets/images/feature.png", text: "codsbuylite.keyfeature4.point1" }
           ]
         }
       ],
       whyChoose: [
         {
-          icon: 'icons/seamless.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuylite.whychoose1.title',
           desc: 'codsbuylite.whychoose1.desc'
         },
         {
-          icon: 'icons/mobile.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuylite.whychoose2.title',
           desc: 'codsbuylite.whychoose2.desc'
         },
         {
-          icon: 'icons/smart.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuylite.whychoose3.title',
           desc: 'codsbuylite.whychoose3.desc'
         },
         {
-          icon: 'icons/scalable.svg',
+          icon: 'assets/images/arrow.png',
           title: 'codsbuylite.whychoose4.title',
           desc: 'codsbuylite.whychoose4.desc'
         }
       ],
       howItWorks: [
         {
-          icon: 'assets/images/work-1.svg',
+          icon: 'assets/images/codsbuylite/work-1.png',
           desc: 'codsbuylite.howitworks1'
         },
         {
-          icon: 'assets/images/work-2.svg',
+          icon: 'assets/images/codsbuylite/work-2.png',
           desc: 'codsbuylite.howitworks2'
         },
         {
-          icon: 'assets/images/work-3.svg',
+          icon: 'assets/images/codsbuylite/work-3.png',
           desc: 'codsbuylite.howitworks3'
         },
         {
-          icon: 'assets/images/work-4.svg',
+          icon: 'assets/images/codsbuylite/work-4.png',
           desc: 'codsbuylite.howitworks4'
         }
       ],

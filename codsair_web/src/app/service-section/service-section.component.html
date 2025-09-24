@@ -4,10 +4,9 @@
 <section class="banner-section">
     <img src="assets/images/Rectangle 717.png" alt="Office environment" class="banner-image" />
     <div class="banner-content">
-        <h1>Our Products, Your Solutions</h1>
+        <h1>{{ languageService.translate('service.banner.title') }}</h1>
         <p>
-            Explore Codsair’s innovative digital products designed to simplify business processes, enhance efficiency,
-            and drive growth.
+            {{ languageService.translate('service.banner.desc') }}
         </p>
     </div>
 </section>
@@ -18,13 +17,10 @@
     <div class="container">
         <div class="row">
             <div class="col left-col">
-                <h2>Transforming Ideas into Digital Solutions</h2>
+                <h2>{{ languageService.translate('service.solution.title') }}</h2>
             </div>
             <div class="col right-col">
-                <p> At Codsair Technology, we design and deliver powerful digital solutions that cater to the evolving
-                    needs of businesses. Each product in our portfolio is built to streamline processes, enhance
-                    productivity, and drive measurable growth. Explore our range of innovative tools and find the right
-                    solution that aligns with your business goals. </p>
+                <p>{{ languageService.translate('service.solution.desc') }}</p>
             </div>
         </div>
     </div>
@@ -38,10 +34,10 @@
         <div class="row">
             <div class="col card-col" *ngFor="let card of cards">
                 <div class="card">
-                    <img [src]="card.image" alt="{{ card.title }}" class="card-image" />
-                    <h3>{{ card.title }}</h3>
-                    <p class="description">{{ card.description }}</p>
-                    <button class="read-more" (click)="goToProduct(card.id)">Show More</button>
+                    <img [src]="card.image" alt="{{ languageService.translate(card.titleKey) }}" class="card-image" />
+                    <h3>{{ languageService.translate(card.titleKey) }}</h3>
+                    <p class="description">{{ languageService.translate(card.descriptionKey) }}</p>
+                    <button class="read-more" (click)="goToProduct(card.id)">{{ languageService.translate('service.showmore') }}</button>
                 </div>
             </div>
         </div>
@@ -53,15 +49,15 @@
 <div class="modal-backdrop" *ngIf="selectedCard">
     <div class="modal">
         <div class="modal-header">
-            <h2>{{ selectedCard.title }}</h2>
+            <h2>{{ languageService.translate(selectedCard.titleKey) }}</h2>
             <button class="close-button" (click)="closeModal()">×</button>
         </div>
         <div class="modal-body">
-            <img [src]="selectedCard.image" alt="{{ selectedCard.title }}" class="modal-image" />
-            <h3>About</h3>
-            <p>{{ selectedCard.description }}</p>
+            <img [src]="selectedCard.image" alt="{{ languageService.translate(selectedCard.titleKey) }}" class="modal-image" />
+            <h3>{{ languageService.translate('service.about') }}</h3>
+            <p>{{ languageService.translate(selectedCard.descriptionKey) }}</p>
 
-            <h3>Key Features</h3>
+            <h3>{{ languageService.translate('service.keyfeatures') }}</h3>
             <div *ngFor="let group of selectedCard.keyFacilities">
                 <h4>{{ group.heading }}</h4>
                 <ul>

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonNavbarComponent } from '../common-navbar/common-navbar.component';
 import { CommonFooterComponent } from '../common-footer/common-footer.component';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LanguageService } from '../services/language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-singleview-products',
@@ -11,1488 +13,1512 @@ import { CommonModule } from '@angular/common';
   templateUrl: './singleview-products.component.html',
   styleUrl: './singleview-products.component.css'
 })
-export class SingleviewProductsComponent {
+export class SingleviewProductsComponent implements OnInit, OnDestroy {
   productId!: string;
   productData: any;
+  private subscriptions = new Subscription();
+
+  constructor(
+    private route: ActivatedRoute,
+    public languageService: LanguageService
+  ) {}
+
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.route.params.subscribe(params => {
+        this.productId = params['id'];
+        this.updateProductData();
+      })
+    );
+    
+    this.subscriptions.add(
+      this.languageService.currentLanguage$.subscribe(() => {
+        if (this.productId) {
+          this.updateProductData();
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  updateProductData(): void {
+    if (this.productId && this.products[this.productId]) {
+      this.productData = this.getTranslatedProductData(this.productId);
+    }
+  }
+
+  getTranslatedProductData(productId: string) {
+    const baseData = this.products[productId];
+    if (!baseData) return baseData;
+
+    const translate = (key: string, fallback: string) => {
+      const translated = this.languageService.translate(key);
+      return translated && translated !== key ? translated : fallback;
+    };
+
+    return {
+      ...baseData,
+      hero: {
+        ...baseData.hero,
+        title: translate(`${productId}.hero.title`, baseData.hero.title),
+        subtitle: translate(`${productId}.hero.subtitle`, baseData.hero.subtitle)
+      },
+      about: {
+        ...baseData.about,
+        title: translate(`${productId}.about.title`, baseData.about.title),
+        text: baseData.about.text.map((text: string, index: number) => 
+          translate(`${productId}.about.text${index + 1}`, text)
+        ),
+        features: baseData.about.features.map((feature: any, index: number) => ({
+          ...feature,
+          text: translate(`${productId}.about.feature${index + 1}`, feature.text)
+        }))
+      },
+      keyFeatures: baseData.keyFeatures?.map((kf: any, kfIndex: number) => ({
+        ...kf,
+        title: translate(`${productId}.keyfeature${kfIndex + 1}.title`, kf.title),
+        points: kf.points.map((point: any, pointIndex: number) => ({
+          ...point,
+          text: translate(`${productId}.keyfeature${kfIndex + 1}.point${pointIndex + 1}`, point.text)
+        }))
+      })),
+      whyChoose: baseData.whyChoose?.map((why: any, index: number) => ({
+        ...why,
+        title: translate(`${productId}.whychoose${index + 1}.title`, why.title),
+        desc: translate(`${productId}.whychoose${index + 1}.desc`, why.desc)
+      })),
+      howItWorks: baseData.howItWorks?.map((step: any, index: number) => ({
+        ...step,
+        desc: translate(`${productId}.howitworks${index + 1}`, step.desc)
+      })),
+      cta: {
+        ...baseData.cta,
+        title: translate(`${productId}.cta.title`, baseData.cta.title),
+        text: translate(`${productId}.cta.text`, baseData.cta.text),
+        buttons: [
+          translate(`${productId}.cta.button1`, baseData.cta.buttons[0]),
+          translate(`${productId}.cta.button2`, baseData.cta.buttons[1])
+        ]
+      }
+    };
+  }
 
   products: any = {
     codspropay: {
       hero: {
-        title: "Simplify Payroll, Empower Your Workforce",
-        subtitle: "CodsProPay is an advanced payroll management software that automates salary processing, attendance tracking, and employee benefits. With powerful integrations like biometrics, WiFi, face recognition, and location-based attendance, CodsProPay is the one-stop solution for smart workforce management.",
+        title: "codspropay.hero.title",
+        subtitle: "codspropay.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsProPay",
+        title: "codspropay.about.title",
         text: [
-          "Managing payroll doesn’t need to be complex. CodsProPay is designed for modern businesses to automate HR and payroll tasks with accuracy and ease.",
-          "Whether you’re running a small business or a large enterprise, CodsProPay helps save time, reduce errors, and keep your team motivated."
+          "codspropay.about.text1",
+          "codspropay.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codspropay.about.feature1" },
+          { icon: "💻", text: "codspropay.about.feature2" },
+          { icon: "🛡️", text: "codspropay.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Smart Attendance Integration",
+          title: "codspropay.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "assets/images/bio.svg", text: "Biometric machine integration" },
-            { icon: "icons/wifi.svg", text: "Wi-Fi based check-in system" },
-            { icon: "icons/face.svg", text: "Face recognition attendance" },
-            { icon: "icons/gps.svg", text: "GPS/location-based attendance" }
+            { icon: "assets/images/bio.svg", text: "codspropay.keyfeature1.point1" },
+            { icon: "icons/wifi.svg", text: "codspropay.keyfeature1.point2" },
+            { icon: "icons/face.svg", text: "codspropay.keyfeature1.point3" },
+            { icon: "icons/gps.svg", text: "codspropay.keyfeature1.point4" }
           ]
         },
         {
-          title: "Automated Payroll",
+          title: "codspropay.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/salary.svg", text: "Auto salary calculation" },
-            { icon: "icons/loan.svg", text: "Advance salary & loan management" },
-            { icon: "icons/fine.svg", text: "Fine/penalty management" },
-            { icon: "icons/structure.svg", text: "Flexible salary structures" }
+            { icon: "icons/salary.svg", text: "codspropay.keyfeature2.point1" },
+            { icon: "icons/loan.svg", text: "codspropay.keyfeature2.point2" },
+            { icon: "icons/fine.svg", text: "codspropay.keyfeature2.point3" },
+            { icon: "icons/structure.svg", text: "codspropay.keyfeature2.point4" }
           ]
         },
         {
-          title: "Employee Self-Service",
+          title: "codspropay.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/salary.svg", text: "Download salary slips anytime" },
-            { icon: "icons/loan.svg", text: "Track leave balance & attendance" },
-            { icon: "icons/fine.svg", text: "Mobile app for attendance marking and payroll details" },
+            { icon: "icons/salary.svg", text: "codspropay.keyfeature3.point1" },
+            { icon: "icons/loan.svg", text: "codspropay.keyfeature3.point2" },
+            { icon: "icons/fine.svg", text: "codspropay.keyfeature3.point3" },
           ]
         }
         ,
         {
-          title: "HR and Management Tools",
+          title: "codspropay.keyfeature4.title",
           color: "blue",
           points: [
-            { icon: "icons/salary.svg", text: "Comprehensive reports & analytics" },
-            { icon: "icons/loan.svg", text: "Real-time insights into workforce productivityt" },
-            { icon: "icons/fine.svg", text: "Role-based access for HR, managers, and employees" },
+            { icon: "icons/salary.svg", text: "codspropay.keyfeature4.point1" },
+            { icon: "icons/loan.svg", text: "codspropay.keyfeature4.point2" },
+            { icon: "icons/fine.svg", text: "codspropay.keyfeature4.point3" },
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/payroll.svg',
-          title: 'End-to-End Payroll Solution',
-          desc: 'From attendance to payslip, all in one system'
+          title: 'codspropay.whychoose1.title',
+          desc: 'codspropay.whychoose1.desc'
         },
         {
           icon: 'icons/mobile.svg',
-          title: 'Mobile-First Design',
-          desc: 'Easy access for employees on-the-go.'
+          title: 'codspropay.whychoose2.title',
+          desc: 'codspropay.whychoose2.desc'
         },
         {
           icon: 'icons/accuracy.svg',
-          title: 'Accuracy',
-          desc: 'Eliminate manual errors in salary calculation.'
+          title: 'codspropay.whychoose3.title',
+          desc: 'codspropay.whychoose3.desc'
         },
         {
           icon: 'icons/secure.svg',
-          title: 'Secure & Reliable',
-          desc: 'Encrypted data storage with role-based access.'
+          title: 'codspropay.whychoose4.title',
+          desc: 'codspropay.whychoose4.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable',
-          desc: 'Suitable for startups, SMEs, and enterprises.'
+          title: 'codspropay.whychoose5.title',
+          desc: 'codspropay.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Employees mark attendance via mobile app, biometric, or Wi-Fi.'
+          desc: 'codspropay.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'CodsProPay tracks attendance & working hours.'
+          desc: 'codspropay.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Payroll is generated instantly with deductions.'
+          desc: 'codspropay.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Employees download salary slips directly.'
+          desc: 'codspropay.howitworks4'
         }
       ],
       cta: {
-        title: "Ready to transform your payroll process?",
-        text: "Let CodsProPay handle the complexity while you focus on growing your business.",
-        buttons: ["Request a Demo", "Contact Us"]
+        title: "codspropay.cta.title",
+        text: "codspropay.cta.text",
+        buttons: ["codspropay.cta.button1", "codspropay.cta.button2"]
       }
     },
 
     codsbuy: {
       hero: {
-        title: "Your Complete E-Commerce Solution",
-        subtitle: " CodsBuy is a powerful e-commerce platform with an advanced admin panel, designed to help businesses sell online with ease. Whether you deal in gold & diamond, fashion, electronics, or lifestyle products, CodsBuy gives you the tools to manage and grow your online store.",
-        // image: "assets/images/codsbuy-hero.png"
+        title: "codsbuy.hero.title",
+        subtitle: "codsbuy.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsBuy",
+        title: "codsbuy.about.title",
         text: [
-          "In today’s digital-first world, having an online presence is no longer optional — it’s essential.",
-          "CodsBuy simplifies online selling with a secure, scalable, and customizable platform across industries."
+          "codsbuy.about.text1",
+          "codsbuy.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codsbuy.about.feature1" },
+          { icon: "💻", text: "codsbuy.about.feature2" },
+          { icon: "🛡️", text: "codsbuy.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Multi-Category E-Commerce",
+          title: "codsbuy.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "assets/images/jewellery.svg", text: "Suitable for jewelry, clothing, electronics, lifestyle products, and more" },
-            { icon: "assets/images/catalog-outline.svg", text: "Flexible catalog design for showcasing multiple product types" },
-            { icon: "assets/images/filter.svg", text: "Advanced filtering and search options for easy shopping" }
+            { icon: "assets/images/jewellery.svg", text: "codsbuy.keyfeature1.point1" },
+            { icon: "assets/images/catalog-outline.svg", text: "codsbuy.keyfeature1.point2" },
+            { icon: "assets/images/filter.svg", text: "codsbuy.keyfeature1.point3" }
           ]
         },
         {
-          title: "Powerful Admin Panel",
+          title: "codsbuy.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "assets/images/products.svg", text: "Manage products, categories, and inventory in real-time" },
-            { icon: "assets/images/orders.png", text: "Order management and tracking" },
-            { icon: "assets/images/roles.svg", text: "Role-based access for admins and staff" },
-            { icon: "assets/images/sales.png", text: "Sales reports and analytics dashboard" }
+            { icon: "assets/images/products.svg", text: "codsbuy.keyfeature2.point1" },
+            { icon: "assets/images/orders.png", text: "codsbuy.keyfeature2.point2" },
+            { icon: "assets/images/roles.svg", text: "codsbuy.keyfeature2.point3" },
+            { icon: "assets/images/sales.png", text: "codsbuy.keyfeature2.point4" }
           ]
         },
         {
-          title: "Payments & Checkout",
+          title: "codsbuy.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "assets/images/payment.png", text: "Multiple payment gateway integrations" },
-            { icon: "assets/images/secure.png", text: "Secure transactions with encrypted processing" },
-            { icon: "assets/images/returns.png", text: "Easy returns and refund management" },
-            { icon: "assets/images/cart.png", text: "Cart & wishlist features for customers" }
+            { icon: "assets/images/payment.png", text: "codsbuy.keyfeature3.point1" },
+            { icon: "assets/images/secure.png", text: "codsbuy.keyfeature3.point2" },
+            { icon: "assets/images/returns.png", text: "codsbuy.keyfeature3.point3" },
+            { icon: "assets/images/cart.png", text: "codsbuy.keyfeature3.point4" }
           ]
         },
         {
-          title: "Customer Engagement Tools",
+          title: "codsbuy.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "assets/images/account.png", text: "Customer accounts and order history" },
-            { icon: "assets/images/loyalty.png", text: "Loyalty points, offers, and discount management" },
-            { icon: "assets/images/reviews.png", text: "Integrated reviews & ratings system" },
-            { icon: "assets/images/notifications.png", text: "Push notifications and email marketing" }
+            { icon: "assets/images/account.png", text: "codsbuy.keyfeature4.point1" },
+            { icon: "assets/images/loyalty.png", text: "codsbuy.keyfeature4.point2" },
+            { icon: "assets/images/reviews.png", text: "codsbuy.keyfeature4.point3" },
+            { icon: "assets/images/notifications.png", text: "codsbuy.keyfeature4.point4" }
           ]
-        },
-        // {
-        //   title: "Smart Inventory & Logistics",
-        //   color: "blue",
-        //   points: [
-        //     { icon: "icons/stock.svg", text: "Real-time stock updates" },
-        //     { icon: "icons/alert.svg", text: "Low-stock alerts" },
-        //     { icon: "icons/delivery.svg", text: "Delivery & shipping management" },
-        //     { icon: "icons/vendor.svg", text: "Vendor and supplier tracking" }
-        //   ]
-        // }
+        }
       ],
       whyChoose: [
         {
           icon: 'icons/versatile.svg',
-          title: 'Versatile',
-          desc: 'Ideal for jewelry, fashion, electronics, and more.'
+          title: 'codsbuy.whychoose1.title',
+          desc: 'codsbuy.whychoose1.desc'
         },
         {
           icon: 'icons/customizable.svg',
-          title: 'Customizable',
-          desc: 'Tailor the design and features to your brand.'
+          title: 'codsbuy.whychoose2.title',
+          desc: 'codsbuy.whychoose2.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable',
-          desc: 'Grow from a small store to a multi-vendor marketplace.'
+          title: 'codsbuy.whychoose3.title',
+          desc: 'codsbuy.whychoose3.desc'
         },
         {
           icon: 'icons/analytics.svg',
-          title: 'Data-Driven',
-          desc: 'Insights and analytics for smarter decisions.'
+          title: 'codsbuy.whychoose4.title',
+          desc: 'codsbuy.whychoose4.desc'
         },
         {
           icon: 'icons/secure.svg',
-          title: 'Secure & Reliable',
-          desc: 'Protect your customers and business with enterprise-grade security.'
+          title: 'codsbuy.whychoose5.title',
+          desc: 'codsbuy.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Set up your store with CodsBuy.'
+          desc: 'codsbuy.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Add products & manage inventory.'
+          desc: 'codsbuy.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Start selling online with secure payments.'
+          desc: 'codsbuy.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Track orders & review analytics.'
+          desc: 'codsbuy.howitworks4'
         }
       ],
       cta: {
-        title: "Ready to start selling online?",
-        text: "Launch your e-commerce store with CodsBuy and grow with confidence.",
-        buttons: ["Get Started", "Request a Demo"]
+        title: "codsbuy.cta.title",
+        text: "codsbuy.cta.text",
+        buttons: ["codsbuy.cta.button1", "codsbuy.cta.button2"]
       }
     },
 
     codscare: {
       hero: {
-        title: "Smart Healthcare Management for Dental & Dermatology Clinics",
-        subtitle: "CodsCare is an advanced healthcare management software designed specifically for dermatology and dental clinics/hospitals. With dedicated modules for patients, doctors, reception, labs, and admin, CodsCare makes consultations, prescriptions, and reports seamless, secure, and efficient. ",
-        // image: "assets/images/codscare-hero.png"
+        title: "codscare.hero.title",
+        subtitle: "codscare.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsCare",
+        title: "codscare.about.title",
         text: [
-          "Managing a clinic or hospital goes beyond patient care — it’s about smooth operations, secure data, and efficient communication.",
-          "CodsCare provides dedicated modules for patients, doctors, reception, labs, and admin."
+          "codscare.about.text1",
+          "codscare.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codscare.about.feature1" },
+          { icon: "💻", text: "codscare.about.feature2" },
+          { icon: "🛡️", text: "codscare.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Patient Module",
+          title: "codscare.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/patient.svg", text: "Patient registration & profile management" },
-            { icon: "icons/calendar.svg", text: "Appointment booking & scheduling" },
-            { icon: "icons/report.svg", text: "Access to prescriptions and lab reports" },
-            { icon: "icons/history.svg", text: "Secure patient history tracking" }
+            { icon: "icons/patient.svg", text: "codscare.keyfeature1.point1" },
+            { icon: "icons/calendar.svg", text: "codscare.keyfeature1.point2" },
+            { icon: "icons/report.svg", text: "codscare.keyfeature1.point3" },
+            { icon: "icons/history.svg", text: "codscare.keyfeature1.point4" }
           ]
         },
         {
-          title: "Doctor Module",
+          title: "codscare.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/prescription.svg", text: "Add and manage prescriptions digitally" },
-            { icon: "icons/history.svg", text: "View complete patient history" },
-            { icon: "icons/lab.svg", text: "Upload & review lab reports" },
-            { icon: "icons/remote.svg", text: "Access from clinic or remotely" }
+            { icon: "icons/prescription.svg", text: "codscare.keyfeature2.point1" },
+            { icon: "icons/history.svg", text: "codscare.keyfeature2.point2" },
+            { icon: "icons/lab.svg", text: "codscare.keyfeature2.point3" },
+            { icon: "icons/remote.svg", text: "codscare.keyfeature2.point4" }
           ]
         },
         {
-          title: "Reception Module",
+          title: "codscare.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/calendar.svg", text: "Appointment booking & rescheduling" },
-            { icon: "icons/queue.svg", text: "Queue and patient flow management" },
-            { icon: "icons/bill.svg", text: "Billing & invoice generation" },
-            { icon: "icons/updates.svg", text: "Real-time updates for patients and doctors" }
+            { icon: "icons/calendar.svg", text: "codscare.keyfeature3.point1" },
+            { icon: "icons/queue.svg", text: "codscare.keyfeature3.point2" },
+            { icon: "icons/bill.svg", text: "codscare.keyfeature3.point3" },
+            { icon: "icons/updates.svg", text: "codscare.keyfeature3.point4" }
           ]
         },
         {
-          title: "Lab Module",
+          title: "codscare.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/lab.svg", text: "Upload and manage lab reports securely" },
-            { icon: "icons/integration.svg", text: "Integration with patient and doctor profiles" },
-            { icon: "icons/notification.svg", text: "Automated notifications for results" },
-            { icon: "icons/branch.svg", text: "Branch-wise lab management" }
+            { icon: "icons/lab.svg", text: "codscare.keyfeature4.point1" },
+            { icon: "icons/integration.svg", text: "codscare.keyfeature4.point2" },
+            { icon: "icons/notification.svg", text: "codscare.keyfeature4.point3" },
+            { icon: "icons/branch.svg", text: "codscare.keyfeature4.point4" }
           ]
-        },
-        // {
-        //   title: "Admin Module",
-        //   color: "blue",
-        //   points: [
-        //     { icon: "icons/staff.svg", text: "Manage doctors, staff, and reception teams" },
-        //     { icon: "icons/branch.svg", text: "Multi-branch or single-branch control" },
-        //     { icon: "icons/report.svg", text: "Financial reports and analytics" },
-        //     { icon: "icons/security.svg", text: "Role-based access and security" }
-        //   ]
-        // }
+        }
       ],
       whyChoose: [
         {
           icon: 'icons/clinic.svg',
-          title: 'Specialized for Dermatology & Dental Clinics',
-          desc: 'Tailored features for your practice.'
+          title: 'codscare.whychoose1.title',
+          desc: 'codscare.whychoose1.desc'
         },
         {
           icon: 'icons/secure.svg',
-          title: 'Secure & Compliant',
-          desc: 'Advanced security for sensitive health data.'
+          title: 'codscare.whychoose2.title',
+          desc: 'codscare.whychoose2.desc'
         },
         {
           icon: 'icons/branch.svg',
-          title: 'Branch Management',
-          desc: 'Handle single or multiple clinics with ease.'
+          title: 'codscare.whychoose3.title',
+          desc: 'codscare.whychoose3.desc'
         },
         {
           icon: 'icons/report.svg',
-          title: 'Digital Prescriptions & Reports',
-          desc: 'Paperless and instant sharing.'
+          title: 'codscare.whychoose4.title',
+          desc: 'codscare.whychoose4.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable & Reliable',
-          desc: 'From small clinics to large hospitals.'
+          title: 'codscare.whychoose5.title',
+          desc: 'codscare.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Reception books and manages appointments.'
+          desc: 'codscare.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Doctors consult patients and add prescriptions.'
+          desc: 'codscare.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Labs upload test results and reports securely.'
+          desc: 'codscare.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Patients access prescriptions and reports, while admins monitor operations.'
+          desc: 'codscare.howitworks4'
         }
       ],
       cta: {
-        title: "Ready to take your clinic management to the next level?",
-        text: "Switch to CodsCare and experience secure, smart, and efficient healthcare management.",
-        buttons: ["Book a Demo", "Contact Us"]
+        title: "codscare.cta.title",
+        text: "codscare.cta.text",
+        buttons: ["codscare.cta.button1", "codscare.cta.button2"]
       }
     },
 
     codshms: {
       hero: {
-        title: "Smart Hostel Management, Simplified",
-        subtitle: "CodsHMS is a complete Hostel Management Software with a built-in website. From showcasing hostel details and room availability online to managing kitchen stock, purchases, and student records in the admin panel — CodsHMS makes hostel management efficient, transparent, and secure.",
-        // image: "assets/images/codshms-hero.png"
+        title: "codshms.hero.title",
+        subtitle: "codshms.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsHMS",
+        title: "codshms.about.title",
         text: [
-          "Managing a hostel requires balancing multiple operations.",
-          "CodsHMS offers a secure platform for room allocation, fee collection, and student management."
+          "codshms.about.text1",
+          "codshms.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codshms.about.feature1" },
+          { icon: "💻", text: "codshms.about.feature2" },
+          { icon: "🛡️", text: "codshms.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Public Website",
+          title: "codshms.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/web.svg", text: "Hostel introduction and about section" },
-            { icon: "icons/status.svg", text: "Room availability status (vacant/occupied)" },
-            { icon: "icons/booking.svg", text: "Online inquiry & booking requests" },
-            { icon: "icons/gallery.svg", text: "Photo gallery and facilities showcase" }
+            { icon: "icons/web.svg", text: "codshms.keyfeature1.point1" },
+            { icon: "icons/status.svg", text: "codshms.keyfeature1.point2" },
+            { icon: "icons/booking.svg", text: "codshms.keyfeature1.point3" },
+            { icon: "icons/gallery.svg", text: "codshms.keyfeature1.point4" }
           ]
         },
         {
-          title: "Student Management",
+          title: "codshms.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/student.svg", text: "Admissions and student profiles" },
-            { icon: "icons/room.svg", text: "Room allocations and transfers" },
-            { icon: "icons/attendance.svg", text: "Attendance tracking" },
-            { icon: "icons/report.svg", text: "Student history and records" }
+            { icon: "icons/student.svg", text: "codshms.keyfeature2.point1" },
+            { icon: "icons/room.svg", text: "codshms.keyfeature2.point2" },
+            { icon: "icons/attendance.svg", text: "codshms.keyfeature2.point3" },
+            { icon: "icons/report.svg", text: "codshms.keyfeature2.point4" }
           ]
         },
         {
-          title: "Kitchen & Finance",
+          title: "codshms.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/kitchen.svg", text: "Kitchen & Stock Management: track purchases and daily usage" },
-            { icon: "icons/expense.svg", text: "Expense monitoring and control" },
-            { icon: "icons/finance.svg", text: "Fee collection & payment records" },
-            { icon: "icons/chart.svg", text: "Financial reports and expense analytics" }
+            { icon: "icons/kitchen.svg", text: "codshms.keyfeature3.point1" },
+            { icon: "icons/expense.svg", text: "codshms.keyfeature3.point2" },
+            { icon: "icons/finance.svg", text: "codshms.keyfeature3.point3" },
+            { icon: "icons/chart.svg", text: "codshms.keyfeature3.point4" }
           ]
         },
         {
-          title: "Multi-Branch & Analytics",
+          title: "codshms.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/branch.svg", text: "Multi-Branch Support: manage single or multiple hostels" },
-            { icon: "icons/dashboard.svg", text: "Centralized admin dashboard" },
-            { icon: "icons/report.svg", text: "Reports & Analytics for smarter decisions" },
-            { icon: "icons/security.svg", text: "Secure role-based access" }
+            { icon: "icons/branch.svg", text: "codshms.keyfeature4.point1" },
+            { icon: "icons/dashboard.svg", text: "codshms.keyfeature4.point2" },
+            { icon: "icons/report.svg", text: "codshms.keyfeature4.point3" },
+            { icon: "icons/security.svg", text: "codshms.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/website.svg',
-          title: 'Complete Solution',
-          desc: 'Public website + hostel management software in one.'
+          title: 'codshms.whychoose1.title',
+          desc: 'codshms.whychoose1.desc'
         },
         {
           icon: 'icons/student.svg',
-          title: 'Student-Centric',
-          desc: 'Easy management of student records, attendance, and fees.'
+          title: 'codshms.whychoose2.title',
+          desc: 'codshms.whychoose2.desc'
         },
         {
           icon: 'icons/kitchen.svg',
-          title: 'Smart Stock & Kitchen Control',
-          desc: 'Reduce wastage and track expenses.'
+          title: 'codshms.whychoose3.title',
+          desc: 'codshms.whychoose3.desc'
         },
         {
           icon: 'icons/transparent.svg',
-          title: 'Transparency',
-          desc: 'Parents/students can check hostel info and availability online.'
+          title: 'codshms.whychoose4.title',
+          desc: 'codshms.whychoose4.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable',
-          desc: 'Works for small hostels, PGs, or large multi-branch hostels.'
+          title: 'codshms.whychoose5.title',
+          desc: 'codshms.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Students/parents visit the website to view hostel details and room availability.'
+          desc: 'codshms.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Admin manages admissions, room allocations, and student data in the system.'
+          desc: 'codshms.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Kitchen staff update purchase details and stock usage through the admin panel.'
+          desc: 'codshms.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Finance and reports are generated automatically for transparency.'
+          desc: 'codshms.howitworks4'
         }
       ],
       cta: {
-        title: "Ready to digitize your hostel?",
-        text: "Switch to CodsHMS for smarter hostel operations.",
-        buttons: ["Request Demo", "Contact Us"]
+        title: "codshms.cta.title",
+        text: "codshms.cta.text",
+        buttons: ["codshms.cta.button1", "codshms.cta.button2"]
       }
     },
 
     codsevent: {
       hero: {
-        title: "Plan, Manage, and Execute Events Effortlessly",
-        subtitle: "CodsEvent is an advanced event management software built to handle everything from corporate expos to private functions. With tools for stall management, vendor needs, and participant requirements, it helps organizers deliver seamless and professional events every time.",
-        // image: "assets/images/codsevent-hero.png"
+        title: "codsevent.hero.title",
+        subtitle: "codsevent.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsEvent",
+        title: "codsevent.about.title",
         text: [
-          "CodsEvent helps organizers deliver seamless events with registration, ticketing, and scheduling tools.",
-          "Vendors, staff, and participants get one connected platform."
+          "codsevent.about.text1",
+          "codsevent.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codsevent.about.feature1" },
+          { icon: "💻", text: "codsevent.about.feature2" },
+          { icon: "🛡️", text: "codsevent.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Admin Panel",
+          title: "codsevent.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/dashboard.svg", text: "Create and manage multiple events from one dashboard" },
-            { icon: "icons/stall.svg", text: "Real-time stall allocation and availability updates" },
-            { icon: "icons/vendor.svg", text: "Vendor and exhibitor management system" },
-            { icon: "icons/finance.svg", text: "Finance & billing with invoices, receipts, and sponsorship tracking" },
-            { icon: "icons/report.svg", text: "Detailed reports on stall occupancy, ticket sales, and expenses" },
-            // { icon: "icons/staff.svg", text: "Manage staff and volunteer assignments" }
+            { icon: "icons/dashboard.svg", text: "codsevent.keyfeature1.point1" },
+            { icon: "icons/stall.svg", text: "codsevent.keyfeature1.point2" },
+            { icon: "icons/vendor.svg", text: "codsevent.keyfeature1.point3" },
+            { icon: "icons/finance.svg", text: "codsevent.keyfeature1.point4" },
+            { icon: "icons/report.svg", text: "codsevent.keyfeature1.point5" }
           ]
         },
         {
-          title: "Stall & Vendor Management",
+          title: "codsevent.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/stall.svg", text: "Allocate and track stalls with real-time updates" },
-            { icon: "icons/requirement.svg", text: "Vendors can request electricity, WiFi, catering, furniture, and custom requirements" },
-            { icon: "icons/approval.svg", text: "Automatic approval/rejection workflows" },
-            { icon: "icons/payment.svg", text: "Vendor billing and payment tracking" }
+            { icon: "icons/stall.svg", text: "codsevent.keyfeature2.point1" },
+            { icon: "icons/requirement.svg", text: "codsevent.keyfeature2.point2" },
+            { icon: "icons/approval.svg", text: "codsevent.keyfeature2.point3" },
+            { icon: "icons/payment.svg", text: "codsevent.keyfeature2.point4" }
           ]
         },
         {
-          title: "Event Planning & Scheduling",
+          title: "codsevent.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/schedule.svg", text: "Publish event schedules, agendas, and speaker sessions" },
-            { icon: "icons/qr.svg", text: "Attendee registration and QR code-based check-in system" },
-            { icon: "icons/sponsor.svg", text: "Sponsor package management and promotions" },
-            { icon: "icons/resource.svg", text: "Resource allocation (equipment, manpower, logistics)" }
+            { icon: "icons/schedule.svg", text: "codsevent.keyfeature3.point1" },
+            { icon: "icons/qr.svg", text: "codsevent.keyfeature3.point2" },
+            { icon: "icons/sponsor.svg", text: "codsevent.keyfeature3.point3" },
+            { icon: "icons/resource.svg", text: "codsevent.keyfeature3.point4" }
           ]
         },
         {
-          title: "Communication & Engagement",
+          title: "codsevent.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/notification.svg", text: "Send SMS, email, or in-app notifications to vendors and attendees" },
-            { icon: "icons/feedback.svg", text: "Integrated feedback & survey forms" },
-            { icon: "icons/task.svg", text: "Task assignment and progress tracking for teams" }
+            { icon: "icons/notification.svg", text: "codsevent.keyfeature4.point1" },
+            { icon: "icons/feedback.svg", text: "codsevent.keyfeature4.point2" },
+            { icon: "icons/task.svg", text: "codsevent.keyfeature4.point3" }
           ]
-        },
-        // {
-        //   title: "Reports & Analytics",
-        //   color: "blue",
-        //   points: [
-        //     { icon: "icons/revenue.svg", text: "Insights on revenue, ticket sales, and vendor participation" },
-        //     { icon: "icons/availability.svg", text: "Real-time stall availability overview" },
-        //     { icon: "icons/analytics.svg", text: "Post-event reports with engagement data and ROI analysis" }
-        //   ]
-        // }
+        }
       ],
       whyChoose: [
         {
           icon: 'icons/platform.svg',
-          title: 'Centralized Platform',
-          desc: 'For organizers, vendors, and attendees'
+          title: 'codsevent.whychoose1.title',
+          desc: 'codsevent.whychoose1.desc'
         },
         {
           icon: 'icons/stall.svg',
-          title: 'Stall & Vendor Management',
-          desc: 'Simplifies stall allocation and vendor request tracking'
+          title: 'codsevent.whychoose2.title',
+          desc: 'codsevent.whychoose2.desc'
         },
         {
           icon: 'icons/sponsor.svg',
-          title: 'Sponsor Visibility',
-          desc: 'Enhances sponsor visibility and attendee engagement'
+          title: 'codsevent.whychoose3.title',
+          desc: 'codsevent.whychoose3.desc'
         },
         {
           icon: 'icons/analytics.svg',
-          title: 'Real-Time Insights',
-          desc: 'Provides real-time updates and powerful analytics'
+          title: 'codsevent.whychoose4.title',
+          desc: 'codsevent.whychoose4.desc'
         },
         {
           icon: 'icons/events.svg',
-          title: 'Multi-Event Support',
-          desc: 'Supports single or multi-event management'
+          title: 'codsevent.whychoose5.title',
+          desc: 'codsevent.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Create and publish event.'
+          desc: 'codsevent.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Manage vendors and staff.'
+          desc: 'codsevent.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Attendees register and check-in.'
+          desc: 'codsevent.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Track engagement and feedback.'
+          desc: 'codsevent.howitworks4'
         }
       ],
       cta: {
-        title: "Ready to simplify your events?",
-        text: "Switch to CodsEvent for seamless event management.",
-        buttons: ["Request Demo", "Contact Us"]
+        title: "codsevent.cta.title",
+        text: "codsevent.cta.text",
+        buttons: ["codsevent.cta.button1", "codsevent.cta.button2"]
       }
     },
 
     codsbill: {
       hero: {
-        title: "Bill Anywhere. Manage Everything.",
-        subtitle: " CodBill is a mobile-based billing and business management software designed for shops of all sizes. From small retail outlets to restaurants, CodBill makes sales, billing, and inventory simple—with Bluetooth printing and all-in-one management features..",
-        // image: "assets/images/codsbill-hero.png"
+        title: "codsbill.hero.title",
+        subtitle: "codsbill.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsBill",
+        title: "codsbill.about.title",
         text: [
-          "CodsBill enables fast, reliable billing.",
-          "Includes GST compliance, reports, and inventory features."
+          "codsbill.about.text1",
+          "codsbill.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codsbill.about.feature1" },
+          { icon: "💻", text: "codsbill.about.feature2" },
+          { icon: "🛡️", text: "codsbill.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Smart Billing",
+          title: "codsbill.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/billing.svg", text: "Mobile-based billing with simple UI" },
-            { icon: "icons/printer.svg", text: "Integrated with Bluetooth printer for instant receipts" },
-            { icon: "icons/payment.svg", text: "Multiple payment modes (Cash, UPI, Card, Wallets)" },
-            { icon: "icons/gst.svg", text: "GST/Tax-ready billing" }
+            { icon: "icons/billing.svg", text: "codsbill.keyfeature1.point1" },
+            { icon: "icons/printer.svg", text: "codsbill.keyfeature1.point2" },
+            { icon: "icons/payment.svg", text: "codsbill.keyfeature1.point3" },
+            { icon: "icons/gst.svg", text: "codsbill.keyfeature1.point4" }
           ]
         },
         {
-          title: "Stock & Inventory Management",
+          title: "codsbill.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/stock.svg", text: "Add, update, and track stock in real time" },
-            { icon: "icons/alert.svg", text: "Low-stock alerts and expiry tracking" },
-            { icon: "icons/category.svg", text: "Multi-category and multi-location stock handling" },
-            { icon: "icons/barcode.svg", text: "Barcode scanning & product search" }
+            { icon: "icons/stock.svg", text: "codsbill.keyfeature2.point1" },
+            { icon: "icons/alert.svg", text: "codsbill.keyfeature2.point2" },
+            { icon: "icons/category.svg", text: "codsbill.keyfeature2.point3" },
+            { icon: "icons/barcode.svg", text: "codsbill.keyfeature2.point4" }
           ]
         },
         {
-          title: "Sales & Purchase Tracking",
+          title: "codsbill.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/report.svg", text: "Daily/Monthly sales reports" },
-            { icon: "icons/purchase.svg", text: "Purchase records with supplier details" },
-            { icon: "icons/profit.svg", text: "Track profit & margins easily" },
-            { icon: "icons/customer.svg", text: "Customer & vendor management" }
+            { icon: "icons/report.svg", text: "codsbill.keyfeature3.point1" },
+            { icon: "icons/purchase.svg", text: "codsbill.keyfeature3.point2" },
+            { icon: "icons/profit.svg", text: "codsbill.keyfeature3.point3" },
+            { icon: "icons/customer.svg", text: "codsbill.keyfeature3.point4" }
           ]
         },
         {
-          title: "Expense & Income Tracking",
+          title: "codsbill.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/expense.svg", text: "Record daily expenses" },
-            { icon: "icons/income.svg", text: "Manage income sources" },
-            { icon: "icons/cashbook.svg", text: "Automated cashbook & profit/loss reports" }
+            { icon: "icons/expense.svg", text: "codsbill.keyfeature4.point1" },
+            { icon: "icons/income.svg", text: "codsbill.keyfeature4.point2" },
+            { icon: "icons/cashbook.svg", text: "codsbill.keyfeature4.point3" }
           ]
-        },
-        // {
-        //   title: "Restaurant & Shop Modules",
-        //   color: "blue",
-        //   points: [
-        //     { icon: "icons/restaurant.svg", text: "Table-wise/KOT (Kitchen Order Ticket) billing" },
-        //     { icon: "icons/modifier.svg", text: "Item modifiers (extra cheese, toppings, etc.)" },
-        //     { icon: "icons/offer.svg", text: "Combo offers, discounts, loyalty points" },
-        //     { icon: "icons/shop.svg", text: "Works for grocery, salons, cafes, electronics, and more" }
-        //   ]
-        // },
-        // {
-        //   title: "User Roles & Security",
-        //   color: "cyan",
-        //   points: [
-        //     { icon: "icons/user.svg", text: "Multi-user access (Cashier, Manager, Owner)" },
-        //     { icon: "icons/role.svg", text: "Role-based permissions" },
-        //     { icon: "icons/backup.svg", text: "Secure cloud backup & restore" }
-        //   ]
-        // }
+        }
       ],
       whyChoose: [
         {
           icon: 'icons/easy.svg',
-          title: 'Easy to Use',
-          desc: 'No technical knowledge required'
+          title: 'codsbill.whychoose1.title',
+          desc: 'codsbill.whychoose1.desc'
         },
         {
           icon: 'icons/affordable.svg',
-          title: 'Affordable & Mobile-First',
-          desc: 'Perfect for small shops'
+          title: 'codsbill.whychoose2.title',
+          desc: 'codsbill.whychoose2.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable',
-          desc: 'Works for retail, restaurants, and large stores'
+          title: 'codsbill.whychoose3.title',
+          desc: 'codsbill.whychoose3.desc'
         },
         {
           icon: 'icons/realtime.svg',
-          title: 'Real-Time Tracking',
-          desc: 'Sales, stock, expenses in one app'
+          title: 'codsbill.whychoose4.title',
+          desc: 'codsbill.whychoose4.desc'
         },
         {
           icon: 'icons/billing.svg',
-          title: 'Paperless & Fast',
-          desc: 'Bluetooth billing in seconds'
+          title: 'codsbill.whychoose5.title',
+          desc: 'codsbill.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Set up your business profile.'
+          desc: 'codsbill.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Add items & tax rates.'
+          desc: 'codsbill.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Generate bills instantly.'
+          desc: 'codsbill.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Track sales and taxes.'
+          desc: 'codsbill.howitworks4'
         }
       ],
       cta: {
-        title: "Simplify your billing today",
-        text: "Start billing smarter with CodsBill.",
-        buttons: ["Request Demo", "Download App"]
+        title: "codsbill.cta.title",
+        text: "codsbill.cta.text",
+        buttons: ["codsbill.cta.button1", "codsbill.cta.button2"]
       }
     },
 
     codspoint: {
       hero: {
-        title: "Smart Billing. Smarter Business.",
-        subtitle: "CodsPoint is a flexible POS & billing software built for restaurants, supermarkets, and retail businesses. With smart billing, inventory tracking, and stock management, CodsPoint helps you streamline sales, reduce errors, and boost profitability.",
-        // image: "assets/images/codspoint-hero.png"
+        title: "codspoint.hero.title",
+        subtitle: "codspoint.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsPoint",
+        title: "codspoint.about.title",
         text: [
-          "CodsPoint simplifies sales and stock tracking.",
-          "Works for retail shops, supermarkets, and distributors."
+          "codspoint.about.text1",
+          "codspoint.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codspoint.about.feature1" },
+          { icon: "💻", text: "codspoint.about.feature2" },
+          { icon: "🛡️", text: "codspoint.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Fast & Reliable Billing",
+          title: "codspoint.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/invoice.svg", text: "Quick invoice generation" },
-            { icon: "icons/gst.svg", text: "GST & tax-ready bills" },
-            { icon: "icons/barcode.svg", text: "Barcode & QR code scanning support" },
-            { icon: "icons/billformat.svg", text: "Customizable bill formats" }
+            { icon: "icons/invoice.svg", text: "codspoint.keyfeature1.point1" },
+            { icon: "icons/gst.svg", text: "codspoint.keyfeature1.point2" },
+            { icon: "icons/barcode.svg", text: "codspoint.keyfeature1.point3" },
+            { icon: "icons/billformat.svg", text: "codspoint.keyfeature1.point4" }
           ]
         },
         {
-          title: "Smart Inventory & Stock Management",
+          title: "codspoint.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/inventory.svg", text: "Real-time inventory updates" },
-            { icon: "icons/alert.svg", text: "Low-stock alerts & expiry management" },
-            { icon: "icons/auto-stock.svg", text: "Automatic stock deduction on sales" },
-            { icon: "icons/warehouse.svg", text: "Multi-location stock tracking" }
+            { icon: "icons/inventory.svg", text: "codspoint.keyfeature2.point1" },
+            { icon: "icons/alert.svg", text: "codspoint.keyfeature2.point2" },
+            { icon: "icons/auto-stock.svg", text: "codspoint.keyfeature2.point3" },
+            { icon: "icons/warehouse.svg", text: "codspoint.keyfeature2.point4" }
           ]
         },
         {
-          title: "POS Features",
+          title: "codspoint.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/restaurant.svg", text: "Works for restaurants, supermarkets, and retail shops" },
-            { icon: "icons/counter.svg", text: "Multi-counter and multi-branch support" },
-            { icon: "icons/payment.svg", text: "Cash, card, UPI & wallet payment options" },
-            { icon: "icons/loyalty.svg", text: "Discounts, offers & loyalty programs" }
+            { icon: "icons/restaurant.svg", text: "codspoint.keyfeature3.point1" },
+            { icon: "icons/counter.svg", text: "codspoint.keyfeature3.point2" },
+            { icon: "icons/payment.svg", text: "codspoint.keyfeature3.point3" },
+            { icon: "icons/loyalty.svg", text: "codspoint.keyfeature3.point4" }
           ]
         },
         {
-          title: "Reports & Analytics",
+          title: "codspoint.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/report.svg", text: "Daily, weekly, and monthly sales reports" },
-            { icon: "icons/profit.svg", text: "Expense & profit tracking" },
-            { icon: "icons/staff.svg", text: "Staff performance reports" },
-            { icon: "icons/download.svg", text: "Downloadable insights for business growth" }
+            { icon: "icons/report.svg", text: "codspoint.keyfeature4.point1" },
+            { icon: "icons/profit.svg", text: "codspoint.keyfeature4.point2" },
+            { icon: "icons/staff.svg", text: "codspoint.keyfeature4.point3" },
+            { icon: "icons/download.svg", text: "codspoint.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/pos.svg',
-          title: 'Universal POS Solution',
-          desc: 'Suitable for restaurants, supermarkets, and retail.'
+          title: 'codspoint.whychoose1.title',
+          desc: 'codspoint.whychoose1.desc'
         },
         {
           icon: 'icons/inventory.svg',
-          title: 'Smart Inventory',
-          desc: 'Keep track of every product in real-time.'
+          title: 'codspoint.whychoose2.title',
+          desc: 'codspoint.whychoose2.desc'
         },
         {
           icon: 'icons/billing.svg',
-          title: 'Fast & Secure Billing',
-          desc: 'Reduce errors and save time.'
+          title: 'codspoint.whychoose3.title',
+          desc: 'codspoint.whychoose3.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable',
-          desc: 'Works for small businesses and large enterprises alike.'
+          title: 'codspoint.whychoose4.title',
+          desc: 'codspoint.whychoose4.desc'
         },
         {
           icon: 'icons/mobile.svg',
-          title: 'Mobile & Desktop Access',
-          desc: 'Manage your business from anywhere.'
+          title: 'codspoint.whychoose5.title',
+          desc: 'codspoint.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'icons/install.svg',
-          desc: 'Install CodsPoint on your system.'
+          desc: 'codspoint.howitworks1'
         },
         {
           icon: 'icons/configure.svg',
-          desc: 'Configure products & pricing.'
+          desc: 'codspoint.howitworks2'
         },
         {
           icon: 'icons/pos.svg',
-          desc: 'Start billing with barcode/POS.'
+          desc: 'codspoint.howitworks3'
         },
         {
           icon: 'icons/reports.svg',
-          desc: 'Review sales reports anytime.'
+          desc: 'codspoint.howitworks4'
         }
       ],
       cta: {
-        title: "Upgrade your billing system",
-        text: "Run your shop smarter with CodsPoint.",
-        buttons: ["Request Demo", "Get Started"]
+        title: "codspoint.cta.title",
+        text: "codspoint.cta.text",
+        buttons: ["codspoint.cta.button1", "codspoint.cta.button2"]
       }
     },
 
-
     codslabel: {
       hero: {
-        title: "Smart Label Printing for Smarter Food Safety.",
-        subtitle: " CodsLabel is an advanced mobile app with a powerful web dashboard, designed to simplify label printing for food production shops. From shelf-life tracking to expiry management, CodsLabel ensures accuracy, compliance, and efficiency in every step",
+        title: "codslabel.hero.title",
+        subtitle: "codslabel.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsLabel",
+        title: "codslabel.about.title",
         text: [
-          " CodsLabel is a complete label printing and food management solution that helps businesses manage their food products effectively. It automatically calculates the Manufacturing Date (MFD) and Expiry Date based on predefined shelf-life details. With multi-role access and seamless integration across multiple branches, CodsLabel ensures food quality and compliance without manual errors.",
-          " Whether you run a single food outlet or manage multiple production shops, CodsLabel brings clarity, speed, and automation to your labeling process."
+          "codslabel.about.text1",
+          "codslabel.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codslabel.about.feature1" },
+          { icon: "💻", text: "codslabel.about.feature2" },
+          { icon: "🛡️", text: "codslabel.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Mobile & Admin Dashboard",
+          title: "codslabel.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/mobile.svg", text: "Manage labels and production data from anywhere" },
-            { icon: "icons/dashboard.svg", text: "Centralized admin dashboard for oversight" }
+            { icon: "icons/mobile.svg", text: "codslabel.keyfeature1.point1" },
+            { icon: "icons/dashboard.svg", text: "codslabel.keyfeature1.point2" }
           ]
         },
         {
-          title: "Multi-Branch & Role Management",
+          title: "codslabel.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/branch.svg", text: "Handle multiple food production shops effortlessly" },
-            { icon: "icons/role.svg", text: "Employee, Store, Area Manager & Admin modules" }
+            { icon: "icons/branch.svg", text: "codslabel.keyfeature2.point1" },
+            { icon: "icons/role.svg", text: "codslabel.keyfeature2.point2" }
           ]
         },
         {
-          title: "Smart Production Tracking",
+          title: "codslabel.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/shelf-life.svg", text: "Set shelf-life once; system calculates MFD & expiry automatically" },
-            { icon: "icons/checklist.svg", text: "Ensure production and compliance checks are followed" }
+            { icon: "icons/shelf-life.svg", text: "codslabel.keyfeature3.point1" },
+            { icon: "icons/checklist.svg", text: "codslabel.keyfeature3.point2" }
           ]
         },
         {
-          title: "Secure & Smart Labeling",
+          title: "codslabel.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/label.svg", text: "Generate accurate labels instantly with all required details" },
-            { icon: "icons/secure.svg", text: "Data protection and accurate reporting for every product" }
+            { icon: "icons/label.svg", text: "codslabel.keyfeature4.point1" },
+            { icon: "icons/secure.svg", text: "codslabel.keyfeature4.point2" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/accuracy.svg',
-          title: 'Reduce Manual Errors',
-          desc: 'Minimize mistakes in label printing with automation.'
+          title: 'codslabel.whychoose1.title',
+          desc: 'codslabel.whychoose1.desc'
         },
         {
           icon: 'icons/secure.svg',
-          title: 'Compliance Ready',
-          desc: 'Ensure full adherence to food safety standards.'
+          title: 'codslabel.whychoose2.title',
+          desc: 'codslabel.whychoose2.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Centralized Control',
-          desc: 'Manage and monitor multiple shops from one system.'
+          title: 'codslabel.whychoose3.title',
+          desc: 'codslabel.whychoose3.desc'
         },
         {
           icon: 'icons/payroll.svg',
-          title: 'Save Time',
-          desc: 'Automated date calculations streamline operations.'
+          title: 'codslabel.whychoose4.title',
+          desc: 'codslabel.whychoose4.desc'
         },
         {
           icon: 'icons/mobile.svg',
-          title: 'Role-Based Access',
-          desc: 'Improve accountability with secure, permission-based access.'
+          title: 'codslabel.whychoose5.title',
+          desc: 'codslabel.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Employee Module – Print labels and update product details quickly.'
+          desc: 'codslabel.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Store Module – Manage store-level stock and checklist.'
+          desc: 'codslabel.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Area Manager Module – Oversee multiple shops and ensure compliance.'
+          desc: 'codslabel.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Admin Module – Complete control over food items, shelf-life data, employees, and reports.'
+          desc: 'codslabel.howitworks4'
         }
       ],
       cta: {
-        title: "Print Smarter. Manage Better. Ensure Safer Food with CodsLabel.",
-        text: "Get Started with CodsLabel Today!",
-        buttons: ["Request a Demo", "Contact Us"]
+        title: "codslabel.cta.title",
+        text: "codslabel.cta.text",
+        buttons: ["codslabel.cta.button1", "codslabel.cta.button2"]
       }
     },
 
-    codsAudit: {
+    codsaudit: {
       hero: {
-        title: "Audit Smarter. Manage Better.",
-        subtitle: " CodsAudit simplifies stock auditing with barcode scanning, real-time tracking, and smart stock management—all from your mobile app. ",
+        title: "codsaudit.hero.title",
+        subtitle: "codsaudit.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsAudit",
+        title: "codsaudit.about.title",
         text: [
-          " CodsAudit is a stock auditing and inventory management solution designed for businesses that want complete control over their inventory.",
-          " With its mobile barcode scanning feature, CodsAudit makes it easy to add, verify, and manage stock directly from your smartphone. It reduces manual errors, saves time, and provides real-time visibility into your stock flow."
+          "codsaudit.about.text1",
+          "codsaudit.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codsaudit.about.feature1" },
+          { icon: "💻", text: "codsaudit.about.feature2" },
+          { icon: "🛡️", text: "codsaudit.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Mobile App with Barcode Scanning",
+          title: "codsaudit.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/scan.svg", text: "Scan product barcodes to add or audit stock instantly" },
-            { icon: "icons/sync.svg", text: "Works both online and offline with sync capability" },
-            { icon: "icons/batch.svg", text: "Supports batch & serial number management" }
+            { icon: "icons/scan.svg", text: "codsaudit.keyfeature1.point1" },
+            { icon: "icons/sync.svg", text: "codsaudit.keyfeature1.point2" },
+            { icon: "icons/batch.svg", text: "codsaudit.keyfeature1.point3" }
           ]
         },
         {
-          title: "Smart Stock Management",
+          title: "codsaudit.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/edit.svg", text: "Add, edit, or remove stock items on the go" },
-            { icon: "icons/category.svg", text: "Categorize items (electronics, apparel, FMCG, etc.)" },
-            { icon: "icons/alert.svg", text: "Stock level alerts for low or excess inventory" },
-            { icon: "icons/location.svg", text: "Multi-location stock handling" }
+            { icon: "icons/edit.svg", text: "codsaudit.keyfeature2.point1" },
+            { icon: "icons/category.svg", text: "codsaudit.keyfeature2.point2" },
+            { icon: "icons/alert.svg", text: "codsaudit.keyfeature2.point3" },
+            { icon: "icons/location.svg", text: "codsaudit.keyfeature2.point4" }
           ]
         },
         {
-          title: "Auditing & Verification",
+          title: "codsaudit.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/compare.svg", text: "Compare physical stock with system records" },
-            { icon: "icons/auto-check.svg", text: "Automated discrepancy detection" },
-            { icon: "icons/report.svg", text: "Generate audit reports with variances highlighted" }
+            { icon: "icons/compare.svg", text: "codsaudit.keyfeature3.point1" },
+            { icon: "icons/auto-check.svg", text: "codsaudit.keyfeature3.point2" },
+            { icon: "icons/report.svg", text: "codsaudit.keyfeature3.point3" }
           ]
         },
         {
-          title: "Reports & User Management",
+          title: "codsaudit.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/report.svg", text: "Daily, weekly, and monthly stock reports" },
-            { icon: "icons/dashboard.svg", text: "Real-time dashboards for stock movement" },
-            { icon: "icons/export.svg", text: "Export reports in Excel/PDF for management review" },
-            { icon: "icons/user.svg", text: "Role-based access for auditors, staff, and managers" },
-            { icon: "icons/secure.svg", text: "Secure login with activity tracking" },
-            { icon: "icons/approval.svg", text: "Approval workflows for corrections" }
+            { icon: "icons/report.svg", text: "codsaudit.keyfeature4.point1" },
+            { icon: "icons/dashboard.svg", text: "codsaudit.keyfeature4.point2" },
+            { icon: "icons/export.svg", text: "codsaudit.keyfeature4.point3" },
+            { icon: "icons/user.svg", text: "codsaudit.keyfeature4.point4" },
+            { icon: "icons/secure.svg", text: "codsaudit.keyfeature4.point5" },
+            { icon: "icons/approval.svg", text: "codsaudit.keyfeature4.point6" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/barcode.svg',
-          title: 'Faster Audits',
-          desc: 'Error-free stock audits with barcode scanning.'
+          title: 'codsaudit.whychoose1.title',
+          desc: 'codsaudit.whychoose1.desc'
         },
         {
           icon: 'icons/visibility.svg',
-          title: 'Real-Time Visibility',
-          desc: 'Track stock across multiple locations instantly.'
+          title: 'codsaudit.whychoose2.title',
+          desc: 'codsaudit.whychoose2.desc'
         },
         {
           icon: 'icons/reports.svg',
-          title: 'Automated Reports',
-          desc: 'Discrepancy reports generated to reduce losses.'
+          title: 'codsaudit.whychoose3.title',
+          desc: 'codsaudit.whychoose3.desc'
         },
         {
           icon: 'icons/mobile.svg',
-          title: 'Mobile-First Solution',
-          desc: 'Easy and quick access anytime, anywhere.'
+          title: 'codsaudit.whychoose4.title',
+          desc: 'codsaudit.whychoose4.desc'
         },
         {
           icon: 'icons/efficiency.svg',
-          title: 'Improved Efficiency',
-          desc: 'Boost transparency, accuracy, and operations.'
+          title: 'codsaudit.whychoose5.title',
+          desc: 'codsaudit.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Scan product barcodes using the mobile app to add or audit stock instantly.'
+          desc: 'codsaudit.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Compare physical stock with system records and detect discrepancies in real time.'
+          desc: 'codsaudit.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Generate instant audit reports and track stock movement across locations.'
+          desc: 'codsaudit.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Manage approvals, user roles, and keep your inventory accurate and transparent.'
+          desc: 'codsaudit.howitworks4'
         }
       ],
       cta: {
-        title: "CodsAudit makes stock auditing simple, smart, and stress-free.",
-        text: "Get Started with CodsLabel Today! Contact Codsair Technologies and bring efficiency to your inventory management today!",
-        buttons: ["Request a Demo", "Contact Us"]
+        title: "codsaudit.cta.title",
+        text: "codsaudit.cta.text",
+        buttons: ["codsaudit.cta.button1", "codsaudit.cta.button2"]
       }
     },
 
-    codsRMS: {
+    codsrms: {
       hero: {
-        title: "Smart Restaurant Management, All in One Place",
-        subtitle: " CodsRMS is a complete restaurant management system that integrates ERP, Payroll, CRM, and Accounts into a single platform. From stock control to staff attendance, customer engagement, and financials — CodsRMS helps restaurants run efficiently and profitably. ",
+        title: "codsrms.hero.title",
+        subtitle: "codsrms.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About codsRMS",
+        title: "codsrms.about.title",
         text: [
-          " Running a restaurant is more than just serving food — it’s about balancing operations, managing staff, monitoring inventory, and keeping customers happy.",
-          " CodsRMS is designed for restaurants of all sizes — from single outlets to multibranch chains. With its integrated modules for ERP, Payroll, CRM, and Accounts, CodsRMS gives you complete visibility and control over your restaurant operations."
+          "codsrms.about.text1",
+          "codsrms.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codsrms.about.feature1" },
+          { icon: "💻", text: "codsrms.about.feature2" },
+          { icon: "🛡️", text: "codsrms.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Stock & Asset Management",
+          title: "codsrms.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/inventory.svg", text: "Real-time inventory tracking" },
-            { icon: "icons/alert.svg", text: "Low-stock alerts & expiry management" },
-            { icon: "icons/kitchen.svg", text: "Kitchen asset and supply tracking" },
-            { icon: "icons/profit.svg", text: "Reduce wastage and maximize profits" }
+            { icon: "icons/inventory.svg", text: "codsrms.keyfeature1.point1" },
+            { icon: "icons/alert.svg", text: "codsrms.keyfeature1.point2" },
+            { icon: "icons/kitchen.svg", text: "codsrms.keyfeature1.point3" },
+            { icon: "icons/profit.svg", text: "codsrms.keyfeature1.point4" }
           ]
         },
         {
-          title: "Attendance & Payroll Management",
+          title: "codsrms.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/attendance.svg", text: "Biometric, Wi-Fi, face recognition & GPS attendance" },
-            { icon: "icons/salary.svg", text: "Auto salary calculation" },
-            { icon: "icons/loan.svg", text: "Advance salary, loan, fine & deduction management" },
-            { icon: "icons/selfservice.svg", text: "Employee self-service portal for payslips & attendance" }
+            { icon: "icons/attendance.svg", text: "codsrms.keyfeature2.point1" },
+            { icon: "icons/salary.svg", text: "codsrms.keyfeature2.point2" },
+            { icon: "icons/loan.svg", text: "codsrms.keyfeature2.point3" },
+            { icon: "icons/selfservice.svg", text: "codsrms.keyfeature2.point4" }
           ]
         },
         {
-          title: "Accounts & Finance Management",
+          title: "codsrms.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/finance.svg", text: "End-to-end expense, purchase, and revenue tracking" },
-            { icon: "icons/report.svg", text: "Automated financial reports & analytics" },
-            { icon: "icons/gst.svg", text: "GST & tax-ready accounting" },
-            { icon: "icons/vendor.svg", text: "Vendor and supplier payment management" }
+            { icon: "icons/finance.svg", text: "codsrms.keyfeature3.point1" },
+            { icon: "icons/report.svg", text: "codsrms.keyfeature3.point2" },
+            { icon: "icons/gst.svg", text: "codsrms.keyfeature3.point3" },
+            { icon: "icons/vendor.svg", text: "codsrms.keyfeature3.point4" }
           ]
         },
         {
-          title: "CRM & Multi-Outlet Management",
+          title: "codsrms.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/customer.svg", text: "Centralized customer database & loyalty programs" },
-            { icon: "icons/feedback.svg", text: "Customer feedback tracking & marketing tools" },
-            { icon: "icons/outlet.svg", text: "Manage single or multiple restaurants from one dashboard" },
-            { icon: "icons/menu.svg", text: "Centralized menu, pricing, and branch-wise performance reports" }
+            { icon: "icons/customer.svg", text: "codsrms.keyfeature4.point1" },
+            { icon: "icons/feedback.svg", text: "codsrms.keyfeature4.point2" },
+            { icon: "icons/outlet.svg", text: "codsrms.keyfeature4.point3" },
+            { icon: "icons/menu.svg", text: "codsrms.keyfeature4.point4" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/allinone.svg',
-          title: 'All-in-One Restaurant Solution',
-          desc: 'ERP + Payroll + CRM + Accounts in one platform.'
+          title: 'codsrms.whychoose1.title',
+          desc: 'codsrms.whychoose1.desc'
         },
         {
           icon: 'icons/flexible.svg',
-          title: 'Flexible & Scalable',
-          desc: 'Perfect for single outlets or multi-branch chains.'
+          title: 'codsrms.whychoose2.title',
+          desc: 'codsrms.whychoose2.desc'
         },
         {
           icon: 'icons/insights.svg',
-          title: 'Smart Insights',
-          desc: 'Real-time reports for better decision making.'
+          title: 'codsrms.whychoose3.title',
+          desc: 'codsrms.whychoose3.desc'
         },
         {
           icon: 'icons/mobileweb.svg',
-          title: 'Mobile & Web Access',
-          desc: 'Manage your business from anywhere.'
+          title: 'codsrms.whychoose4.title',
+          desc: 'codsrms.whychoose4.desc'
         },
         {
           icon: 'icons/customerfirst.svg',
-          title: 'Customer-First Approach',
-          desc: 'Focus on service while CodsRMS handles operations.'
+          title: 'codsrms.whychoose5.title',
+          desc: 'codsrms.whychoose5.desc'
         }
       ],
       howItWorks: [
-        { icon: 'assets/images/work-1.svg', desc: 'Set up CodsRMS and configure your restaurant or chain.' },
-        { icon: 'assets/images/work-2.svg', desc: 'Manage stock, staff, payroll, and accounts seamlessly.' },
-        { icon: 'assets/images/work-3.svg', desc: 'Engage customers with CRM features & loyalty programs.' },
-        { icon: 'assets/images/work-4.svg', desc: 'Access real-time reports and insights for growth.' }
+        { icon: 'assets/images/work-1.svg', desc: 'codsrms.howitworks1' },
+        { icon: 'assets/images/work-2.svg', desc: 'codsrms.howitworks2' },
+        { icon: 'assets/images/work-3.svg', desc: 'codsrms.howitworks3' },
+        { icon: 'assets/images/work-4.svg', desc: 'codsrms.howitworks4' }
       ],
       cta: {
-        title: "Take your restaurant to the next level with CodsRMS. ",
-        text: "Simplify management. Maximize profits. Delight customers.",
-        buttons: ["Request a Demo", "Contact Us"]
+        title: "codsrms.cta.title",
+        text: "codsrms.cta.text",
+        buttons: ["codsrms.cta.button1", "codsrms.cta.button2"]
       }
     },
 
-    codsOptima: {
+    codsoptima: {
       hero: {
-        title: "Streamline Production. Simplify Management.",
-        subtitle: "CodsOptima is a complete Production Management Software with web and mobile apps for admins, representatives, and customers. From stock management to order processing, production tracking, purchases, and deliveries — CodsOptima helps you run your production business smarter and faster.",
+        title: "codsoptima.hero.title",
+        subtitle: "codsoptima.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About codsOptima",
+        title: "codsoptima.about.title",
         text: [
-          " Running a restaurant is more than just serving food — it’s about balancing operations, managing staff, monitoring inventory, and keeping customers happy.Managing production is complex — balancing stock, orders, purchases, and delivery while ensuring smooth operations. CodsOptima centralizes it all into one platform, helping businesses achieve efficiency, reduce errors, and improve transparency.",
-          "  With mobile apps for representatives and customers, and a powerful admin web system, CodsOptima ensures everyone in the chain is connected and informed."
+          "codsoptima.about.text1",
+          "codsoptima.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codsoptima.about.feature1" },
+          { icon: "💻", text: "codsoptima.about.feature2" },
+          { icon: "🛡️", text: "codsoptima.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Stock & Order Management",
+          title: "codsoptima.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/stock.svg", text: "Real-time stock monitoring" },
-            { icon: "icons/update.svg", text: "Automatic updates on usage and replenishment" },
-            { icon: "icons/store.svg", text: "Manage multiple stores and godowns" },
-            { icon: "icons/alert.svg", text: "Low-stock alerts" },
-            { icon: "icons/order.svg", text: "Customer & Representative apps for order placement and follow-ups" },
-            { icon: "icons/dashboard.svg", text: "Admin dashboard for approvals and tracking" },
-            { icon: "icons/status.svg", text: "Automated order status updates" }
+            { icon: "icons/stock.svg", text: "codsoptima.keyfeature1.point1" },
+            { icon: "icons/update.svg", text: "codsoptima.keyfeature1.point2" },
+            { icon: "icons/store.svg", text: "codsoptima.keyfeature1.point3" },
+            { icon: "icons/alert.svg", text: "codsoptima.keyfeature1.point4" },
+            { icon: "icons/order.svg", text: "codsoptima.keyfeature1.point5" },
+            { icon: "icons/dashboard.svg", text: "codsoptima.keyfeature1.point6" },
+            { icon: "icons/status.svg", text: "codsoptima.keyfeature1.point7" }
           ]
         },
         {
-          title: "Production & Purchase",
+          title: "codsoptima.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/track.svg", text: "Track raw materials to finished goods" },
-            { icon: "icons/resource.svg", text: "Allocate resources to production batches" },
-            { icon: "icons/timeline.svg", text: "Monitor progress and timelines" },
-            { icon: "icons/efficiency.svg", text: "Reduce wastage and improve efficiency" },
-            { icon: "icons/request.svg", text: "Manage purchase requests & approvals" },
-            { icon: "icons/vendor.svg", text: "Vendor & supplier tracking" },
-            { icon: "icons/report.svg", text: "Purchase history and expense reports" },
-            { icon: "icons/stock-update.svg", text: "Integrated with stock updates" }
+            { icon: "icons/track.svg", text: "codsoptima.keyfeature2.point1" },
+            { icon: "icons/resource.svg", text: "codsoptima.keyfeature2.point2" },
+            { icon: "icons/timeline.svg", text: "codsoptima.keyfeature2.point3" },
+            { icon: "icons/efficiency.svg", text: "codsoptima.keyfeature2.point4" },
+            { icon: "icons/request.svg", text: "codsoptima.keyfeature2.point5" },
+            { icon: "icons/vendor.svg", text: "codsoptima.keyfeature2.point6" },
+            { icon: "icons/report.svg", text: "codsoptima.keyfeature2.point7" },
+            { icon: "icons/stock-update.svg", text: "codsoptima.keyfeature2.point8" }
           ]
         },
         {
-          title: "Delivery & Logistics",
+          title: "codsoptima.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/delivery.svg", text: "Assign deliveries and track status" },
-            { icon: "icons/update.svg", text: "Real-time updates for customers" },
-            { icon: "icons/report.svg", text: "Delivery reports and proof of delivery" },
-            { icon: "icons/branch.svg", text: "Integration with multiple branches" }
+            { icon: "icons/delivery.svg", text: "codsoptima.keyfeature3.point1" },
+            { icon: "icons/update.svg", text: "codsoptima.keyfeature3.point2" },
+            { icon: "icons/report.svg", text: "codsoptima.keyfeature3.point3" },
+            { icon: "icons/branch.svg", text: "codsoptima.keyfeature3.point4" }
           ]
         },
         {
-          title: "Role-Based Applications",
+          title: "codsoptima.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/admin.svg", text: "Admin Web Portal – Full control over production, stock & delivery" },
-            { icon: "icons/rep.svg", text: "Representative App – Manage orders, customers & follow-ups" },
-            { icon: "icons/customer.svg", text: "Customer App – Place orders, view status & receive notifications" }
+            { icon: "icons/admin.svg", text: "codsoptima.keyfeature4.point1" },
+            { icon: "icons/rep.svg", text: "codsoptima.keyfeature4.point2" },
+            { icon: "icons/customer.svg", text: "codsoptima.keyfeature4.point3" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/production.svg',
-          title: 'End-to-End Production Solution',
-          desc: 'From raw material to delivery.'
+          title: 'codsoptima.whychoose1.title',
+          desc: 'codsoptima.whychoose1.desc'
         },
         {
           icon: 'icons/ecosystem.svg',
-          title: 'Connected Ecosystem',
-          desc: 'Web + apps for admin, reps, and customers.'
+          title: 'codsoptima.whychoose2.title',
+          desc: 'codsoptima.whychoose2.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable',
-          desc: 'Works for small production units or large manufacturing companies.'
+          title: 'codsoptima.whychoose3.title',
+          desc: 'codsoptima.whychoose3.desc'
         },
         {
           icon: 'icons/insights.svg',
-          title: 'Real-Time Insights',
-          desc: 'Smarter decisions with live reports.'
+          title: 'codsoptima.whychoose4.title',
+          desc: 'codsoptima.whychoose4.desc'
         },
         {
           icon: 'icons/secure.svg',
-          title: 'Secure & Reliable',
-          desc: 'Protect your data with advanced security.'
+          title: 'codsoptima.whychoose5.title',
+          desc: 'codsoptima.whychoose5.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Customers place orders via app or through representatives.'
+          desc: 'codsoptima.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Orders are processed & approved in the admin portal.'
+          desc: 'codsoptima.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Stock, purchases, and production cycle are managed seamlessly.'
+          desc: 'codsoptima.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Delivery is assigned & completed with real-time customer updates.'
+          desc: 'codsoptima.howitworks4'
         }
       ],
       cta: {
-        title: "Transform the way you manage production.",
-        text: "Choose CodsOptima for a faster, smarter, and connected production process.",
-        buttons: ["Request a Demo", "Contact Us"]
+        title: "codsoptima.cta.title",
+        text: "codsoptima.cta.text",
+        buttons: ["codsoptima.cta.button1", "codsoptima.cta.button2"]
       }
     },
 
     codspropaylite: {
       hero: {
-        title: "Simplifying Employee Management.",
-        subtitle: "CodsProPay (Lite) is a streamlined version of our advanced payroll system, designed to make HR and Employee management simple, fast, and effective. Perfect for small and growing businesses.",
+        title: "codspropaylite.hero.title",
+        subtitle: "codspropaylite.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsProPay (Lite)",
+        title: "codspropaylite.about.title",
         text: [
-          " Managing employees doesn’t have to be complicated. CodsProPay (Lite) brings the essential HR and employee features into a mobile-friendly, easy-to-use platform. From employee records to attendance and salary details, everything is organized in one place.",
-          " This version is specially designed for businesses that need basic employee management without the complexity of a full payroll suite."
+          "codspropaylite.about.text1",
+          "codspropaylite.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codspropaylite.about.feature1" },
+          { icon: "💻", text: "codspropaylite.about.feature2" },
+          { icon: "🛡️", text: "codspropaylite.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "HR Module",
+          title: "codspropaylite.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/hr.svg", text: "Manage employee data" },
-            { icon: "icons/attendance.svg", text: "Track attendance & leave" },
-            { icon: "icons/salary.svg", text: "Maintain salary details" }
+            { icon: "icons/hr.svg", text: "codspropaylite.keyfeature1.point1" },
+            { icon: "icons/attendance.svg", text: "codspropaylite.keyfeature1.point2" },
+            { icon: "icons/salary.svg", text: "codspropaylite.keyfeature1.point3" }
           ]
         },
         {
-          title: "Employee Module",
+          title: "codspropaylite.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/user.svg", text: "Employees can view personal details" },
-            { icon: "icons/slip.svg", text: "Download salary slips anytime" },
-            { icon: "icons/attendance.svg", text: "Check attendance records" }
+            { icon: "icons/user.svg", text: "codspropaylite.keyfeature2.point1" },
+            { icon: "icons/slip.svg", text: "codspropaylite.keyfeature2.point2" },
+            { icon: "icons/attendance.svg", text: "codspropaylite.keyfeature2.point3" }
           ]
         },
         {
-          title: "Mobile-Friendly",
+          title: "codspropaylite.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/mobile.svg", text: "Access anytime, anywhere" },
-            { icon: "icons/responsive.svg", text: "Optimized for all devices" }
+            { icon: "icons/mobile.svg", text: "codspropaylite.keyfeature3.point1" },
+            { icon: "icons/responsive.svg", text: "codspropaylite.keyfeature3.point2" }
           ]
         },
         {
-          title: "Secure & Simple",
+          title: "codspropaylite.keyfeature4.title",
           color: "pink",
           points: [
-            { icon: "icons/lock.svg", text: "Protect sensitive employee data" },
-            { icon: "icons/ui.svg", text: "Simple and user-friendly interface" }
+            { icon: "icons/lock.svg", text: "codspropaylite.keyfeature4.point1" },
+            { icon: "icons/ui.svg", text: "codspropaylite.keyfeature4.point2" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/paperwork.svg',
-          title: 'Reduce Paperwork',
-          desc: 'Cut down on manual errors and save time with automation.'
+          title: 'codspropaylite.whychoose1.title',
+          desc: 'codspropaylite.whychoose1.desc'
         },
         {
           icon: 'icons/efficiency.svg',
-          title: 'Improve HR Efficiency',
-          desc: 'Digitize records and streamline HR processes.'
+          title: 'codspropaylite.whychoose2.title',
+          desc: 'codspropaylite.whychoose2.desc'
         },
         {
           icon: 'icons/quick-access.svg',
-          title: 'Quick Employee Access',
-          desc: 'Give employees instant access to their information.'
+          title: 'codspropaylite.whychoose3.title',
+          desc: 'codspropaylite.whychoose3.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'Scalable & Flexible',
-          desc: 'Perfect for startups, small shops, and growing firms.'
+          title: 'codspropaylite.whychoose4.title',
+          desc: 'codspropaylite.whychoose4.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Employees mark attendance via mobile app, biometric, or Wi-Fi.'
+          desc: 'codspropaylite.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'CodsProPay tracks attendance & working hours.'
+          desc: 'codspropaylite.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Payroll is generated instantly with deductions.'
+          desc: 'codspropaylite.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Employees download salary slips directly.'
+          desc: 'codspropaylite.howitworks4'
         }
       ],
       cta: {
-        title: "Ready to transform your payroll process?",
-        text: "Let CodsProPay handle the complexity while you focus on growing your business.",
-        buttons: ["Request a Demo", "Contact Us"]
+        title: "codspropaylite.cta.title",
+        text: "codspropaylite.cta.text",
+        buttons: ["codspropaylite.cta.button1", "codspropaylite.cta.button2"]
       }
     },
 
     codsbuylite: {
       hero: {
-        title: "Smart Shopping in Your Pocket.",
-        subtitle: "CodsBuy Mobile App brings the power of our e-commerce platform to your fingertips. Whether you’re a customer or a seller, manage everything seamlessly on mobile.",
-        // image: "assets/images/codsbuy-hero.png"
+        title: "codsbuylite.hero.title",
+        subtitle: "codsbuylite.hero.subtitle",
         image: "assets/images/main-sub.png"
       },
       about: {
-        title: "About CodsBuy",
+        title: "codsbuylite.about.title",
         text: [
-          " CodsBuy Mobile App is designed for convenient buying and selling on the go. It offers a smooth shopping experience for customers and easy product management for sellers. From browsing items to completing sales, everything is just a tap away.",
-          "CodsBuy simplifies online selling with a secure, scalable, and customizable platform across industries."
+          "codsbuylite.about.text1",
+          "codsbuylite.about.text2"
         ],
         features: [
-          { icon: "🔍", text: "Real-Time analytics" },
-          { icon: "💻", text: "Teams of any size" },
-          { icon: "🛡️", text: "Secure and Compliant" }
+          { icon: "🔍", text: "codsbuylite.about.feature1" },
+          { icon: "💻", text: "codsbuylite.about.feature2" },
+          { icon: "🛡️", text: "codsbuylite.about.feature3" }
         ]
       },
       keyFeatures: [
         {
-          title: "Seamless Shopping Experience",
+          title: "codsbuylite.keyfeature1.title",
           color: "peach",
           points: [
-            { icon: "icons/browse.svg", text: "Browse, search, and order products anytime" },
-            { icon: "icons/cart.svg", text: "Save favorite items in cart & wishlist" },
-            { icon: "icons/mobile.svg", text: "Mobile-first experience for speed and simplicity" }
+            { icon: "icons/browse.svg", text: "codsbuylite.keyfeature1.point1" },
+            { icon: "icons/cart.svg", text: "codsbuylite.keyfeature1.point2" },
+            { icon: "icons/mobile.svg", text: "codsbuylite.keyfeature1.point3" }
           ]
         },
         {
-          title: "Real-Time Order Management",
+          title: "codsbuylite.keyfeature2.title",
           color: "blue",
           points: [
-            { icon: "icons/track.svg", text: "Track deliveries in real-time" },
-            { icon: "icons/notification.svg", text: "Get instant updates on offers, orders, and delivery status" }
+            { icon: "icons/track.svg", text: "codsbuylite.keyfeature2.point1" },
+            { icon: "icons/notification.svg", text: "codsbuylite.keyfeature2.point2" }
           ]
         },
         {
-          title: "Flexible Payments",
+          title: "codsbuylite.keyfeature3.title",
           color: "cyan",
           points: [
-            { icon: "icons/payment.svg", text: "Multiple payment options for hassle-free checkout" }
+            { icon: "icons/payment.svg", text: "codsbuylite.keyfeature3.point1" }
           ]
         },
         {
-          title: "Seller Dashboard",
+          title: "codsbuylite.keyfeature4.title",
           color: "green",
           points: [
-            { icon: "icons/dashboard.svg", text: "Sellers can add, update, and manage products easily" }
+            { icon: "icons/dashboard.svg", text: "codsbuylite.keyfeature4.point1" }
           ]
         }
       ],
       whyChoose: [
         {
           icon: 'icons/seamless.svg',
-          title: 'Seamless Shopping Journey',
-          desc: 'Customers enjoy a smooth and hassle-free shopping experience.'
+          title: 'codsbuylite.whychoose1.title',
+          desc: 'codsbuylite.whychoose1.desc'
         },
         {
           icon: 'icons/mobile.svg',
-          title: 'Mobile Growth',
-          desc: 'Sellers can easily grow their business right from mobile.'
+          title: 'codsbuylite.whychoose2.title',
+          desc: 'codsbuylite.whychoose2.desc'
         },
         {
           icon: 'icons/smart.svg',
-          title: 'Smarter & Engaging',
-          desc: 'Faster, smarter, and more engaging than traditional shopping.'
+          title: 'codsbuylite.whychoose3.title',
+          desc: 'codsbuylite.whychoose3.desc'
         },
         {
           icon: 'icons/scalable.svg',
-          title: 'For All Businesses',
-          desc: 'Works perfectly for both small sellers and large stores.'
+          title: 'codsbuylite.whychoose4.title',
+          desc: 'codsbuylite.whychoose4.desc'
         }
       ],
       howItWorks: [
         {
           icon: 'assets/images/work-1.svg',
-          desc: 'Set up your store with CodsBuy.'
+          desc: 'codsbuylite.howitworks1'
         },
         {
           icon: 'assets/images/work-2.svg',
-          desc: 'Add products & manage inventory.'
+          desc: 'codsbuylite.howitworks2'
         },
         {
           icon: 'assets/images/work-3.svg',
-          desc: 'Start selling online with secure payments.'
+          desc: 'codsbuylite.howitworks3'
         },
         {
           icon: 'assets/images/work-4.svg',
-          desc: 'Track orders, engage customers, and grow with analytics.'
+          desc: 'codsbuylite.howitworks4'
         }
       ],
       cta: {
-        title: "Ready to start selling online?",
-        text: "Launch your e-commerce store with CodsBuy and grow with confidence.",
-        buttons: ["Get Started", "Request a Demo"]
+        title: "codsbuylite.cta.title",
+        text: "codsbuylite.cta.text",
+        buttons: ["codsbuylite.cta.button1", "codsbuylite.cta.button2"]
       }
-    },
+    }
   };
-
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.productId = this.route.snapshot.paramMap.get('id')!;
-    this.productData = this.products[this.productId];
-  }
 }

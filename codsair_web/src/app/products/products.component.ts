@@ -18,7 +18,7 @@ export class ProductsComponent {
 
   mobileProjects = [
     {
-      id: 'codsAudit',
+      id: 'codsaudit',
       titleKey: 'mobile.codspropay.title',
       descKey: 'mobile.codspropay.desc',
       img: 'assets/images/product1.jpg'
@@ -63,7 +63,7 @@ export class ProductsComponent {
       img: 'assets/images/product5.jpg'
     },
     {
-      id: 'codsRMS',
+      id: 'codsrms',
       titleKey: 'web.codsadmin.title',
       descKey: 'web.codsadmin.desc',
       img: 'assets/images/product1.jpg'

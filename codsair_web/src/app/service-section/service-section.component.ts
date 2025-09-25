@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonNavbarComponent } from '../common-navbar/common-navbar.component';
 import { CommonFooterComponent } from '../common-footer/common-footer.component';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { LanguageService } from '../services/language.service';
 
 @Component({
@@ -16,6 +16,14 @@ export class ServiceSectionComponent {
   selectedCard: any = null;
 
   constructor(private router: Router, public languageService: LanguageService) { }
+
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    });
+  }
 
   openModal(card: any) {
     this.selectedCard = card;

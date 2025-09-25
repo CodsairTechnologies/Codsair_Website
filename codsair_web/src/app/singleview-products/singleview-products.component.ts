@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonNavbarComponent } from '../common-navbar/common-navbar.component';
 import { CommonFooterComponent } from '../common-footer/common-footer.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../services/language.service';
 import { Subscription } from 'rxjs';
@@ -20,8 +20,9 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    public languageService: LanguageService
-  ) {}
+    public languageService: LanguageService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.subscriptions.add(
@@ -30,7 +31,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
         this.updateProductData();
       })
     );
-    
+
     this.subscriptions.add(
       this.languageService.currentLanguage$.subscribe(() => {
         if (this.productId) {
@@ -38,6 +39,11 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
         }
       })
     );
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -69,7 +75,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
       about: {
         ...baseData.about,
         title: translate(`${productId}.about.title`, baseData.about.title),
-        text: baseData.about.text.map((text: string, index: number) => 
+        text: baseData.about.text.map((text: string, index: number) =>
           translate(`${productId}.about.text${index + 1}`, text)
         ),
         features: baseData.about.features.map((feature: any, index: number) => ({
@@ -108,6 +114,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
 
   products: any = {
     codspropay: {
+      dashboardImage: "assets/images/codspropay/dashboard.png",
       hero: {
         title: "codspropay.hero.title",
         subtitle: "codspropay.hero.subtitle",
@@ -219,6 +226,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codsbuy: {
+      dashboardImage: "assets/images/codsbuy/dashboard.png",
       hero: {
         title: "codsbuy.hero.title",
         subtitle: "codsbuy.hero.subtitle",
@@ -330,6 +338,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codscare: {
+      dashboardImage: "assets/images/codscare/dashboard.png",
       hero: {
         title: "codscare.hero.title",
         subtitle: "codscare.hero.subtitle",
@@ -442,6 +451,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codshms: {
+      dashboardImage: "assets/images/codshms/dashboard.png",
       hero: {
         title: "codshms.hero.title",
         subtitle: "codshms.hero.subtitle",
@@ -554,6 +564,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codsevent: {
+      dashboardImage: "assets/images/codsevent/dashboard.png",
       hero: {
         title: "codsevent.hero.title",
         subtitle: "codsevent.hero.subtitle",
@@ -666,6 +677,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codsbill: {
+      dashboardImage: "assets/images/codsbill/dashboard.png",
       hero: {
         title: "codsbill.hero.title",
         subtitle: "codsbill.hero.subtitle",
@@ -777,6 +789,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codspoint: {
+      dashboardImage: "assets/images/codspoint/dashboard.png",
       hero: {
         title: "codspoint.hero.title",
         subtitle: "codspoint.hero.subtitle",
@@ -889,6 +902,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codslabel: {
+      dashboardImage: "assets/images/codslabel/dashboard.png",
       hero: {
         title: "codslabel.hero.title",
         subtitle: "codslabel.hero.subtitle",
@@ -993,6 +1007,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codsaudit: {
+      dashboardImage: "assets/images/codsaudit/dashboard.png",
       hero: {
         title: "codsaudit.hero.title",
         subtitle: "codsaudit.hero.subtitle",
@@ -1105,6 +1120,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codsrms: {
+      dashboardImage: "assets/images/codsrms/dashboard.png",
       hero: {
         title: "codsrms.hero.title",
         subtitle: "codsrms.hero.subtitle",
@@ -1205,6 +1221,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codsoptima: {
+      dashboardImage: "assets/images/codsoptima/dashboard.png",
       hero: {
         title: "codsoptima.hero.title",
         subtitle: "codsoptima.hero.subtitle",
@@ -1323,6 +1340,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codspropaylite: {
+      dashboardImage: "assets/images/codspropaylite/dashboard.png",
       hero: {
         title: "codspropaylite.hero.title",
         subtitle: "codspropaylite.hero.subtitle",
@@ -1424,6 +1442,7 @@ export class SingleviewProductsComponent implements OnInit, OnDestroy {
     },
 
     codsbuylite: {
+      dashboardImage: "assets/images/codsbuylite/dashboard.png",
       hero: {
         title: "codsbuylite.hero.title",
         subtitle: "codsbuylite.hero.subtitle",

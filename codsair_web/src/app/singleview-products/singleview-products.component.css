@@ -1121,7 +1121,7 @@
 }
 
 .how-it-works-container h2 {
-    margin-bottom: 80px;
+    margin-bottom: 80px !important;
     /* More space for the top step and line */
     color: #000000 !important;
     font-family: Roboto Slab !important;
@@ -1428,6 +1428,7 @@
     /* Pill shape */
     font-size: 1rem;
     font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid transparent;
